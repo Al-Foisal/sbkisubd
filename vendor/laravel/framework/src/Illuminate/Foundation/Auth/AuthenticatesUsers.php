@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
-trait AuthenticatesUsers
-{
+trait AuthenticatesUsers {
     use RedirectsUsers, ThrottlesLogins;
 
     /**
@@ -15,9 +14,9 @@ trait AuthenticatesUsers
      *
      * @return \Illuminate\Http\Response
      */
-    public function showLoginForm()
-    {
-        return view('auth.login');
+    public function showLoginForm() {
+        // return view('auth.login');
+        return view('backEnd.setting.login');
     }
 
     /**
@@ -28,13 +27,14 @@ trait AuthenticatesUsers
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function login(Request $request)
-    {
+    public function login(Request $request) {
         $this->validateLogin($request);
 
-        // If the class is using the ThrottlesLogins trait, we can automatically throttle
-        // the login attempts for this application. We'll key this by the username and
-        // the IP address of the client making these requests into this application.
+// If the class is using the ThrottlesLogins trait, we can automatically throttle
+
+// the login attempts for this application. We'll key this by the username and
+
+// the IP address of the client making these requests into this application.
         if (method_exists($this, 'hasTooManyLoginAttempts') &&
             $this->hasTooManyLoginAttempts($request)) {
             $this->fireLockoutEvent($request);
@@ -46,8 +46,9 @@ trait AuthenticatesUsers
             return $this->sendLoginResponse($request);
         }
 
-        // If the login attempt was unsuccessful we will increment the number of attempts
-        // to login and redirect the user back to the login form. Of course, when this
+// If the login attempt was unsuccessful we will increment the number of attempts
+
+// to login and redirect the user back to the login form. Of course, when this
         // user surpasses their maximum number of attempts they will get locked out.
         $this->incrementLoginAttempts($request);
 
@@ -62,11 +63,10 @@ trait AuthenticatesUsers
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    protected function validateLogin(Request $request)
-    {
+    protected function validateLogin(Request $request) {
         $request->validate([
             $this->username() => 'required|string',
-            'password' => 'required|string',
+            'password'        => 'required|string',
         ]);
     }
 
@@ -76,8 +76,7 @@ trait AuthenticatesUsers
      * @param  \Illuminate\Http\Request  $request
      * @return bool
      */
-    protected function attemptLogin(Request $request)
-    {
+    protected function attemptLogin(Request $request) {
         return $this->guard()->attempt(
             $this->credentials($request), $request->filled('remember')
         );
@@ -89,8 +88,7 @@ trait AuthenticatesUsers
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    protected function credentials(Request $request)
-    {
+    protected function credentials(Request $request) {
         return $request->only($this->username(), 'password');
     }
 
@@ -100,14 +98,13 @@ trait AuthenticatesUsers
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    protected function sendLoginResponse(Request $request)
-    {
+    protected function sendLoginResponse(Request $request) {
         $request->session()->regenerate();
 
         $this->clearLoginAttempts($request);
 
         return $this->authenticated($request, $this->guard()->user())
-                ?: redirect()->intended($this->redirectPath());
+        ?: $this->CustomRedirectUserPath();
     }
 
     /**
@@ -117,8 +114,7 @@ trait AuthenticatesUsers
      * @param  mixed  $user
      * @return mixed
      */
-    protected function authenticated(Request $request, $user)
-    {
+    protected function authenticated(Request $request, $user) {
         //
     }
 
@@ -130,8 +126,7 @@ trait AuthenticatesUsers
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    protected function sendFailedLoginResponse(Request $request)
-    {
+    protected function sendFailedLoginResponse(Request $request) {
         throw ValidationException::withMessages([
             $this->username() => [trans('auth.failed')],
         ]);
@@ -142,8 +137,7 @@ trait AuthenticatesUsers
      *
      * @return string
      */
-    public function username()
-    {
+    public function username() {
         return 'email';
     }
 
@@ -153,13 +147,12 @@ trait AuthenticatesUsers
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function logout(Request $request)
-    {
+    public function logout(Request $request) {
         $this->guard()->logout();
 
         $request->session()->invalidate();
 
-        return $this->loggedOut($request) ?: redirect('/');
+        return $this->loggedOut($request) ?: redirect('/login');
     }
 
     /**
@@ -168,8 +161,7 @@ trait AuthenticatesUsers
      * @param  \Illuminate\Http\Request  $request
      * @return mixed
      */
-    protected function loggedOut(Request $request)
-    {
+    protected function loggedOut(Request $request) {
         //
     }
 
@@ -178,8 +170,22 @@ trait AuthenticatesUsers
      *
      * @return \Illuminate\Contracts\Auth\StatefulGuard
      */
-    protected function guard()
-    {
+    protected function guard() {
         return Auth::guard();
     }
+
+    protected function CustomRedirectUserPath() {
+
+        if (Auth::user()->role_id == 1) {
+            return redirect('superadmin/dashboard');
+        } elseif (Auth::user()->role_id == 2) {
+            return redirect('admin/dashboard');
+        } elseif (Auth::user()->role_id == 3) {
+            return redirect('editor/dashboard');
+        } elseif (Auth::user()->role_id == 4) {
+            return redirect('author/dashboard');
+        }
+
+    }
+
 }

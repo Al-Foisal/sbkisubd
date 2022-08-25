@@ -166,6 +166,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         'Intervention\Image\ImageServiceProvider',
+        Brian2694\Toastr\ToastrServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -194,7 +195,7 @@ return [
      */
 
     'aliases'         => [
-
+        'Toastr'  => Brian2694\Toastr\Facades\Toastr::class,
         'App'          => Illuminate\Support\Facades\App::class,
         'Arr'          => Illuminate\Support\Arr::class,
         'Artisan'      => Illuminate\Support\Facades\Artisan::class,

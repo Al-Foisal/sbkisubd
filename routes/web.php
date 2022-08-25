@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 
 Auth::routes();
@@ -35,7 +36,7 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::get('/search-thana', 'FrontEndController@searchthana');
     Route::get('/search-union', 'FrontEndController@searchunion');
     Route::get('/search-village', 'FrontEndController@searchvillage');
-    Route::post('post-review','FrontEndController@postreview');
+    Route::post('post-review', 'FrontEndController@postreview');
 });
 Route::post('message/visitor/to/publisher', 'EmailController@publisherEmail');
 Route::post('visitor/support/', 'EmailController@visitorsupport');
@@ -77,11 +78,11 @@ Route::group(['namespace' => 'Customer', 'prefix' => 'customer'], function () {
     Route::post('/0/control-panel/post-new-ads', 'AdsController@adspublished');
     Route::post('/ads/published/update', 'AdsController@adsupdate');
     Route::get('/ads/image/delete/{id}', 'AdsController@adsimagedel');
-    Route::post('/buy-from-wallet','AdsController@buyFromWallet');
+    Route::post('/buy-from-wallet', 'AdsController@buyFromWallet');
 
     //shop open and close
-    Route::get('/shop/open-list','CustomerController@openclose');
-    Route::put('/shop/store-schedule','CustomerController@openclosestore');
+    Route::get('/shop/open-list', 'CustomerController@openclose');
+    Route::put('/shop/store-schedule', 'CustomerController@openclosestore');
 
     //nilam
     Route::get('/0/nilam/control-panel/manage-my-ads', 'NilamController@myads');
@@ -94,9 +95,9 @@ Route::group(['namespace' => 'Customer', 'prefix' => 'customer'], function () {
     Route::get('{slug}/0/nilam/control-panel/{id}/post-delete-ads', 'NilamController@deleteads');
 
     //buy nilam product
-    Route::get('/1/nilam','NilamController@showNilamAds');
-    Route::get('/1/nilam-details/{id}','NilamController@showNilamAdsDetails');
-    Route::post('/1/nilam-details/bid','NilamController@bid');
+    Route::get('/1/nilam', 'NilamController@showNilamAds');
+    Route::get('/1/nilam-details/{id}', 'NilamController@showNilamAdsDetails');
+    Route::post('/1/nilam-details/bid', 'NilamController@bid');
 
 });
 
@@ -162,7 +163,6 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'namespace' => 'Admin', 'mi
     // ads manage route here
     Route::get('show/ads-new/request', 'AdsmanageController@requestnewads');
 
-
     Route::get('show/ads-update/request', 'AdsmanageController@requestupdateads');
     Route::get('show/ads-expired/request', 'AdsmanageController@requestexpiredads');
     Route::post('customer/premium-ads/acceptrequest', 'AdsmanageController@requestacceptpremiumads');
@@ -180,6 +180,13 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'namespace' => 'Admin', 'mi
 Route::group(['as' => 'editor.', 'prefix' => 'editor', 'namespace' => 'Editor', 'middleware' => ['auth', 'editor']], function () {
     // editor dashboard
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+    Route::resource('/divisionsubcity', 'DivisionSubcityController');
+    Route::resource('/divisionchildcity', 'DivisionChildcityController');
+    Route::resource('/districtsubcity', 'DistrictSubcityController');
+    Route::resource('/districtchildcity', 'DistrictChildcityController');
+    Route::resource('/thanasubcity', 'ThanaSubcityController');
+    Route::resource('/thanachildcity', 'ThanaChildcityController');
 
     Route::get('banner/create', 'BannerController@create');
     Route::post('banner/store', 'BannerController@store');
@@ -308,7 +315,7 @@ Route::group(['as' => 'editor.', 'prefix' => 'editor', 'namespace' => 'Editor', 
     Route::get('ad/review', 'DashboardController@allreview');
     Route::post('ad/reviews/confirm', 'DashboardController@confirmreview');
     Route::post('ad/reviews/delete', 'DashboardController@deletereview');
-    
+
     // customer ads
     Route::get('ad/reports/', 'DashboardController@allreports');
     Route::post('/reports/unpublished', 'DashboardController@unpublished');
