@@ -1,0 +1,105 @@
+
+@media only screen and (max-width: 1024px){
+.float-left{
+	width: 50% !important;
+	padding-left: 20px !important;
+	font-size: 10px;
+	}
+  .j {
+   
+}
+}
+.float-right{
+	width: 50% !important;
+	padding-left: 50px !important;
+}
+@media only screen and (max-width: 1024px){
+#vertical-nav ul li a {
+  font-size: 16px;
+  margin-left: 0px !important;
+}
+#vertical-nav ul{
+  margin-left: 0px !important; 
+}
+h4.all-product{
+  font-size: 18px !important;
+  margin-left: 0px !important;
+}
+.new-hot{
+  font-size: 8px;
+}
+}
+
+@media only screen and (max-width: 1024px){
+input.in{
+  padding: 5px 50px!important;
+  border-radius: 18px 0px 0px 18px !important;
+  margin-right: 60px !important;
+}
+.bt>span i{
+  padding: 11px 41px !important;
+  margin-left: -79px !important;
+  margin-top: -3px !important;
+  border-radius: 1px 18px 18px 0px !important;
+}
+
+.from-mr{
+  margin-right: -123px !important;
+}
+.m{
+  margin-bottom: 3px !important;
+}
+}
+
+@media only screen and (max-width:667px){
+input.in{
+  padding: 5px 15px !important;
+  border-radius: 18px 0px 0px 18px !important;
+  margin-left: 30px !important;
+}
+.bt>span i{
+  padding: 11px 20px !important;
+  margin-left: -99px !important;
+  margin-top: -3px !important;
+  border-radius: 1px 18px 18px 0px !important;
+}
+
+.from-mr{
+  margin-right: -123px !important;
+}
+.m{
+  margin-bottom: 3px !important;
+}
+}
+@media only screen and (max-width:667px){
+.c2{
+ 
+  margin-right: 30px;
+  border: 1px solid #f77426;
+}
+.c-1,.c-2,.c-3,.c-4,.c-5{
+  margin-left: 55px !important;
+  margin-top: 10px;
+  width: 80% !important;
+}
+.card-title,.btn {
+  margin-left: -20px !important;
+}
+.card-text{
+  margin-left: -20px !important;
+}
+.card-02,.card-01,.card-03,.card-04{
+  width: 80% !important;
+  margin-left: 55px!important;
+}
+.card-003,.card-004{
+  width: 80% !important;
+  margin-left: 55px!important;
+}
+.card-0004{
+  width: 80% !important;
+  margin-left: 55px!important;
+  margin-top: 725px !important;
+}
+
+}

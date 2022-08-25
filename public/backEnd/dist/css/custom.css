@@ -1,0 +1,182 @@
+/*====CUSTOM RADIO BUTTON START===*/
+
+/*custom radio button*/
+.note-toolbar.card-header {
+	background: #f9f9f9 !important;
+}
+
+.note-editor.note-frame a {
+	color: #222 !important;
+}
+
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label
+{
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #666;
+}
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+}
+[type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #007BFF;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+[type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+.custom-label {
+	margin-top: 20px;
+}
+/*====CUSTOM RADIO BUTTON END===*/
+.user-panel {
+	text-align: center;
+	padding: 25px 0;
+}
+.user-panel i {
+	color: #068044;
+	display: block;
+	margin-top: 10px;
+	font-size: 11px;
+}
+
+.select2-selection.select2-selection--single {
+	height: 40px;
+	border-radius: 0;
+}
+.brand-link {
+	padding: 15px 28px;
+}
+.brand-link > span {
+	font-weight: 600 !important;
+}
+.control-sidebar.control-sidebar-dark ul li a {
+	color: #fff;
+}
+.box-content {
+	background: #fff;
+	padding: 30px 0;
+	margin-bottom: 50px;
+	border-radius: 5px;
+	border: 1px solid #ddd;
+}
+.content-header {
+	padding: 12px .5rem;
+}
+.breadcrumb li {
+	font-size: 14px;
+}
+.breadcrumb li a{
+	color:#555;
+}
+.breadcrumb-item + .breadcrumb-item::before {
+	color: #ccc;
+	content: ">";
+}
+.body-title {
+	float: left;
+}
+.quick-button {
+	float: right;
+}
+.manage-button {
+	margin-bottom: 20px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	padding: 8px 8px;
+	overflow: hidden;
+}
+
+.page-link:focus {
+	z-index: 2;
+	outline: 0;
+	box-shadow: 0 0;
+}
+.action_buttons ul {
+	padding: 18px 15px;
+}
+.action_buttons button,.action_buttons a {
+	border: 0;
+	padding: 6px 12px;
+	color: #fff;
+	float: left;
+	border-right: 5px;
+	border-radius: 5px;
+}
+.thumbs_up{
+	background: #42c5f4;
+}
+.thumbs_down{
+	background: #9fa0a0;
+}
+.edit_icon{
+	background: #4286f4;
+}
+
+.trash_icon{
+	background: #d3136c;
+}
+.action_buttons button{
+	cursor:pointer;
+}
+.action_buttons.dropdown.show ul li {
+	padding: 2px 18px;
+	display: block;
+	overflow: hidden;
+}
+.action_buttons span {
+	margin-left: 10px;
+	margin-top: 8px;
+	display: inline-block;
+}
+.action_buttons .btn-primary {
+	padding: 6px 26px;
+}
+.backend_image {
+	height: 70px;
+	width: 100px;
+	padding: 0 10px;
+	border: 1px solid #ddd;
+	margin-top: 14px;
+}
+.btn-size {
+	padding: 8px 24px;
+}
+.profileimage img {
+	width: 100px !important;
+	margin-bottom: 10px;
+}

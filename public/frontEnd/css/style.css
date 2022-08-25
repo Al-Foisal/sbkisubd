@@ -1,0 +1,2130 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap");
+body {
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    overflow-x: hidden;
+    background: #eeeeee;
+}
+p {
+    color: #222;
+}
+/*===COMMON CSS===*/
+button,
+button:focus {
+    outline: 0;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: inline-block;
+    list-style: none;
+}
+
+a,
+a:hover,
+a:focus {
+    color: #222;
+    text-decoration: none;
+    outline-offset: 0;
+    outline: 0;
+    transition: 0.35s ease-in-out;
+    text-align: left;
+}
+
+button,
+button:focus {
+    text-decoration: none;
+    background: transparent;
+    border: 0;
+}
+
+.form-control,
+.form-control:focus,
+input,
+input:focus {
+    outline: 0;
+    border: 0;
+}
+
+img {
+    max-width: 100%;
+    height: 100%;
+}
+
+.mrt-30 {
+    margin-top: 30px;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.allcaps {
+    text-transform: uppercase;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    padding: 0;
+    border: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Open Sans", sans-serif;
+}
+
+.tooltip-inner {
+    min-width: 80px;
+    padding: 10px 0;
+    margin-right: 5px;
+    border-radius: 0;
+}
+.anchor {
+    cursor: pointer;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.section-padding {
+    padding: 40px 0;
+}
+
+.section-tpadding {
+    padding-top: 60px;
+}
+
+.section-bpadding {
+    padding-bottom: 60px;
+}
+
+.pb30 {
+    padding-bottom: 30px;
+}
+
+.pb20 {
+    padding-bottom: 20px;
+}
+
+.mb20 {
+    margin-bottom: 20px;
+    display: block;
+}
+
+.form-control.is-invalid {
+    border: 1px solid #e74c3c !important;
+}
+
+.invalid-feedback {
+    color: #e74c3c;
+}
+
+.form-control {
+    border-radius: 0;
+    border: 1px solid transparent;
+    box-shadow: 0 0;
+    transition: 0.35s ease-in-out;
+}
+
+.contact-form input {
+    height: 40px !important;
+}
+
+.form-control:focus {
+    border: 1px solid #d66b0d;
+    box-shadow: 0 0;
+    outline: 0;
+}
+.lg-hide {
+    display: none;
+}
+.container {
+    max-width: 1310px;
+}
+/*==================================
+    HEADER TOP CSS START
+===================================*/
+.header-top {
+    background: #fff;
+}
+.header-top-right {
+    text-align: right;
+    transition: 0.5s all;
+    margin-top: 16px;
+}
+.header-top-left ul {
+    padding: 36px 12px;
+    transition: 0.5s all;
+    display: inline-block;
+}
+.header-top-left ul li {
+    margin-right: 16px;
+}
+.header-top-left ul li a {
+    color: #fff;
+}
+.header-top-right a.anchor {
+    color: #fff;
+}
+ul.header-top-right li a {
+    color: #fff;
+    text-transform: capitalize;
+    margin-left: 25px;
+}
+.header-top-right ul li .submenu {
+    position: absolute;
+    right: 0;
+    text-align: left;
+    background: #fff;
+    width: 162px;
+    overflow: hidden;
+    z-index: 9;
+    padding: 14px 9px;
+    border-radius: 5px;
+    top: 35px;
+    opacity: 1;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.35s all;
+}
+.header-top-right ul li:hover .submenu {
+    top: 28px;
+    transform: translateY(1);
+    opacity: 1;
+    visibility: visible;
+}
+.header-top-right ul li ul.submenu li {
+    display: block;
+}
+.header-top-right ul li ul.submenu li a {
+    display: inline-block;
+    color: #888;
+    font-weight: 500;
+    padding: 4px 0;
+}
+.header-top-right ul li ul.submenu li a:hover {
+    color: #d04551;
+}
+.header-post-ads {
+    text-align: right;
+}
+.home-page-modal {
+    padding: 0 20px;
+}
+.post-ads a {
+    background: #daa734;
+    color: #222 !important;
+    text-transform: uppercase !important;
+    padding: 10px 6px;
+    border-radius: 8px;
+}
+.main-menu ul li a {
+    color: #504e70;
+    font-size: 16px;
+    font-weight: 500;
+}
+.hcategory {
+    color: #504e70 !important;
+    cursor: pointer;
+    padding: 37px 0;
+}
+
+.main-menu ul li a.active {
+    color: #d66b0d;
+}
+.main-menu ul li a:hover {
+    color: #d66b0d;
+}
+.header-top-right ul li a i {
+    margin-right: 6px;
+    font-weight: 600;
+    color: #fff;
+    font-size: 16px;
+}
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.section-title h2 {
+    text-transform: capitalize;
+    font-size: 20px;
+    color: #222;
+}
+.section-title p {
+    font-weight: 600;
+    color: #444;
+    text-transform: capitalize;
+}
+.publish-ad a {
+    background: #af2d2d;
+    color: #fff !important;
+    padding: 13px 22px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px !important;
+    border-radius: 50px;
+}
+.account-title {
+    background: #d66b0d;
+    color: #fff !important;
+    padding: 8px 12px;
+    border-radius: 50px;
+}
+.cat-submenu {
+    position: absolute;
+    top: 58px;
+    width: 250px;
+    height: auto;
+    left: -50%;
+    background: #fff !important;
+    padding: 10px;
+    border-top: 2px solid #d66b0d;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.35s ease;
+    z-index: 999 !important;
+}
+.default-theme .codehim-nav {
+    left: -500px;
+}
+.cat-submenu li {
+    width: 100%;
+    float: left;
+    text-align: left;
+}
+.cat-submenu li a {
+    padding: 5px 0 !important;
+    display: inline-block;
+}
+.main-menu ul li:hover .cat-submenu {
+    visibility: visible;
+    opacity: 1;
+}
+#myModal .modal-header {
+    border-bottom: 0;
+    padding: 0;
+}
+#myModal .modal-header .close {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    background: linear-gradient(to left, #003967 0%, #028789 74%);
+    opacity: 1;
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    border-radius: 50%;
+    color: #fff;
+    font-weight: 400;
+    font-size: 16px;
+    border: 1px solid #003967;
+    z-index: 999;
+}
+.location-filter button {
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+#myModal .modal-content {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #003967;
+}
+#myModal .modal-body h3 {
+    line-height: 1.7;
+}
+#myModal .modal-body input {
+    display: block;
+    width: 100%;
+    height: 45px;
+    border: 1px solid #999;
+}
+#myModal .modal-body p {
+    text-align: left;
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+#myModal .modal-body label {
+    text-align: left;
+    width: 100%;
+    font-weight: 800;
+    font-size: 16px;
+    margin-top: 15px;
+}
+.header-top {
+    background: linear-gradient(#c53030, #9b2c2c);
+    padding: 8px 0;
+    z-index: 999;
+}
+.header-top-left ul {
+    text-align: left;
+}
+#myModal .modal-body form {
+    text-align: left;
+}
+#myModal .modal-body button {
+    background: linear-gradient(to left, #ef3636 0%, #000 74%);
+    color: #fff;
+    padding: 10px 31px;
+    cursor: pointer;
+}
+#myModal .modal-body {
+    padding: 15px 35px;
+}
+#myModal .modal-dialog {
+    margin: 10rem auto;
+}
+/*==================================
+   MAIN HEADER CSS START
+===================================*/
+.main-header {
+    padding: 15px 0;
+}
+.main-logo {
+    text-align: left;
+    float: left;
+    transition: 0.5s all;
+}
+.mobile-menu {
+    display: none;
+}
+.main-logo img {
+    margin-right: 8px;
+}
+.tgoogle-ads img {
+    height: 90px;
+}
+.menu-content {
+    padding: 18px 0;
+}
+
+.mobile-logo {
+    display: none;
+}
+.main-menu ul li a {
+    color: #504e70;
+    font-size: 16px;
+}
+/*==================================
+   Search
+===================================*/
+.search-and-category {
+    background: #eeeeee;
+    padding-top: 0;
+    padding-bottom: 30px;
+}
+.search-text h5 {
+    text-align: center;
+    color: #000;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.search-text p {
+    width: 350px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 13px;
+    color: #616161;
+}
+.main-search-box {
+    width: 65%;
+    margin: 30px auto;
+    border: 12px solid #ddd;
+    overflow: hidden;
+}
+.common_search_area .main-search-box {
+    width: 100% !important;
+}
+form.main-search-box input {
+    width: 90%;
+    float: left;
+    height: 40px;
+    padding: 0 18px;
+}
+form.main-search-box button {
+    width: 10%;
+    float: left;
+}
+form.main-search-box button {
+    width: 10%;
+    float: left;
+    background: #f56565;
+    height: 40px;
+    color: #fff;
+}
+.category-section {
+    text-align: center;
+    display: flex;
+    padding: 50px 35px;
+    flex-wrap: wrap;
+}
+/*==================================
+   CATEGORY CSS START
+===================================*/
+.single-category ul li p {
+    text-align: center;
+    margin-top: -4px;
+}
+.location-icon {
+    height: 22px;
+}
+.price-tag {
+    height: 23px;
+    width: 23px;
+}
+.catad {
+    text-align: right;
+    margin-bottom: 15px;
+    height: 400px;
+}
+.single-category ul li img {
+    height: 45px;
+    width: 45px;
+    object-fit: contain;
+}
+.single-category {
+    text-align: center;
+    background: #fff;
+    border-radius: 5px;
+    margin: 0 6px;
+    width: 10.11%;
+    transition: all 0.3s ease-in-out;
+}
+.single-category ul {
+    padding: 8px 10px;
+}
+.single-category ul li {
+    display: block;
+    text-align: center;
+}
+.single-category ul li i.icon {
+    background: #28a691;
+    color: #fff;
+    height: 65px;
+    line-height: 65px;
+    width: 65px;
+    border-radius: 50px;
+    font-size: 30px;
+    transition: 0.35s all;
+}
+.single-category:hover {
+    box-shadow: 0px 5px 4px 1px #ddd;
+}
+.single-category:hover.single-category ul li i.icon {
+    background: #d66b0d;
+}
+.single-category:hover {
+    box-shadow: 0px 5px 4px 1px #ddd;
+}
+.single-category ul li a {
+    text-transform: capitalize;
+    color: #666;
+    padding: 12px 0;
+    display: inline-block;
+    text-align: center;
+    font-size: 13px;
+}
+.single-category ul li.plus i {
+    color: #d66b0d;
+    border: 1px solid #d66b0d;
+    padding: 2px 5px;
+    border-radius: 50px;
+    font-weight: 500;
+}
+.single-category ul li.plus a {
+    cursor: pointer;
+}
+.browse-all {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.all-category {
+    background: #f5f5f5;
+    padding: 30px 0;
+}
+.allcategory-item {
+    background: #fff;
+    padding: 15px;
+    height: 250px;
+    margin: 15px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.allcategory-item img {
+    height: 40px;
+}
+.subcategory ul li:first-child {
+    font-size: 16px;
+    font-weight: 900;
+}
+.subcategory ul li a:hover {
+    text-decoration: underline;
+}
+/*==================================
+   ADVERTISMENT CSS START
+===================================*/
+.advertisment {
+    background: #f4f4f4;
+    padding: 15px 0;
+}
+.ads-section {
+    background: #f4f4f4;
+    text-align: center;
+    padding-top: 15px;
+}
+.single-ads {
+    margin: 15px 0;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+}
+.single-ads .ads-image {
+    height: 200px;
+    overflow: hidden;
+    background: #fff;
+}
+.single-ads .ads-image img {
+    width: 100%;
+    transition: 0.5s all;
+    object-fit: contain;
+}
+
+.ads-content {
+    background: #fff;
+    padding: 18px 12px;
+    overflow: hidden;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+.ads-content ul li {
+    width: 50%;
+    float: left;
+}
+.similerad .single-ads {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    border-radius: 0;
+}
+.ads-content .catandloc .cat {
+    text-align: left;
+}
+.ads-content .catandloc a {
+    text-transform: capitalize;
+}
+.single-ads:hover .ads-content .title a {
+    color: #555;
+}
+.ads-content .catandloc .loc {
+    text-align: right;
+}
+.ads-content .catandloc i {
+    margin-right: 5px;
+}
+.ads-content .title a {
+    font-size: 16px;
+    color: #d66b0d;
+    height: 55px;
+    display: inline-block;
+    text-transform: capitalize;
+}
+.ads-content ul.price-wishlist li.price {
+    width: 65%;
+    float: left;
+    font-weight: 600;
+    color: #c13154;
+    margin-top: 6px;
+}
+.wishlist a.ads-content ul.price-wishlist li.price {
+    width: 65%;
+    float: left;
+    font-weight: 600;
+    color: #c13154;
+    margin-top: 6px;
+}
+.zadu {
+    border: 1px solid #cb3f52;
+    padding: 4px 6px;
+    font-size: 12px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+.ads-content ul.price-wishlist li.wishlist {
+    width: 35%;
+    float: left;
+    text-align: right;
+    padding-right: 12px;
+}
+.advertisment .mads {
+    margin: 15px 0;
+    height: 400px;
+}
+.locationad-inner.home {
+    background: #f4f4f4;
+    padding: 5px 15px;
+    margin-bottom: 15px;
+}
+.subcategory ul li {
+    display: block;
+}
+.locationad-inner button {
+    color: #bc336b;
+    font-weight: 600;
+    margin-top: 10px;
+}
+.location-ads {
+    height: 300px;
+    width: 100%;
+    overflow: hidden;
+    transition: 0.5s all;
+}
+.new-height {
+    height: auto;
+    transition: 0.5s all;
+}
+.removeDiv {
+    display: none;
+}
+#location-ads ul li {
+    display: block;
+    padding: 6px 0;
+}
+.subcategory ul li {
+    padding: 6px 0;
+}
+#location-ads ul li:last-child {
+    border-color: transparent;
+}
+#location-ads ul li a {
+    color: #222;
+}
+#location-ads ul li a:hover {
+    color: #222;
+}
+/*==================================
+   POST YOUR ADD BUTTON CSS START
+===================================*/
+.post-right img {
+    height: 350px;
+}
+.post-left {
+    text-align: center;
+    padding-top: 110px;
+}
+.post-left a {
+    background: #daa734;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 10px 20px;
+    font-weight: 600;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+/*==================================
+   FOOTER CSS START
+===================================*/
+.footer {
+    background: #212121;
+}
+.footer-item h4 {
+    font-size: 16px;
+    color: #9e9e9e;
+}
+.footer-top {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+.footer-item ul li a {
+    color: #9e9e9e;
+    line-height: 1.8;
+}
+.footer-item ul li {
+    display: block;
+}
+.footer-item.footer-social {
+    text-align: right;
+}
+.footer-social ul li {
+    display: inline-block;
+}
+.footer-social ul li a {
+    margin-right: 8px;
+    font-size: 17px;
+}
+.footer-bottom {
+    padding: 30px 0;
+    border-top: 1px solid #555;
+    text-align: center;
+}
+.copyright p {
+    color: #9e9e9e;
+}
+
+/*==================================
+   CATEGORY PAGE CSS START
+===================================*/
+.advertisment .container {
+    background: #fff;
+}
+.custom-bread-inner {
+    background: #e7e7e7;
+    margin-bottom: 20px;
+    padding: 25px 25px;
+}
+.custom-bread-left h5 {
+    text-transform: capitalize;
+    color: #666;
+}
+.custom-bread-right {
+    text-align: right;
+}
+.custom-bread-right ul li a {
+    color: #555;
+    text-transform: capitalize;
+}
+.location-filter {
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    padding: 5px 12px;
+}
+.filter-and-search {
+    margin-top: 12px;
+    padding-bottom: 10px;
+}
+.location-filter button {
+    font-size: 14px;
+    font-weight: 600;
+    color: #222;
+}
+.location-filter button i {
+    color: #d66b0d;
+    font-size: 18px;
+    margin-right: 4px;
+}
+.cat-search form {
+    border: 1px solid #d66b0d;
+    overflow: hidden;
+    height: 40px;
+    border-radius: 5px;
+}
+.cat-search form button {
+    float: right;
+    width: 15%;
+    height: 40px;
+    background: #d66b0d;
+    color: #fff;
+}
+.cat-search form input {
+    width: 85%;
+    float: left;
+    height: 40px;
+    padding: 10px 15px;
+}
+.location-modal .nav-pills .nav-link.active {
+    background: transparent !important;
+    color: #777;
+}
+.location-modal .nav-pills .nav-link i {
+    text-align: right;
+}
+.modal-dialog.modal-lg.location-modal .modal-content {
+    height: 500px;
+    overflow-y: scroll;
+}
+.collapse-area {
+    padding-left: 20px;
+}
+.collapse-area ul li a {
+    color: #666;
+}
+.collapse-area .custom-tree {
+    margin: 0 !important;
+}
+.all-area {
+    margin-top: 15px;
+    display: inline-block;
+    color: #6161ff;
+}
+.tree-menu .closed > a,
+.tree-menu .opened > a {
+    background-position: 8px 14px !important;
+}
+.tree-menu .closed > a,
+.tree-menu .opened > a {
+    padding: 10px 35px !important;
+    margin: 2px 0 !important;
+}
+.collapse-area .custom-tree {
+    margin-top: 15px !important;
+}
+.collapse-area ul li ul li a {
+    padding: 8px 35px;
+}
+
+.location-modal .nav-pills .nav-link {
+    border-bottom: 1px solid #ddd;
+    overflow: hidden;
+    float: none;
+    height: auto;
+    padding: 0 0;
+    line-height: 18px;
+    margin-top: 18px;
+}
+.location-modal .nav-pills .nav-link span {
+    width: 90%;
+    float: left;
+}
+.location-modal .nav-pills .nav-link i {
+    width: 10%;
+    float: right;
+}
+.modal-second-menu li {
+    display: block;
+}
+.modal-second-menu li a {
+    display: block;
+    border-bottom: 1px solid #ddd;
+    padding: 17px 0;
+}
+.category-mmenu a {
+    line-height: 0 !important;
+    padding: 10px !important;
+    padding-bottom: 18px !important;
+}
+.category-mmenu .nav-link i {
+    margin-top: -8px;
+}
+/*==================================
+   LOGIN REGISTER PAGE CSS START
+===================================*/
+.breadcrumb-content h3 {
+    color: #fff;
+}
+.breadcrumb-content ul li a {
+    color: #fff !important;
+    font-size: 14px;
+    margin: 0 2px;
+}
+.commonpanel {
+    background: #f6f7fb;
+}
+.commonpanelform form {
+    text-align: left;
+    padding: 30px;
+}
+.commonpanelform {
+    background: #fff;
+    border-radius: 5px;
+}
+.forgate-pass a {
+    font-weight: 600;
+    color: #555;
+}
+.forgate-pass {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 30px;
+}
+.haveaccount {
+    padding: 35px 0;
+    text-align: center;
+}
+.haveaccount a {
+    background: #ddd;
+    padding: 10px 25px;
+    display: inline-block;
+    font-weight: 600;
+    color: #555;
+    border-radius: 5px;
+    margin-top: 6px;
+}
+.commonpanelform form label {
+    font-weight: 600;
+    color: #222;
+}
+.customer-body .table-bordered thead td,
+.customer-body .table-bordered thead th {
+    color: #222;
+}
+.ads-new {
+    text-align: left;
+}
+.commonpanelform form span {
+    color: #e91e63;
+}
+.customer-info .name p {
+    text-align: center;
+}
+.commonpanelform .title {
+    text-transform: capitalize;
+    font-size: 18px;
+    color: #000;
+    border-bottom: 1px solid #ddd;
+    padding: 18px 30px;
+    font-weight: 600;
+    text-align: center;
+}
+.adsmakepremium a {
+    background: #4267b2;
+    color: #fff;
+    display: inline-block;
+    margin-top: 7px;
+    padding: 4px 11px;
+    border-radius: 5px;
+}
+.commonpanelform form input,
+.commonpanelform form input:focus {
+    border: 1px solid #ddd;
+    outline: 0;
+    box-shadow: 0 0;
+    height: 55px;
+    border-radius: 5px;
+}
+.commonpanelform form button {
+    background: #af2d2d;
+    width: 100%;
+    color: #fff;
+    padding: 10px 3px;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.5s all;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+.nomembership {
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 38px 16px;
+    margin-bottom: 15px;
+}
+.nomembership h6 {
+    margin-top: 15px;
+    display: inline-block;
+}
+.ls-search {
+    background: #fff;
+    padding: 20px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+.ls-cat-title {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 11px;
+    text-align: left;
+}
+.ls-cat-title h4 {
+    text-transform: capitalize;
+    font-size: 18px;
+    color: #666;
+}
+.cat-chechbox p {
+    text-transform: capitalize;
+    color: #555;
+}
+.category.adsection .single-advertisment .image {
+    height: 200px;
+}
+.ls-search .select2 {
+    width: 70% !important;
+    float: left;
+}
+.ls-search .select2-selection__arrow b {
+    display: none;
+}
+.select2-results__option[aria-selected] {
+    cursor: pointer;
+    display: block;
+}
+.ls-search .select2 .select2-selection {
+    height: 38px;
+    border-radius: 0;
+    border: 1px solid #ddd;
+}
+.select2-selection__rendered {
+    line-height: 38px !important;
+}
+.ls-search .searchicon {
+    width: 30%;
+    float: left;
+    text-align: center;
+    background: #0f7ad5;
+    color: #fff;
+    height: 38px;
+}
+.ls-search i {
+    line-height: 38px;
+}
+
+.cat-chechbox {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.cat-chechbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 4px;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    border: 1px solid #ddd;
+}
+/* On mouse-over, add a grey background color */
+
+/* When the checkbox is checked, add a blue background */
+.cat-chechbox input:checked ~ .checkmark {
+    background-color: #d66b0d;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.cat-chechbox input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.cat-chechbox .checkmark::after {
+    left: 5px;
+    top: 2px;
+    width: 5px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.category-checkbox {
+    padding: 20px;
+    background: #fff;
+    margin: 25px 0;
+}
+.ls-cat-count {
+    text-align: right;
+}
+.commonpanelform .ls-checkbox.auth {
+    float: left;
+}
+.commonpanelform .forgatepassowre {
+    text-align: right;
+}
+.commonpanelform .forgatepassowre a {
+    display: inline-block;
+    color: #d66b0d;
+    text-transform: capitalize;
+}
+
+.newaccount p {
+    margin: 4px 0;
+    display: inline-block;
+}
+.newaccount p a {
+    font-weight: 600;
+}
+.ls-checkbox.auth label a {
+    color: #d66b0d;
+}
+
+/*==================================
+   CATEGORY PAGE CSS START
+===================================*/
+.list-ad-image {
+    height: 230px;
+    width: 100%;
+    padding: 5px;
+}
+.list-ad-image img {
+    object-fit: contain;
+}
+.list-product.big-ads {
+    height: 260px;
+    padding: 15px 0;
+}
+.list-product.big-ads .list-ad-image {
+    height: 230px;
+    text-align: center;
+}
+/*.list-product.big-ads .list-ad-info {*/
+/*    padding: 60px 0;*/
+/*}*/
+.membertag {
+    width: 14px;
+    margin-top: -4px;
+    height: 15px;
+}
+.ad-filter {
+    padding: 14px 12px;
+}
+.sort-form {
+    display: block;
+}
+.nice-select .list,
+.nice-select .list .option {
+    width: 100%;
+    display: block;
+}
+.nice-select {
+    width: 100%;
+}
+.sort-form p {
+    display: block;
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.ads-type ul li a {
+    margin-left: 5px;
+    padding: 4px 0;
+    display: inline-block;
+}
+.ads-type ul li {
+    display: block;
+}
+.sidebar .title {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.sidebar .sort-form .nice-select {
+    margin-bottom: 20px;
+}
+.sidebar .title p {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #555;
+    font-weight: 600;
+}
+.ads-type p {
+    display: block;
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+.ads-breadcrumb ul {
+    margin-bottom: 8px;
+    display: block;
+}
+.ads-breadcrumb ul li a {
+    font-weight: 600;
+}
+#sortTab {
+    text-align: right;
+    float: right;
+    border-color: transparent;
+}
+.sort-form form {
+    width: 100%;
+}
+.sort-form select {
+    border: 1px solid #888;
+    height: 38px;
+    border-radius: 5px;
+    width: 100%;
+}
+.grid-list {
+    width: 30%;
+    display: inline-block;
+    margin-top: 8px;
+}
+
+.list-product {
+    background: #fff;
+    transition: 0.35s all;
+    margin-bottom: 15px;
+    padding: 10px 13px;
+}
+.ads-type label {
+    font-size: 14px;
+}
+.list-product:hover {
+    box-shadow: 0px 0px 9px 1px #ece9e9;
+    border-radius: 5px;
+}
+.list-anchor {
+    padding: 35px 0;
+    display: inline-block;
+}
+.list-ad-info p {
+    margin-bottom: 5px;
+}
+
+.list-ad-info h5 a {
+    font-size: 18px;
+    color: #555;
+    display: inline-block;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+.list-ad-info strong {
+    color: #504e70;
+    font-weight: 500;
+}
+.list-ad-info h5 a:hover {
+    color: #555;
+}
+.list-ad-info a.wishlist {
+    display: inline-block;
+    color: #cb3f52;
+    margin-top: 5px;
+    border: 1px solid;
+    font-weight: 600;
+    margin-left: 5px;
+    padding: 3px 11px;
+    border-radius: 5px;
+}
+.view-details {
+    text-align: center;
+}
+.view-details a {
+    background: #cb3f52;
+    color: #fff;
+    padding: 8px 12px;
+    display: inline-block;
+    margin-top: 110px;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+.view-details a:hover {
+    border-radius: 5px;
+}
+.main-content {
+    background: #fff;
+    padding: 30px;
+    margin-top: 30px;
+}
+.custom-tree {
+    margin-bottom: 15px;
+}
+.custom-tree ul li {
+    display: block;
+}
+
+.sidebar {
+    background: #fff;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+}
+.sidebar .title {
+    margin-bottom: 10px;
+}
+.cpaginate ul li a {
+    border: 1px solid #504e70;
+    padding: 4px 13px;
+    border-radius: 5px;
+}
+.cpaginate ul li a:hover,
+.cpaginate ul li.active a {
+    background: #cb3f52;
+    border-color: #cb3f52;
+    color: #fff;
+}
+.cpaginate ul li:last-child a {
+    background: #888;
+    border-color: #fff;
+    color: #fff;
+}
+.cpaginate {
+    margin-top: 15px;
+}
+
+/*==================================
+   DETAILS PAGE CSS START
+===================================*/
+.commondesign {
+    background: #e7edee;
+    padding: 30px 0;
+}
+.advertisment-left {
+    background-color: #fff;
+    overflow: hidden;
+    padding-bottom: 20px;
+}
+.advertisment-right {
+}
+.adsdetails-head-flex {
+    display: flex;
+    justify-content: space-between;
+}
+.adsdetails-price-right h1 {
+    color: #e53e3e;
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin: 0;
+}
+.adsdetails-price-right p {
+    text-align: right;
+    color: #9e9e9e;
+}
+.advertisment-details {
+    padding: 20px 20px;
+}
+.advertisment-details-header {
+    padding: 20px 20px 0px 20px;
+}
+.advertisment-details-header h5 {
+    text-transform: capitalize;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0px;
+}
+.advertisment-details-header p a {
+    font-weight: 600;
+    color: #d66b0d;
+}
+.user-avatar {
+    background-color: #fff;
+    padding: 20px 20px 25px 25px;
+    box-shadow: 1px 1px 10px #ddd;
+}
+.avatar-pic-container {
+    width: 130px;
+    height: 130px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    display: block;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #ddd;
+}
+.avatar-pic-container img {
+    object-fit: cover;
+}
+.avatar-for-sale {
+    text-align: center;
+    margin: 10px 0;
+    color: #9e9e9e;
+    font-weight: 600;
+}
+.avatar-name {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+.avatar-contact {
+    display: flex;
+    flex-wrap: wrap;
+}
+.avatar-contact-phone {
+    width: 66%;
+    display: flex;
+}
+.avatar-contact-icon {
+    color: #ddd;
+}
+.avatar-contact-icon i {
+    font-size: 1.5rem;
+    color: #fff;
+}
+.avatar-contact-left {
+    background-color: #f56565;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.avatar-contact-right {
+    background-color: #fc8181;
+    transition: all 0.3s ease-in-out;
+    width: 70%;
+}
+.avatar-contact-phone:hover .avatar-contact-right {
+    background-color: #f56565;
+}
+.avatar-contact-text p {
+    font-size: 13px;
+    padding-top: 5px;
+}
+.avatar-contact-text h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+.avatar-contact-text p,
+.avatar-contact-text h4 {
+    color: #fff;
+}
+.avatar-contact-btn {
+    display: inline-block;
+    padding: 15px 20px;
+    background-color: #ddd;
+}
+.customer-phone-details {
+    margin-top: 20px;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 1px 1px 10px #ccc;
+}
+.customer-phone-details {
+    border: 1px solid #ddd;
+    margin-top: 20px;
+}
+.customer-phone-details li {
+    display: block;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 18px;
+}
+.customer-phone-details li:last-child {
+    border-bottom: 0;
+}
+.customer-phone-details li i {
+    color: #d66b0d;
+    font-size: 20px;
+    margin-right: 10px;
+}
+.customer-phone-details li a {
+    font-weight: 600;
+    color: #555;
+}
+.customer-phone-details li a span {
+    font-weight: 400;
+    font-size: 12px;
+    display: block;
+    margin-left: 26px;
+    margin-top: 5px;
+}
+.csidebar {
+    background: #fff;
+    padding-bottom: 30px;
+}
+
+.csidebar .mads {
+    text-align: center;
+    height: 600px;
+    margin-bottom: 45px;
+}
+.csidebar .mads img {
+    margin: 25px 0;
+}
+.dslider {
+    margin-top: 20px;
+}
+.dslider {
+    position: relative;
+}
+.advertisment-details-body {
+    height: 380px !important;
+    margin-bottom: 25px;
+}
+.product-basic ul {
+    overflow: hidden;
+}
+.product-basic ul li {
+    width: 50% !important;
+    float: left !important;
+    margin: 5px 0 !important;
+}
+.dslider-item {
+    height: 380px;
+    background: #ddd;
+}
+.share-btn {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.share-btn p {
+    margin-bottom: 6px;
+}
+.share-btn.desktop {
+    display: block;
+}
+.share-btn.mobile {
+    display: none;
+}
+.mobile-chat-phon {
+    display: none;
+}
+.dslider-item img {
+    object-fit: contain;
+}
+.dslider .owl-nav button.owl-prev {
+    background: rgba(0, 165, 145, 0.5);
+    left: 0%;
+    position: absolute;
+    height: 65px !important;
+    width: 50px !important;
+    z-index: 999999;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.5s;
+    border-radius: 0px 35px 35px 0;
+}
+.ads-description {
+    margin-top: 18px;
+}
+.ads-feature {
+    margin-top: 10px;
+}
+.dslider .owl-nav button.owl-prev:hover {
+    background: #d66b0d;
+}
+
+.dslider .owl-nav button.owl-next {
+    background: rgba(0, 165, 145, 0.5);
+    right: 0%;
+    position: absolute;
+    height: 65px !important;
+    width: 50px !important;
+    border-radius: 35px 0px 0px 35px;
+    z-index: 999999;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.5s;
+}
+
+.dslider .owl-nav button.owl-next:hover {
+    background: #d66b0d;
+}
+
+.dslider .owl-nav button i {
+    font-size: 28px !important;
+    color: #fff;
+}
+.dslider .owl-dots {
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    left: 0;
+    text-align: center;
+    transform: translateY(-10px);
+}
+
+.dslider button.owl-dot {
+    background: rgba(0, 165, 145, 0.3);
+    border-radius: 50%;
+    color: inherit;
+    font: inherit;
+    height: 14px;
+    margin: 10px 2px;
+    padding: 0 !important;
+    width: 14px;
+    display: inline-block;
+    border: 1px solid #f7f7f7;
+}
+
+.dslider button.owl-dot.active {
+    background: #1abba3;
+}
+.cphone a {
+    background: #d04551;
+    border-radius: 5px 0 0 5px;
+    display: inline-block;
+    color: #fff !important;
+    padding: 15px 22px;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    position: relative;
+}
+.cphone a::after {
+    position: absolute;
+    right: -37px;
+    top: 0;
+    height: 100%;
+    content: "";
+    width: 50px;
+    border-top: 26px solid #d04551;
+    border-bottom: 28px solid #d04551;
+    border-right: 29px solid transparent;
+    border-left: 29px solid #d04551;
+}
+.dprice h5 {
+    padding: 8px 0;
+    border-top: 1px solid #ddd;
+    margin: 15px 0;
+    border-bottom: 1px solid #ddd;
+}
+.advertisment-details-body .content ul li {
+    display: block;
+    padding: 5px 0;
+}
+.contact-topublisher {
+    padding: 20px;
+    border: 1px solid #ddd;
+    margin: 0 25px;
+    margin-bottom: 20px;
+}
+.contact-topublisher h5 {
+    font-weight: 600;
+    color: #555;
+}
+.contact-topublisher strong {
+    display: block;
+    padding: 5px 2px;
+}
+.contact-topublisher form input,
+.contact-topublisher form input:focus {
+    border: 1px solid #ddd;
+}
+.contact-topublisher form {
+    margin-top: 15px;
+}
+.contact-topublisher textarea {
+    padding: 4px 8px;
+    border: 1px solid #ddd;
+}
+.contact-topublisher button {
+    background: #d66b0d;
+    color: #fff;
+    text-transform: capitalize;
+    margin-top: 10px;
+    padding: 6px 14px;
+    border-radius: 5px;
+}
+.similerad {
+    margin-top: 30px;
+}
+.similer-ad {
+    background: #fff;
+    padding: 30px;
+}
+.similer-ad .ads-content .title a {
+    height: auto;
+}
+.common-snav .owl-nav {
+    position: absolute;
+    right: 10px;
+    top: -60px;
+}
+.common-snav .owl-nav .owl-prev,
+.common-snav .owl-nav .owl-next {
+    background: #d66b0d !important;
+    width: 40px;
+    height: 35px;
+    color: #fff !important;
+    border-radius: 5px;
+    margin: 0 2px;
+    transition: 0.35s all;
+}
+.common-snav .owl-nav i {
+    font-size: 22px;
+}
+.common-snav .owl-nav .owl-prev:hover,
+.common-snav .owl-nav .owl-next:hover {
+    background: #cb3f52 !important;
+}
+.usefull-info h5 {
+    background: #d66b0d;
+    color: #fff;
+    padding: 10px 18px;
+}
+.usefull-info p {
+    padding: 8px 0;
+    font-weight: 600;
+    color: #666;
+}
+.customer-phone {
+    border: 1px solid #ddd;
+    margin-top: 20px;
+}
+.customer-phone li {
+    display: block;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 18px;
+}
+.customer-phone li:last-child {
+    border-bottom: 0;
+}
+.customer-phone li i {
+    color: #d66b0d;
+    font-size: 20px;
+    margin-right: 10px;
+}
+.customer-phone li a {
+    font-weight: 600;
+    color: #555;
+}
+.customer-phone li a span {
+    font-weight: 400;
+    font-size: 12px;
+    display: block;
+    margin-left: 26px;
+    margin-top: 5px;
+}
+/*
+==================================
+   CUSTOMER PANEL PAGE CSS START
+===================================*/
+
+.cbmain-content .nice-select {
+    width: 100%;
+    border: 1px solid #ddd;
+    line-height: 20px;
+    height: 38px;
+}
+.cbmain-content form .list,
+.cbmain-content form .list .option {
+    display: block !important;
+    width: 100% !important;
+}
+
+.customer-body .alert-danger {
+    margin: 15px 10px;
+    margin-bottom: 0;
+}
+.ads-count {
+    padding: 15px 15px;
+}
+.box-inner {
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    border-radius: 5px;
+}
+.box-bg-1 {
+    background: #0500ae;
+}
+.box-bg-3 {
+    background: #d92d2d;
+}
+.box-bg-2 {
+    background: #26aa22;
+}
+.box-bg-4 {
+    background: #6c15a8;
+}
+.box-inner p {
+    color: #fff;
+    font-size: 16px;
+}
+.box-inner i {
+    font-size: 25px;
+}
+.ifverifybutton,
+.ifverifybutton:hover {
+    background: #295498;
+    padding: 5px 13px;
+    color: #fff;
+    margin-left: 8px;
+}
+.customer-sidebar {
+    background: #fff;
+    border: 1px solid #ddd;
+}
+.customer-bg {
+    background: #f6f7fb;
+}
+.customer-info .title {
+    font-size: 18px;
+    text-transform: capitalize;
+    padding: 18px 12px;
+    font-weight: 600;
+    color: #555;
+    border-bottom: 1px solid #ddd;
+}
+.customer-info .image {
+    width: 90px;
+    margin: 0 auto;
+    padding-top: 20px;
+    height: 90px;
+}
+.customer-info .name {
+    padding: 0 20px;
+    text-align: center;
+    margin-top: 8px;
+    padding-bottom: 20px;
+}
+.customer-info .name p {
+    font-weight: 600;
+    color: #555;
+}
+.customer-menu ul li {
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    display: block;
+}
+.customer-menu ul li a {
+    display: block;
+    padding: 10px 20px;
+    color: #555;
+}
+.customer-menu ul li.active a {
+    background: #f9faff;
+    color: #d66b0d;
+    border-right: 2px solid #d66b0d;
+}
+
+.customer-menu ul li.active a i {
+    color: #d66b0d;
+}
+
+.customer-menu ul li a i {
+    color: #555;
+    font-size: 18px;
+    margin-right: 4px;
+}
+.customer-body {
+    background: #fff;
+    border: 1px solid #ddd;
+}
+.customer-body .title {
+    padding: 12px 16px;
+    border-bottom: 1px solid #ddd;
+}
+.customer-body .title p {
+    font-size: 18px;
+    font-weight: 600;
+    color: #555;
+}
+.customer-menu ul li a:hover,
+.customer-menu ul li a:hover i {
+    color: #d66b0d;
+}
+.cbmain-content {
+    padding: 30px;
+}
+.customer-edit-profile input,
+.customer-edit-profile input:focus {
+    border-color: #ddd;
+    height: 40px;
+    border-radius: 5px;
+    outline: 0;
+}
+.customer-edit-profile textarea,
+.customer-edit-profile textarea:focus {
+    border-color: #ddd;
+    border-radius: 5px;
+    outline: 0;
+}
+.customer-edit-profile label {
+    font-weight: 600;
+    color: #555;
+}
+.customer-edit-profile .select2-container {
+    width: 100% !important;
+    height: 38px !important;
+    line-height: 40px !important;
+}
+.customer-edit-profile .select2-selection--single {
+    border: 1px solid #ddd;
+    height: 38px !important;
+}
+.custom-file-label {
+    margin-top: 31px;
+}
+.cbutton,
+.cbutton:focus {
+    background: #d66b0d;
+    color: #fff;
+    padding: 13px 30px;
+    text-transform: capitalize;
+    border-radius: 5px;
+    transition: 0.35s all;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+}
+.cbutton:hover {
+    background: #cb3f52;
+}
+.smallImage {
+    width: 50px;
+    margin-top: 12px;
+}
+.needs-validation.customer-edit-profile label span {
+    color: red;
+}
+.customer-info .image img {
+    border-radius: 50px;
+}
+.ads-table .ads-new a {
+    background: #d66b0d;
+    color: #fff;
+    padding: 6px 9px;
+    margin-bottom: 26px;
+    margin-top: -10px;
+    display: inline-block;
+    font-weight: 600;
+}
+
+.cbmain-content input,
+.cbmain-content select,
+.cbmain-content textarea {
+    margin-bottom: 30px;
+    color: #222;
+}
+.cbmain-content form .btn-success:focus {
+    background: #218838;
+}
+.edit-btn a {
+    background: #d66b0d;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+.delete-btn a {
+    background: #d04551;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+.cbmain-content textarea,
+.cbmain-content textarea:focus {
+    border: 1px solid #ddd;
+}
+.smallimage {
+    width: 70px;
+    border-radius: 50%;
+    height: 70px;
+}
+.action_btn {
+    width: 150px;
+}
+.editimage {
+    width: 150px;
+}
+.editimage {
+    width: 30%;
+    height: 50px;
+    margin-right: 10px;
+    margin-top: 20px;
+}
+.cbmain-content form input,
+.cbmain-content form input:focus,
+.cbmain-content form select:focus {
+    border: 1px solid #ddd;
+}
+.cbmain-content form select {
+    border: 1px solid #ddd;
+}
+.common-content {
+    padding: 30px;
+}
+
+/*=====contact page =======*/
+.contact-area {
+    background: #fff;
+    padding: 30px;
+}
+.contact-form input,
+.contact-form textarea {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.contact-form button {
+    background: #af2d2d;
+    color: #fff;
+    padding: 12px 22px;
+    border-radius: 5px;
+}
+
+.premium {
+    position: absolute;
+    right: 17px;
+    top: 0;
+    background: #af2d2d;
+    color: #fff;
+    padding: 2px 5px;
+}
+.reportsubbtn:focus {
+    background: #007bff;
+}
+.report-btn button {
+    text-align: center;
+    display: inline-block;
+    background: #008a87;
+    float: right;
+    padding: 5px 10px;
+    color: #fff;
+    border-radius: 5px;
+    margin-right: 13px;
+}
+
+.log-btn {
+    text-align: center;
+    padding: 20px;
+}
+.log-btn a {
+    background: #004443;
+    border: none;
+}
+.log-btn a:focus {
+    background: #004443;
+    color: #fff;
+}
+.post-location {
+    width: 65%;
+}
+
+/*============ Design By Milon =============*/
+.common_breadcrumb {
+    margin-top: 15px;
+}
+
+.list-ad-info {
+    position: relative;
+    height: 100%;
+    margin-right: 20px;
+}
+.common_area {
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid #f56565;
+    width: 100%;
+    padding-top: 6px;
+    display: flex;
+}
+
+.icon_color {
+    color: #f56565;
+    margin-right: 5px;
+}
+.datetime_area {
+    display: flex;
+    margin-left: 10px;
+}
+.datetime_area p {
+    margin-left: 4px;
+}
+.cat_price {
+    font-size: 25px;
+    color: red !important;
+}
+.cat_price {
+    font-size: 25px;
+    color: #f56565 !important;
+    font-weight: 600 !important;
+    margin-top: 22px !important;
+    display: inline-block;
+}
