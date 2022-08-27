@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Editor;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\ThanaChildcity;
 use App\ThanaSubcity;
+use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Http\Request;
 
-class ThanaChildcityController extends Controller
-{
+class ThanaChildcityController extends Controller {
     public function index() {
         $cities = ThanaChildcity::all();
 
@@ -58,9 +58,9 @@ class ThanaChildcityController extends Controller
      */
     public function edit($id) {
         $thanasubcity = ThanaSubcity::all();
-        $city = ThanaChildcity::find($id);
+        $city         = ThanaChildcity::find($id);
 
-        return view('backEnd.thana_child_city.edit', compact('thanasubcity','city'));
+        return view('backEnd.thana_child_city.edit', compact('thanasubcity', 'city'));
     }
 
     /**
@@ -76,7 +76,7 @@ class ThanaChildcityController extends Controller
 
         Toastr::success('Thana child city updated!!');
 
-        return back();
+        return redirect()->route('editor.thanachildcity.index');
     }
 
     /**
@@ -90,6 +90,6 @@ class ThanaChildcityController extends Controller
         $city->delete();
         Toastr::success('Thana child city deleted!!');
 
-        return back();
+        return redirect()->route('editor.thanachildcity.index');
     }
 }

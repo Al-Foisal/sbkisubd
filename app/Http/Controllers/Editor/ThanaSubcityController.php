@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Editor;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Thana;
 use App\ThanaSubcity;
+use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Http\Request;
 
-class ThanaSubcityController extends Controller
-{
+class ThanaSubcityController extends Controller {
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +17,7 @@ class ThanaSubcityController extends Controller
     public function index() {
         $cities = ThanaSubcity::all();
 
-        return view('backEnd.thana_city.index', compact('cities'));
+        return view('backEnd.thana_sub_city.index', compact('cities'));
     }
 
     /**
@@ -28,7 +28,7 @@ class ThanaSubcityController extends Controller
     public function create() {
         $thana = Thana::all();
 
-        return view('backEnd.thana_city.create', compact('thana'));
+        return view('backEnd.thana_sub_city.create', compact('thana'));
     }
 
     /**
@@ -63,9 +63,9 @@ class ThanaSubcityController extends Controller
      */
     public function edit($id) {
         $thana = Thana::all();
-        $city = ThanaSubcity::find($id);
+        $city  = ThanaSubcity::find($id);
 
-        return view('backEnd.thana_city.edit', compact('thana','city'));
+        return view('backEnd.thana_sub_city.edit', compact('thana', 'city'));
     }
 
     /**
@@ -81,7 +81,7 @@ class ThanaSubcityController extends Controller
 
         Toastr::success('Thana subcity updated!!');
 
-        return back();
+        return redirect()->route('editor.thanasubcity.index');
     }
 
     /**
@@ -95,6 +95,6 @@ class ThanaSubcityController extends Controller
         $city->delete();
         Toastr::success('Thana subcity deleted!!');
 
-        return back();
+        return redirect()->route('editor.thanasubcity.index');
     }
 }

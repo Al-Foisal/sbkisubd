@@ -4,15 +4,15 @@ namespace App\Http\Controllers\Editor;
 
 use App\District;
 use App\DistrictSubcity;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Http\Request;
 
-class DistrictSubcityController extends Controller
-{
+class DistrictSubcityController extends Controller {
     public function index() {
         $cities = DistrictSubcity::all();
 
-        return view('backEnd.dist_city.index', compact('cities'));
+        return view('backEnd.dist_sub_city.index', compact('cities'));
     }
 
     /**
@@ -23,7 +23,7 @@ class DistrictSubcityController extends Controller
     public function create() {
         $district = District::all();
 
-        return view('backEnd.dist_city.create', compact('district'));
+        return view('backEnd.dist_sub_city.create', compact('district'));
     }
 
     /**
@@ -58,9 +58,9 @@ class DistrictSubcityController extends Controller
      */
     public function edit($id) {
         $district = District::all();
-        $city = DistrictSubcity::find($id);
+        $city     = DistrictSubcity::find($id);
 
-        return view('backEnd.dist_city.edit', compact('district','city'));
+        return view('backEnd.dist_sub_city.edit', compact('district', 'city'));
     }
 
     /**
@@ -76,7 +76,7 @@ class DistrictSubcityController extends Controller
 
         Toastr::success('district Subcity updated!!');
 
-        return back();
+        return redirect()->route('editor.districtsubcity.index');
     }
 
     /**
@@ -90,6 +90,6 @@ class DistrictSubcityController extends Controller
         $city->delete();
         Toastr::success('district Subcity deleted!!');
 
-        return back();
+        return redirect()->route('editor.districtsubcity.index');
     }
 }

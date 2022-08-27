@@ -9,6 +9,6 @@ class DistrictChildcity extends Model
     protected $guarded = [];
 
     public function districtsubcity() {
-        return $this->belongsTo(DistrictSubcity::class);
+        return $this->belongsTo(DistrictSubcity::class,'district_subcity_id','id');
     }
 }

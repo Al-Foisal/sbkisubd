@@ -11,6 +11,6 @@ class ThanaSubcity extends Model {
     }
 
     public function thanacity() {
-        return $this->belongsTo(Thana::class);
+        return $this->belongsTo(Thana::class, 'thana_id', 'id');
     }
 }

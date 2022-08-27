@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Editor;
 use App\Division;
 use App\DivisionSubcity;
 use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class DivisionSubcityController extends Controller {
@@ -16,7 +17,7 @@ class DivisionSubcityController extends Controller {
     public function index() {
         $cities = DivisionSubcity::all();
 
-        return view('backEnd.div_city.index', compact('cities'));
+        return view('backEnd.div_sub_city.index', compact('cities'));
     }
 
     /**
@@ -27,7 +28,7 @@ class DivisionSubcityController extends Controller {
     public function create() {
         $division = Division::all();
 
-        return view('backEnd.div_city.create', compact('division'));
+        return view('backEnd.div_sub_city.create', compact('division'));
     }
 
     /**
@@ -62,9 +63,9 @@ class DivisionSubcityController extends Controller {
      */
     public function edit($id) {
         $division = Division::all();
-        $city = DivisionSubcity::find($id);
+        $city     = DivisionSubcity::find($id);
 
-        return view('backEnd.div_city.edit', compact('division','city'));
+        return view('backEnd.div_sub_city.edit', compact('division', 'city'));
     }
 
     /**
@@ -80,7 +81,7 @@ class DivisionSubcityController extends Controller {
 
         Toastr::success('Division Subcity updated!!');
 
-        return back();
+        return redirect()->route('editor.divisionsubcity.index');
     }
 
     /**
@@ -94,6 +95,6 @@ class DivisionSubcityController extends Controller {
         $city->delete();
         Toastr::success('Division Subcity deleted!!');
 
-        return back();
+        return redirect()->route('editor.divisionsubcity.index');
     }
 }

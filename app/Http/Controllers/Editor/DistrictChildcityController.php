@@ -7,6 +7,7 @@ use App\DistrictSubcity;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use Brian2694\Toastr\Facades\Toastr;
 class DistrictChildcityController extends Controller
 {
     public function index() {
@@ -76,7 +77,7 @@ class DistrictChildcityController extends Controller
 
         Toastr::success('District child city updated!!');
 
-        return back();
+        return redirect()->route('editor.districtchildcity.index');
     }
 
     /**
@@ -90,6 +91,6 @@ class DistrictChildcityController extends Controller
         $city->delete();
         Toastr::success('District child city deleted!!');
 
-        return back();
+        return redirect()->route('editor.districtchildcity.index');
     }
 }

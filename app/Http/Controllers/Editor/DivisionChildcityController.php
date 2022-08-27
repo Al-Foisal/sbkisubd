@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Editor;
 
 use App\DivisionChildcity;
 use App\DivisionSubcity;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Http\Request;
 
-class DivisionChildcityController extends Controller
-{
+class DivisionChildcityController extends Controller {
     public function index() {
         $cities = DivisionChildcity::all();
 
@@ -58,9 +58,9 @@ class DivisionChildcityController extends Controller
      */
     public function edit($id) {
         $divisionsubcity = DivisionSubcity::all();
-        $city = DivisionChildcity::find($id);
+        $city            = DivisionChildcity::find($id);
 
-        return view('backEnd.div_child_city.edit', compact('divisionsubcity','city'));
+        return view('backEnd.div_child_city.edit', compact('divisionsubcity', 'city'));
     }
 
     /**
@@ -76,7 +76,7 @@ class DivisionChildcityController extends Controller
 
         Toastr::success('Division child city updated!!');
 
-        return back();
+        return redirect()->route('editor.divisionchildcity.index');
     }
 
     /**
@@ -90,6 +90,6 @@ class DivisionChildcityController extends Controller
         $city->delete();
         Toastr::success('Division child city deleted!!');
 
-        return back();
+        return redirect()->route('editor.divisionchildcity.index');
     }
 }

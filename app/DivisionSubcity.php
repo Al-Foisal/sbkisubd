@@ -11,6 +11,6 @@ class DivisionSubcity extends Model {
     }
 
     public function divisioncity() {
-        return $this->belongsTo(Division::class);
+        return $this->belongsTo(Division::class, 'division_id', 'id');
     }
 }
