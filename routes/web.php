@@ -10,6 +10,7 @@ Route::get('/', function () {
 Route::group(['prefix' => '{locale}', 'where' => ['locale' => '[a-zA-Z]{2}']], function () {
     Route::group(['namespace' => 'FrontEnd'], function () {
         Route::get('/', 'FrontEndController@index'); //
+        Route::get('/all-area', 'FrontEndController@allArea'); //
         Route::get('/category/{slug}/', 'FrontEndController@category');
         Route::get('/category/{catslug}/{subslug}', 'FrontEndController@subcategory');
         Route::get('/search', 'FrontEndController@search');

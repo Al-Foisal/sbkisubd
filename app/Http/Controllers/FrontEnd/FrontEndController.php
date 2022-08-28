@@ -23,6 +23,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class FrontEndController extends Controller {
+    public function allArea()
+    {
+        $data = [];
+        $data['divisions'] = Division::all();
+
+        return view('frontEnd.layouts.front.all-area',$data);
+    }
     public function postreview(Request $request) {
         Review::create($request->all());
         Session::flash('message', 'Your review added successfully wait for confirmation!!');

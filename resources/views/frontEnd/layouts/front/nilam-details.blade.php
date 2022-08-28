@@ -56,7 +56,7 @@
                             </span>&nbsp;
                         </span>
                         <div class="gallery-container">
-                            <div class="p-price-tag">{{ number_format($ads->price, 2) }} ৳</div>
+                            <div class="p-price-tag">{{ number_format($ads->bid_price, 2) }} ৳</div>
                             @php
                                 $img = asset($ads->images->first()->image);
                             @endphp
@@ -167,7 +167,7 @@
                                                             value="{{ session('customerId') }}">
                                                         <div class="d-flex justify-content-start">
                                                             <div class="form-group mr-2">
-                                                                <input type="number"
+                                                                <input type="number" placeholder="Custom bid"
                                                                 min="{{ $ads->bid_price + $ads->bid_range }}"
                                                                 name="custom_bid_price" class="form-control">
                                                             </div>
@@ -194,7 +194,7 @@
                                     <button class="nav-link active" id="item-details-tab" data-bs-toggle="tab"
                                         data-bs-target="#item-details" role="tab" aria-controls="item-details"
                                         aria-selected="true">
-                                        <h4 style="color: black">Listing Details</h4>
+                                        <h4 style="color: black">Ad Details</h4>
                                     </button>
                                 </li>
                             </ul>
@@ -227,7 +227,7 @@
                                                             Price:
                                                         </span>
                                                         <span>
-                                                            {{ number_format($ads->price, 2) }} ৳
+                                                            {{ number_format($ads->bid_price, 2) }} ৳
                                                         </span>
                                                     </h4>
                                                 </div>
@@ -294,7 +294,9 @@
                                         <div>
                                             <h3>Call Seller</h3>
                                             <button class="btn btn-light" style="background-color:#e7edee;">
-                                                <b>{{ $customer->phone }}</b>
+                                                <a href="tel:{{ $customer->phone }}">
+                                                    <b>{{ $customer->phone }}</b>
+                                                </a>
                                             </button>
                                         </div>
                                     </div>

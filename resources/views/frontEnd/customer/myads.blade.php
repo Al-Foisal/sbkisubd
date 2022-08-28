@@ -27,6 +27,7 @@
                                             <th scope="col">Divistion</th>
                                             <th scope="col">Zila</th>
                                             <th scope="col">Reviews</th>
+                                            <th scope="col">Price Negotiation</th>
                                             <th scope="col">Package Name</th>
                                             <th scope="col">Image</th>
                                             <th scope="col">Action</th>
@@ -42,6 +43,7 @@
                                                 <td>{{ $value->division_name }}</td>
                                                 <td>{{ $value->en_dist_name }}</td>
                                                 <td>{{ \App\Review::where('customer_id', session('customerId'))->where('ad_id', $value->id)->where('status',1)->count() }}</td>
+                                                <td>{{ $value->price_ng == 1 ? 'Y' : 'N' }}</td>
                                                 <td>
                                                     @foreach ($packagesname as $key=>$pp)
                                                         @if ($value->package_id == $pp->id)

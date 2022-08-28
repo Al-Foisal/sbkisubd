@@ -717,7 +717,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/admin/news/create') }}" class="nav-link">
-                                <i class="far fa-dot-circle nav-icon"></i>
+                                <i class="fas fa-tv"></i>
                                 <p>News</p>
                             </a>
                         </li>
@@ -764,7 +764,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/editor/ad/review') }}" class="nav-link">
-                                <i class="far fa-dot-circle nav-icon"></i>
+                                <i class="fas fa-pen"></i>
                                 <p>Reviews</p>
                             </a>
                         </li>

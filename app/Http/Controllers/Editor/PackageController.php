@@ -33,6 +33,11 @@ class PackageController extends Controller {
         $store_data->save();
 
         foreach ($request->details as $key => $detail) {
+
+            if ($detail == null || $request->bn_title[$key] == null) {
+                continue;
+            }
+
             PackageDetail::create([
                 'en_title'   => $detail,
                 'bn_title'   => $request->bn_title[$key],
@@ -75,10 +80,15 @@ class PackageController extends Controller {
         $update_data->type      = $request->type;
         $update_data->status    = $request->status;
         $update_data->save();
+        $pd = PackageDetail::where('package_id', $update_data->id)->get();
+
+        foreach ($pd as $value) {
+            $value->delete();
+        }
 
         foreach ($request->details as $key => $detail) {
 
-            if (is_null($detail)) {
+            if (is_null($detail) || is_null($request->bn_title[$key])) {
                 continue;
             }
 

@@ -353,7 +353,7 @@
 
                                     <div class="row">
                                         @foreach ($advertisments as $value)
-                                            <div class="col-md-3 mb-5">
+                                            <div class="col-md-3 mb-5 vv">
                                                 <div class="item">
                                                     <a href="{{ url(app()->getLocale() . '/details/' . $value->id) }}">
                                                         <span class="item-carousel-thumb">

@@ -6,174 +6,6 @@
     <link rel="stylesheet" href="responsive.css">
     <link rel="stylesheet" href="style1.css">
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document" style="width: 100%;">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Search by Location</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body" style="height: 80vh">
-                    <nav id="navbar" class="navbar navbar-expand-lg navbar-light sh_nav">
-                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarCollapse">
-                            <ul>
-                                <li class="">
-                                    <a href="{{ url(app()->getLocale() . '/all-ads') }}">
-                                        <span>{{ __('All of Bangladesh') }}</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd"
-                                                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-                                        </svg>
-                                    </a>
-                                    <ul
-                                        style="display: block;
-                                    /* position: absolute; */
-                                    left: 14px;
-                                    top: calc(100% + 30px);
-                                    margin: 0;
-                                    padding: 10px 0;
-                                    z-index: 99;
-                                    opacity: 1;
-                                    visibility: visible;
-                                    background: #fff;
-                                    box-shadow: 0px 0px 30px rgb(127 137 161 / 25%);
-                                    transition: 0.8s;
-                                    border-radius: 6px;
-                                    border-top: 2px solid #f77426;">
-                                        <li class="dropdown bg-success">{{ __('Division City') }}</li>
-                                        @foreach ($divisions as $division_city)
-                                            @if ($division_city->city)
-                                                <li><a
-                                                        href="{{ url(app()->getLocale() . '/all-ads?district=' . $division_city->city->id) }}">{{ $division_city->city->{app()->getLocale() . '_dist_name'} }}</a>
-                                                </li>
-                                            @endif
-                                        @endforeach
-                                        <li class="bg-success">{{ __('Division') }}</li>
-                                        @foreach ($divisions as $division)
-                                            <li class="dropdown" style="padding-right:15px;">
-                                                <a
-                                                    href="{{ url(app()->getLocale() . '/all-ads?division=' . $division->id) }}">
-                                                    <span>{{ $division->{app()->getLocale() . '_name'} }}</span>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                        fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-                                                        <path fill-rule="evenodd"
-                                                            d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-                                                    </svg>
-                                                </a>
-                                                <ul style="top: 0">
-                                                    <li class="bg-success">{{ __('District City') }}</li>
-                                                    @foreach ($division->districts as $district_city)
-                                                        @if ($district_city->city)
-                                                            <li><a
-                                                                    href="{{ url(app()->getLocale() . '/all-ads?thana=' . $district_city->city->id) }}">{{ $district_city->city->{app()->getLocale() . '_thana_name'} ?? '' }}</a>
-                                                            </li>
-                                                        @endif
-                                                    @endforeach
-                                                    <li class="bg-success">{{ __('District') }}</li>
-                                                    @foreach ($division->districts as $district)
-                                                        <li class="dropdown">
-                                                            <a
-                                                                href="{{ url(app()->getLocale() . '/all-ads?district=' . $division->id) }}">
-                                                                <span>{{ $district->{app()->getLocale() . '_dist_name'} }}</span>
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                                                    height="16" fill="currentColor"
-                                                                    class="bi bi-chevron-down" viewBox="0 0 16 16">
-                                                                    <path fill-rule="evenodd"
-                                                                        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-                                                                </svg>
-                                                            </a>
-                                                            <ul>
-                                                                @php
-                                                                    $thanas = App\Thana::where('district_id', $district->id)
-                                                                        ->where('status', 1)
-                                                                        ->with('city')
-                                                                        ->get();
-                                                                @endphp
-                                                                <li class="bg-success">{{ __('Upazila City') }}</li>
-                                                                @foreach ($thanas as $thana_city)
-                                                                    @if ($thana_city->city)
-                                                                        <li><a
-                                                                                href="{{ url(app()->getLocale() . '/all-ads?union=' . $thana_city->city->id) }}">{{ $thana_city->city->{app()->getLocale() . '_union_name'} ?? '' }}</a>
-                                                                        </li>
-                                                                    @endif
-                                                                @endforeach
-                                                                <li class="bg-success">{{ __('Upazila') }}</li>
-                                                                @foreach ($thanas as $thana)
-                                                                    <li class="dropdown">
-                                                                        <a
-                                                                            href="{{ url(app()->getLocale() . '/all-ads?thana=' . $thana->id) }}">
-                                                                            <span>{{ $thana->{app()->getLocale() . '_thana_name'} }}</span>
-                                                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                width="16" height="16"
-                                                                                fill="currentColor"
-                                                                                class="bi bi-chevron-down"
-                                                                                viewBox="0 0 16 16">
-                                                                                <path fill-rule="evenodd"
-                                                                                    d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-                                                                            </svg>
-                                                                        </a>
-                                                                        <ul>
-                                                                            @php
-                                                                                $union = App\Union::where('thana_id', $thana->id)
-                                                                                    ->where('status', 1)
-                                                                                    ->get();
-                                                                            @endphp
-                                                                            <li class="bg-success">{{ __('Union') }}</li>
-                                                                            @foreach ($union as $value)
-                                                                                <li class="dropdown">
-                                                                                    <a
-                                                                                        href="{{ url(app()->getLocale() . '/all-ads?union=' . $value->id) }}">
-                                                                                        <span>{{ $value->{app()->getLocale() . '_union_name'} }}</span>
-                                                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                            width="16" height="16"
-                                                                                            fill="currentColor"
-                                                                                            class="bi bi-chevron-down"
-                                                                                            viewBox="0 0 16 16">
-                                                                                            <path fill-rule="evenodd"
-                                                                                                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-                                                                                        </svg>
-                                                                                    </a>
-                                                                                    <ul>
-                                                                                        @php
-                                                                                            $villages = App\Village::where('union_id', $value->id)
-                                                                                                ->where('status', 1)
-                                                                                                ->get();
-                                                                                        @endphp
-                                                                                        <li class="bg-success">
-                                                                                            {{ __('Village') }}</li>
-                                                                                        @foreach ($villages as $village)
-                                                                                            <li><a
-                                                                                                    href="{{ url(app()->getLocale() . '/all-ads?village=' . $village->id) }}">{{ $village->{app()->getLocale() . '_village_name'} }}</a>
-                                                                                            </li>
-                                                                                        @endforeach
-                                                                                    </ul>
-                                                                                </li>
-                                                                            @endforeach
-                                                                        </ul>
-                                                                    </li>
-                                                                @endforeach
-                                                            </ul>
-                                                        </li>
-                                                    @endforeach
-                                                </ul>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- second navbar-->
     @php
     use App\Adsimage;
@@ -187,117 +19,26 @@
 
 
 
-                <h3 style="border: none"><button type="button" data-toggle="modal" data-target="#exampleModal"
-                        style="background: #34A853;
+                <h3 style="border: none">
+                    
+                    <a href="{{ url(app()->getLocale().'/all-area') }}" type="button"
+                        style="background: #0000002b;
 						color: #fff;
 						border: none;
-						padding: 15px 50px;
-						border-radius: 5px;
-					">{{ __('All of Bangladesh') }}</button>
+						padding: 5px 10px;
+						border-radius: 100px;
+                        font-size:15px;
+					"><i class="fas fa-map-marker-alt"></i> {{ __('All of Bangladesh') }}</a>
                 </h3>
-
-                <style>
-                    .btnn {
-                        padding: 5px 9px;
-                        font-size: 16px;
-                        border: none;
-                        outline: none;
-                    }
-
-                    .ddropdown {
-                        position: absolute;
-                        display: inline-block;
-                    }
-
-                    .ddropdown-content {
-                        display: none;
-                        position: absolute;
-                        background-color: #f1f1f1;
-                        min-width: 160px;
-                        z-index: 1;
-                    }
-
-                    .ddropdown-content a {
-                        color: black;
-                        padding: 12px 16px;
-                        text-decoration: none;
-                        display: block;
-                    }
-
-                    .ddropdown-content a:hover {
-                        background-color: #ddd
-                    }
-
-                    .ddropdown:hover .ddropdown-content {
-                        display: block;
-                    }
-
-                    .btnn:hover,
-                    .ddropdown:hover .btnn {
-                        background-color: #0b7dda;
-                    }
-                </style>
-
-                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
-                    aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="myLargeModalLabel">Search By Location</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body text-left">
-
-                                <h5>Select Division or City</h5>
-                                <ul class="list-group" style="display: table">
-                                    <li class="list-group-item active">Select Cities</li>
-                                    @foreach ($divisions as $division)
-                                        <li class="list-group-item">
-                                            {{ $division->city->{app()->getLocale() . '_dist_name'} }}</li>
-                                    @endforeach
-                                </ul>
-                                <h5>Select Division</h5>
-                                @foreach ($divisions as $division)
-                                    <button class="btnn">{{ $division->{app()->getLocale() . '_name'} }}</button>
-                                    <div class="ddropdown">
-                                        <button class="btnn" style="border-left:1px solid #0d8bf2">
-                                            <i class="fa fa-caret-down"></i>
-                                        </button>
-                                        <div class="ddropdown-content">
-                                            {{-- <a href="#">{{ $district->{app()->getLocale() . '_dist_name'} }}</a> --}}
-                                            <ul class="list-group" style="display: table">
-                                                <li class="list-group-item active">Select Cities</li>
-                                                @foreach ($division->districts as $district)
-                                                    <li class="list-group-item">
-                                                        {{ $district->city }}</li>
-                                                @endforeach
-                                            </ul>
-                                            <button
-                                                class="btnn">{{ $district->{app()->getLocale() . '_dist_name'} }}</button>
-                                            <div class="ddropdown">
-                                                <button class="btnn" style="border-left:1px solid #0d8bf2">
-                                                    <i class="fa fa-caret-down"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <form id="search" name="search" action="{{ url(app()->getLocale() . '/search') }}" method="GET">
                     <div class="row search-row animated fadeInUp">
 
                         <div
-                            class="col-md-10 col-sm-12 search-col relative locationicon mb-1 mb-xxl-0 mb-xl-0 mb-lg-0 mb-md-0">
+                            class="col-md-10 col-sm-12 search-col relative">
                             <div class="search-col-inner">
-                                <i class="fas fa-map-marker-alt icon-append"></i>
-                                <div class="search-col-input">
-                                    <input class="form-control locinput input-rel searchtag-input has-icon" id="locSearch"
+                                
+                                <div class="">
+                                    <input class="form-control " id="locSearch"
                                         name="search" placeholder="What are you looking for?" type="text"
                                         value="" autocomplete="off">
                                 </div>
@@ -371,9 +112,14 @@
                                                         <span class="fa fa-star checked"></span>
                                                         <span class="fa fa-star checked"></span> --}}
 
-                                                        <span class="price">
-                                                            {{ number_format($value->price, 2) }} ৳
-                                                        </span>
+                                                        <div class="d-flex justify-content-between">
+                                                            <span>
+                                                                Bid: {{ $value->nilamhistory->count() }}
+                                                            </span>
+                                                            <span>
+                                                                {{ number_format($value->bid_price, 2) }} ৳
+                                                            </span>
+                                                        </div>
                                                     </a>
                                                 </div>
                                             </div>

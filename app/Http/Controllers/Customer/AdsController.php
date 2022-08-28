@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Customer;
 
+use App\AdditionalDetail;
 use App\Adsimage;
 use App\Advertisment;
 use App\Category;
@@ -67,7 +68,6 @@ class AdsController extends Controller {
     }
 
     public function postads() {
-
         if ($this->validCustomer()) {
             $sp       = SubscriptionPackage::where('customer_id', Session::get('customerId'))->where('available', '!=', 0)->where('validity', '>=', today())->pluck('package_id')->toArray();
             $packages = Package::whereIn('id', $sp)->get();
@@ -125,6 +125,7 @@ class AdsController extends Controller {
         $store_data->dist_id          = $request->dist_id;
         $store_data->thana_id         = $request->thana_id;
         $store_data->union_id         = $request->union_id;
+        $store_data->price_ng         = $request->price_ng;
         $store_data->village_id       = $request->village_id;
         $store_data->phone            = $request->phone;
         $store_data->email            = $request->email;
@@ -141,6 +142,19 @@ class AdsController extends Controller {
 
         $ads_id = $store_data->id;
         $images = $request->file('image');
+
+        foreach ($request->a_title as $key => $value) {
+
+            if ($value == null || $request->a_detail[$key] == null) {
+                continue;
+            }
+
+            AdditionalDetail::create([
+                'advertisment_id' => $store_data->id,
+                'title'           => $value,
+                'detail'          => $request->a_detail[$key],
+            ]);
+        }
 
         foreach ($images as $image) {
             // image01 upload
@@ -215,8 +229,9 @@ class AdsController extends Controller {
             $divisions   = Division::where('status', '=', '1')->get();
             $division_id = Advertisment::find($id)->division_id;
             $district    = District::where('division_id', '=', $division_id)->get();
+            $additional = AdditionalDetail::where('advertisment_id',$id)->get();
 
-            return view('frontEnd.customer.editads', compact('edit_data', 'category', 'subcategory', 'divisions', 'district', 'packages'));
+            return view('frontEnd.customer.editads', compact('edit_data', 'category', 'subcategory', 'divisions', 'district', 'packages','additional'));
         } else {
             return redirect()->back();
         }
@@ -253,6 +268,7 @@ class AdsController extends Controller {
         $update_data->dist_id          = $request->dist_id;
         $update_data->thana_id         = $request->thana_id;
         $update_data->union_id         = $request->union_id;
+        $update_data->price_ng         = $request->price_ng;
         $update_data->village_id       = $request->village_id;
         $update_data->phone            = $request->phone;
         $update_data->email            = $request->email;
@@ -266,6 +282,27 @@ class AdsController extends Controller {
         $update_data->customer_id      = $request->customer;
         $update_data->package_id       = $request->package_id;
         $update_data->save();
+
+        $additional = AdditionalDetail::where('advertisment_id',$update_data->id)->get();
+
+        foreach($additional as $a){
+            $a->delete();
+        }
+
+        foreach ($request->a_title as $key => $value) {
+
+
+
+            if ($value == null || $request->a_detail[$key] == null) {
+                continue;
+            }
+
+            AdditionalDetail::create([
+                'advertisment_id' => $update_data->id,
+                'title'           => $value,
+                'detail'          => $request->a_detail[$key],
+            ]);
+        }
 
         $ads_id        = $update_data->id;
         $update_images = Adsimage::where('id', $request->hidden_img)->get();

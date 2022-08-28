@@ -195,7 +195,7 @@
 
                                     <div class="row">
                                         @foreach ($ads as $value)
-                                            <div class="col-md-3 mb-5">
+                                            <div class="col-md-3 mb-5 vv">
                                                 <div class="item">
                                                     <a href="{{ url('/customer/1/nilam-details/' . $value->id) }}">
                                                         <span class="item-carousel-thumb">
@@ -210,7 +210,7 @@
                                                             class="item-name"style="color: #000;font-weight:bold">{{ $value->title }}</span>
                                                         <br>
                                                         <br>
-                                                        <a
+                                                        {{-- <a
                                                             href="{{ url(app()->getLocale() . '/customer-post/' . $value->customer->id) }}">
                                                             <span style="color: #07a4b4" class="mr-2"><i
                                                                     class="far fa-clock"></i>
@@ -246,7 +246,7 @@
                                                             <span style="color: #07a4b4"><i
                                                                     class="fa fa-location-arrow"></i>
                                                                 {{ $value->district->{app()->getLocale() . '_dist_name'} }}</span>
-                                                        </a>
+                                                        </a> --}}
 
                                                         {{-- <style>
                                                             .checked {
@@ -275,7 +275,7 @@
                                                         margin-top: 21px;
                                                         font-size: 16px;
                                                         color: #000">
-                                                            {{ number_format($value->price, 2) }} ৳
+                                                            {{ number_format($value->bid_price, 2) }} ৳
 
                                                         </div>
                                                         <br>

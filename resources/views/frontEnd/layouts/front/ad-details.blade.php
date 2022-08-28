@@ -182,7 +182,7 @@
                                                             Price:
                                                         </span>
                                                         <span>
-                                                            {{ number_format($ads->price, 2) }} ৳
+                                                            {{ number_format($ads->price, 2) }} ৳ @if($ads->price_ng == 1) ({{ __('Negotiable') }}) @endif
                                                         </span>
                                                     </h4>
                                                 </div>
@@ -293,7 +293,9 @@
                                         <div>
                                             <h3>Call Seller</h3>
                                             <button class="btn btn-light" style="background-color:#e7edee;">
-                                                <b>{{ $customer->phone }}</b>
+                                                <a href="tel:{{ $customer->phone }}">
+                                                    <b>{{ $customer->phone }}</b>
+                                                </a>
                                             </button>
                                         </div>
                                     </div>

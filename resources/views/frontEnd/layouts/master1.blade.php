@@ -24,33 +24,14 @@
         href="{{asset('/')}}logo.png">
         
     <link rel="shortcut icon" href="/storage/app/ico/thumb-32x32-ico-62d282d632e2b.png">
-    <title>kroyandbikroy.com - Buy Sell Anything</title>
-    <meta name="description" property="description" content="kroyandbikroy.com - Buy Sell Anything">
+    <title>what will your title???</title>
+    <meta name="description" property="description" content="">
     <meta name="keywords" property="keywords" content="">
 	<link rel="stylesheet" href="{{ asset('frontEnd/') }}/css/bootstrap.min.css">
     <link rel="canonical" href="http://kroyandbikroy.com/">
 	<link rel="stylesheet" href="{{ asset('/') }}index-style/owl.carousel.min.css">
 	<link rel="stylesheet" href="{{ asset('/') }}index-style/owl.theme.default.min.css">
     <!--<base target="_top">-->
-    <base href="." target="_top">
-    <meta property="fb:app_id" content="996756437567615">
-    <meta property="og:site_name" content="kroyandbikroy.com">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="http://kroyandbikroy.com">
-    <meta property="og:title" content="kroyandbikroy.com - Buy Sell Anything">
-    <meta property="og:description" content="kroyandbikroy.com - Buy Sell Anything">
-    <meta property="og:image" content="/storage/app/logo/header-62d4fbfe293e3.jpeg">
-    <meta property="og:image:width" content="600">
-    <meta property="og:image:height" content="600">
-
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="kroyandbikroy.com - Buy Sell Anything">
-    <meta name="twitter:description" content="kroyandbikroy.com - Buy Sell Anything">
-    <meta name="twitter:domain" content="update.kroyandbikroy.com">
-
-    <link rel="alternate" type="application/atom+xml" href="http://kroyandbikroy.com/feed" title="My feed">
-
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 
@@ -1728,6 +1709,12 @@
             left: auto
         }
     </style>
+    <style>
+        .vv:hover{
+            background: #140d0421;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 
 <body class="skin  pace-done">
@@ -1791,7 +1778,7 @@
 		
 							<li class="nav-item d-lg-block d-md-none d-sm-block d-block">
 								<a href="{{ url(app()->getLocale().'/all-ads') }}" class="nav-link">
-									<i class="fas fa-th-list"></i> {{__('All Ads')}}
+									<i style="margin-right:5px" class="fas fa-th-list"></i> {{__('All Ads')}}
 								</a>
 							</li>
 							<li class="nav-item dropdown lang-menu ">
@@ -1834,7 +1821,7 @@
 						<ul class="nav navbar-nav ms-auto navbar-right">
 							<li class="nav-item pricing">
 								<a href="{{ url(app()->getLocale().'/pricing') }}" class="nav-link">
-									<i class="fas fa-tags"></i> {{__('Packages')}}
+									<i style="margin-right:5px" class="fas fa-tags"></i> {{__('Packages')}}
 								</a>
 							</li>
 							<li class="nav-item pricing">
@@ -1857,7 +1844,7 @@
 							<li class="nav-item dropdown no-arrow open-on-hover d-md-block d-sm-none d-none">
 								<a href="#" class="dropdown-toggle nav-link"
 									data-bs-toggle="dropdown">
-									<i class="fas fa-user"></i>
+									<i style="margin-right:5px" class="fas fa-user"></i>
 									<span>{{__('Login/Signup')}}</span>
 									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
 										<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>

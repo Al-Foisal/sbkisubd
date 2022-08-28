@@ -5,6 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Advertisment extends Model {
+
+    public function additionaldetails() {
+        return $this->hasMany(AdditionalDetail::class);
+    }
+
     public function reviews() {
         return $this->hasMany(Review::class, 'ad_id', 'id');
     }
@@ -49,8 +54,7 @@ class Advertisment extends Model {
         return $this->belongsTo('App\Customer', 'customer_id');
     }
 
-    public function package()
-    {
+    public function package() {
         return $this->belongsTo(Package::class);
     }
 }

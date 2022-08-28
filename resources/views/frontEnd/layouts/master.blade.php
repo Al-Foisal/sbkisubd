@@ -198,21 +198,21 @@ Version: 206.0.0
     </style>
 
     <link href="{{ asset('/') }}index-style/custom.css" rel="stylesheet">
-<style>
-    li {
-    display: block !important;
-   
-}
-.solcial_icon{
-    display: inline-block !important;
-}
-</style>
+    <style>
+        li {
+        display: block !important;
+    
+    }
+    .solcial_icon{
+        display: inline-block !important;
+    }
+    </style>
 
 
-    <!--[if lt IE 9]>
- <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
- <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
- <![endif]-->
+        <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
 
     <script>
         paceOptions = {
@@ -1851,7 +1851,7 @@ Version: 206.0.0
 		
 							<li class="nav-item d-lg-block d-md-none d-sm-block d-block">
 								<a href="{{ url(app()->getLocale().'/all-ads') }}" class="nav-link">
-									<i class="fas fa-th-list"></i> {{__('All Ads')}}
+									<i style="margin-right:5px" class="fas fa-th-list"></i> {{__('All Ads')}}
 								</a>
 							</li>
 							<li class="nav-item dropdown lang-menu ">
@@ -1894,7 +1894,7 @@ Version: 206.0.0
 						<ul class="nav navbar-nav ms-auto navbar-right">
 							<li class="nav-item pricing">
 								<a href="{{ url(app()->getLocale().'/pricing') }}" class="nav-link">
-									<i class="fas fa-tags"></i> {{__('Packages')}}
+									<i style="margin-right:5px" class="fas fa-tags"></i> {{__('Packages')}}
 								</a>
 							</li>
 							<li class="nav-item pricing">
@@ -1917,7 +1917,7 @@ Version: 206.0.0
 							<li class="nav-item dropdown no-arrow open-on-hover d-md-block d-sm-none d-none">
 								<a href="#" class="dropdown-toggle nav-link"
 									data-bs-toggle="dropdown">
-									<i class="fas fa-user"></i>
+									<i style="margin-right:5px" class="fas fa-user"></i>
 									<span>{{__('Login/Signup')}}</span>
 									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
 										<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>

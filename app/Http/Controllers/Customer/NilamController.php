@@ -25,6 +25,7 @@ use Session;
 class NilamController extends Controller {
 
     public function showNilamAds(Request $request) {
+
         if ($request->filter == 1) {
             $ads = Nilam::where('version', 1)
                 ->orderBy('id', 'DESC')
@@ -130,7 +131,10 @@ class NilamController extends Controller {
     }
 
     public function showNilamAdsDetails($id) {
-        $ads      = Nilam::where('id', $id)->where('adsduration', '>=', today())->first();
+        $ads = Nilam::where('id', $id)->where('adsduration', '>=', today())->with(['nilamhistory' => function ($query) {
+            return $query->orderBy('id', 'DESC')->get();
+        },
+        ])->first();
         $customer = Customer::find($ads->customer_id);
 
         return view('frontEnd.layouts.front.nilam-details', compact('ads', 'customer'));
@@ -145,11 +149,11 @@ class NilamController extends Controller {
     }
 
     public function postads() {
-
+        
         if ($this->validCustomer()) {
             $sp       = SubscriptionPackage::where('customer_id', Session::get('customerId'))->where('available', '!=', 0)->where('validity', '>=', today())->pluck('package_id')->toArray();
             $packages = Package::whereIn('id', $sp)->get();
-
+            
             return view('frontEnd.customer.nilam.postads', compact('packages'));
         } else {
             Toastr::success('message', 'Login first!');
