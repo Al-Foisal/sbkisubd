@@ -5,6 +5,10 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Thana extends Model {
+    public function thanasubcity() {
+        return $this->hasMany(ThanaSubcity::class);
+    }
+
     public function district() {
         return $this->hasMany('App\District')->where('status', 1);
     }

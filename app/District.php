@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class District extends Model {
     protected $fillable = [];
+    public function districtsubcity() {
+        return $this->hasMany(DistrictSubcity::class);
+    }
+
     public function division() {
         return $this->hasMany('App\Division')->where('status', 1);
     }

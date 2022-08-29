@@ -23,13 +23,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class FrontEndController extends Controller {
-    public function allArea()
-    {
-        $data = [];
-        $data['divisions'] = Division::all();
+    public function allArea() {
+        $data              = [];
+        $data['divisions'] = Division::with('divisionsubcity', 'districts')->get();
 
-        return view('frontEnd.layouts.front.all-area',$data);
+        return view('frontEnd.layouts.front.all-area', $data);
     }
+
     public function postreview(Request $request) {
         Review::create($request->all());
         Session::flash('message', 'Your review added successfully wait for confirmation!!');
@@ -634,7 +634,7 @@ class FrontEndController extends Controller {
             ->with('image')
             ->paginate(25);
         $customer = Customer::find($id);
-        $open = OpeningHour::where('customer_id',$id)->get();
+        $open     = OpeningHour::where('customer_id', $id)->get();
 
         return view('frontEnd.layouts.front.customer-post', compact('open', 'advertisments', 'customer'));
     }
