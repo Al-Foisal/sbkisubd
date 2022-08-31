@@ -1,4 +1,5 @@
 @extends('frontEnd.layouts.master1')
+@section('title', 'All ads/categorized ads')
 @section('body')
     @php
     use App\Adsimage;
@@ -71,31 +72,86 @@
                         </li>
                     @endif
                 </ol>
-                <form id="search" name="search" action="{{ url(app()->getLocale() . '/search') }}" method="GET">
-                    <div class="row search-row animated fadeInUp mb-3" style="max-width: 100%;">
-
-                        <div
-                            class="col-md-10 col-sm-12 search-col relative locationicon mb-1 mb-xxl-0 mb-xl-0 mb-lg-0 mb-md-0">
-                            <div class="search-col-inner" style="border-width: 2px;">
-                                <i class="fas fa-map-marker-alt icon-append"></i>
-                                <div class="search-col-input">
-                                    <input class="form-control locinput input-rel searchtag-input has-icon" id="locSearch"
-                                        name="search" placeholder="What are you looking for?" type="text" value=""
-                                        style="border-radius:0px">
-                                </div>
-                            </div>
+                <div class="row" style="padding: 0 35px;border-bottom:1px solid #00000012;">
+                    <div class="col-md-4">
+                        <div class="d-flex justify-content-start">
+                            <i class="fas fa-map-marker-alt"
+                                style="font-size: 20px;margin:15px 10px 0 0;color:#068436;"></i>
+                            <span style="font-size: 20px;font-weight: bold;margin: 10px 0 0 0;">
+                                @if (request()->category)
+                                    @php
+                                        $l = App\Category::find(request()->category);
+                                    @endphp
+                                    {{ $l->{app()->getLocale() . '_name'} }}
+                                @elseif (request()->subcategory)
+                                    @php
+                                        $l = App\Subcategory::find(request()->subcategory);
+                                    @endphp
+                                    {{ $l->{app()->getLocale() . '_subcategoryName'} }}
+                                @elseif (request()->childcategory)
+                                    @php
+                                        $l = App\Childcategory::find(request()->childcategory);
+                                    @endphp
+                                    {{ $l->{app()->getLocale() . '_childcategoryName'} }}
+                                @else
+                                    {{ __('All Ads') }}
+                                @endif
+                            </span>
                         </div>
-
-                        <div class="col-md-2 col-sm-12 search-col">
-                            <div class="search-btn-border bg-primary" style="border-width: 2px;">
-                                <button class="btn btn-primary btn-search btn-block btn-gradient">
-                                    <i class="fas fa-search"></i> <strong>{{ __('Search') }} </strong>
-                                </button>
-                            </div>
-                        </div>
-
                     </div>
-                </form>
+                    <div class="col-md-4">
+                        <div class="d-flex justify-content-start">
+                            <i class="far fa-folder" style="font-size: 20px;margin:15px 10px 0 0;color:#068436;"></i>
+                            <span style="font-size: 20px;font-weight: bold;margin: 10px 0 0 0;">
+                                @if (request()->category)
+                                    @php
+                                        $l = App\Category::find(request()->category);
+                                    @endphp
+                                    {{ $l->{app()->getLocale() . '_name'} }}
+                                @elseif (request()->subcategory)
+                                    @php
+                                        $l = App\Subcategory::find(request()->subcategory);
+                                    @endphp
+                                    {{ $l->{app()->getLocale() . '_subcategoryName'} }}
+                                @elseif (request()->childcategory)
+                                    @php
+                                        $l = App\Childcategory::find(request()->childcategory);
+                                    @endphp
+                                    {{ $l->{app()->getLocale() . '_childcategoryName'} }}
+                                @else
+                                    {{ __('All Ads') }}
+                                @endif
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <form id="search" action="{{ url(app()->getLocale() . '/search') }}"
+                            method="GET">
+                            <div class="row search-row animated fadeInUp mb-3" style="max-width: 100%;">
+
+                                <div
+                                    class="col-md-10 col-sm-12 search-col relative locationicon mb-1 mb-xxl-0 mb-xl-0 mb-lg-0 mb-md-0">
+                                    <div class="search-col-inner" style="border-width: 2px;">
+                                        <div class="search-col-input" style="margin-left: 10px;">
+                                            <input class="form-control"
+                                                id="locSearch" name="search" placeholder="What are you looking for?"
+                                                type="text" value="" style="border-radius:0px">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2 col-sm-12 search-col">
+                                    <div class="search-btn-border bg-primary" style="border-width: 2px;">
+                                        <button class="btn btn-primary btn-search btn-block btn-gradient">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </nav>
         </div>
 
@@ -365,13 +421,13 @@
                                                             @endphp
                                                             @if (!empty($img->image))
                                                                 <img src="{{ asset($img->image) }}"
-                                                                    style="border: 1px solid rgb(231, 231, 231); margin-top: 2px; opacity: 1;height:180px;width:200px"
+                                                                    style="border: 1px solid rgb(231, 231, 231); margin-top: 2px; opacity: 1;height:200px;width:100%"
                                                                     alt="{{ $value->title }}">
                                                             @endif
                                                         </span>
+                                                        <br>
                                                         <span
                                                             class="item-name"style="color: #000;font-weight:bold">{{ $value->title }}</span>
-                                                        <br>
                                                         <br>
                                                         <a
                                                             href="{{ url(app()->getLocale() . '/customer-post/' . $value->customer->id) }}">
@@ -423,7 +479,7 @@
                                                             }
                                                         @endphp
                                                         <div class="d-flex justify-content-between ">
-                                                            <div class="d-flex justify-content-start">
+                                                            {{-- <div class="d-flex justify-content-start">
                                                                 @if ($review == 0)
                                                                     <span class="fa fa-star" style="color: #fff;"></span>
                                                                     <span class="fa fa-star" style="color: #fff;"></span>
@@ -462,8 +518,10 @@
                                                                     <span class="fa fa-star checked"></span>
                                                                 @endif
 
-                                                            </div>
-
+                                                            </div> --}}
+                                                            <span class="price">
+                                                               {{ $value->created_at->diffForHumans() }}
+                                                            </span>
                                                             <div>
                                                                 <span class="price">
                                                                     {{ number_format($value->price, 2) }}

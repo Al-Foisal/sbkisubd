@@ -1,4 +1,5 @@
 @extends('frontEnd.layouts.master1')
+@section('title', 'All nilam ads')
 @section('body')
     <style>
         a.nav-link {
@@ -18,10 +19,136 @@
             <nav aria-label="breadcrumb" role="navigation" class="search-breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="fas fa-home"></i></a></li>
-                    <li class="breadcrumb-item active">
-                        All Ads
+                    <li class="breadcrumb-item">
+                        <a href="{{ url('/customer/1/nilam') }}">
+                            {{ __('All Ads') }}
+                        </a>
                     </li>
+                    @if (request()->location)
+                        @php
+                            $l = App\Division::find(request()->location);
+                        @endphp
+                        <li class="breadcrumb-item active">
+                            {{ $l->{app()->getLocale() . '_name'} }}
+                        </li>
+                    @elseif (request()->category)
+                        @php
+                            $l = App\Category::find(request()->category);
+                        @endphp
+                        <li class="breadcrumb-item active">
+                            {{ $l->{app()->getLocale() . '_name'} }}
+                        </li>
+                    @elseif (request()->subcategory)
+                        @php
+                            $l = App\Subcategory::find(request()->subcategory);
+                        @endphp
+                        <li class="breadcrumb-item">
+                            <a href="{{ url('/customer/1/nilam?category=' . $l->category->id) }}">
+                                {{ $l->category->{app()->getLocale() . '_name'} }}
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">
+                            {{ $l->{app()->getLocale() . '_subcategoryName'} }}
+                        </li>
+                    @elseif (request()->childcategory)
+                        @php
+                            $l = App\Childcategory::find(request()->childcategory);
+                        @endphp
+                        <li class="breadcrumb-item">
+                            <a href="{{ url('/customer/1/nilam?category=' . $l->subcategory->category->id) }}">
+                                {{ $l->subcategory->category->{app()->getLocale() . '_name'} }}
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="{{ url('/customer/1/nilam?subcategory=' . $l->subcategory->id) }}">
+                                {{ $l->{app()->getLocale() . '_childcategoryName'} }}
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">
+                            {{ $l->{app()->getLocale() . '_childcategoryName'} }}
+                        </li>
+                    @endif
                 </ol>
+                <div class="row" style="padding: 0 35px;border-bottom:1px solid #00000012;">
+                    <div class="col-md-4">
+                        <div class="d-flex justify-content-start">
+                            <i class="fas fa-map-marker-alt"
+                                style="font-size: 20px;margin:15px 10px 0 0;color:#068436;"></i>
+                            <span style="font-size: 20px;font-weight: bold;margin: 10px 0 0 0;">
+                                @if (request()->category)
+                                    @php
+                                        $l = App\Category::find(request()->category);
+                                    @endphp
+                                    {{ $l->{app()->getLocale() . '_name'} }}
+                                @elseif (request()->subcategory)
+                                    @php
+                                        $l = App\Subcategory::find(request()->subcategory);
+                                    @endphp
+                                    {{ $l->{app()->getLocale() . '_subcategoryName'} }}
+                                @elseif (request()->childcategory)
+                                    @php
+                                        $l = App\Childcategory::find(request()->childcategory);
+                                    @endphp
+                                    {{ $l->{app()->getLocale() . '_childcategoryName'} }}
+                                @else
+                                    {{ __('All Ads') }}
+                                @endif
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex justify-content-start">
+                            <i class="far fa-folder" style="font-size: 20px;margin:15px 10px 0 0;color:#068436;"></i>
+                            <span style="font-size: 20px;font-weight: bold;margin: 10px 0 0 0;">
+                                @if (request()->category)
+                                    @php
+                                        $l = App\Category::find(request()->category);
+                                    @endphp
+                                    {{ $l->{app()->getLocale() . '_name'} }}
+                                @elseif (request()->subcategory)
+                                    @php
+                                        $l = App\Subcategory::find(request()->subcategory);
+                                    @endphp
+                                    {{ $l->{app()->getLocale() . '_subcategoryName'} }}
+                                @elseif (request()->childcategory)
+                                    @php
+                                        $l = App\Childcategory::find(request()->childcategory);
+                                    @endphp
+                                    {{ $l->{app()->getLocale() . '_childcategoryName'} }}
+                                @else
+                                    {{ __('All Ads') }}
+                                @endif
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <form id="search" name="search" action="{{ url('/nilamsearch') }}"
+                            method="GET">
+                            <div class="row search-row animated fadeInUp mb-3" style="max-width: 100%;">
+
+                                <div
+                                    class="col-md-10 col-sm-12 search-col relative locationicon mb-1 mb-xxl-0 mb-xl-0 mb-lg-0 mb-md-0">
+                                    <div class="search-col-inner" style="border-width: 2px;">
+                                        <div class="search-col-input" style="margin-left:10px;">
+                                            <input class="form-control"
+                                                id="locSearch" name="search" placeholder="What are you looking for?"
+                                                type="text" value="" style="border-radius:0px">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2 col-sm-12 search-col">
+                                    <div class="search-btn-border bg-primary" style="border-width: 2px;">
+                                        <button class="btn btn-primary btn-search btn-block btn-gradient">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </nav>
         </div>
 
@@ -89,7 +216,6 @@
                                 </div>
                                 <div class="block-content list-filter categories-list">
                                     <ul class="list-unstyled">
-
                                         @if (request()->category)
                                             @foreach ($categories->where('id', request()->category) as $cat)
                                                 <li>
@@ -99,7 +225,7 @@
                                                             <i class="fas fa-laptop"></i>
                                                             {{ $cat->{app()->getLocale() . '_name'} }}
                                                         </span>
-                                                        <span class="count">&nbsp;({{ $cat->ads->count() }})</span>
+                                                        <span class="count">&nbsp;({{ $cat->nilamcount->count() }})</span>
                                                     </a>
                                                     @if ($cat->subcategories->count() > 0)
                                                         <ul class="list-unstyled long-list">
@@ -110,7 +236,7 @@
                                                                         <i class="fas fa-laptop-code"></i>
                                                                         {{ $sub->{app()->getLocale() . '_subcategoryName'} }}
                                                                         <span
-                                                                            class="count">&nbsp;({{ $sub->ads->count() }})</span>
+                                                                            class="count">&nbsp;({{ $sub->nilamcount->count() }})</span>
                                                                     </a>
                                                                     @if ($sub->childcategories->count() > 0)
                                                                         <ul class="list-unstyled long-list">
@@ -121,7 +247,7 @@
                                                                                         <i class="fas fa-laptop-code"></i>
                                                                                         {{ $child->{app()->getLocale() . '_childcategoryName'} }}
                                                                                         <span
-                                                                                            class="count">&nbsp;({{ $child->ads->count() }})</span>
+                                                                                            class="count">&nbsp;({{ $child->nilamcount->count() }})</span>
                                                                                     </a>
                                                                                 </li>
                                                                             @endforeach
@@ -133,6 +259,23 @@
                                                     @endif
                                                 </li>
                                             @endforeach
+                                        @elseif(!request()->category &&
+                                            !request()->subcategory &&
+                                            !request()->childcategory &&
+                                            !request()->filter &&
+                                            !request()->division)
+                                            @foreach ($categories as $cat)
+                                                <li>
+                                                    <a href="{{ url('/customer/1/nilam?category=' . $cat->id) }}"
+                                                        title="{{ $cat->{app()->getLocale() . '_name'} }}">
+                                                        <span class="title fw-bold">
+                                                            <i class="fas fa-laptop"></i>
+                                                            {{ $cat->{app()->getLocale() . '_name'} }}
+                                                        </span>
+                                                        <span class="count">&nbsp;({{ $cat->nilamcount->count() }})</span>
+                                                    </a>
+                                                </li>
+                                            @endforeach
                                         @else
                                             @foreach ($categories as $cat)
                                                 <li>
@@ -142,7 +285,7 @@
                                                             <i class="fas fa-laptop"></i>
                                                             {{ $cat->{app()->getLocale() . '_name'} }}
                                                         </span>
-                                                        <span class="count">&nbsp;({{ $cat->ads->count() }})</span>
+                                                        <span class="count">&nbsp;({{ $cat->nilamcount->count() }})</span>
                                                     </a>
                                                     @if ($cat->subcategories->count() > 0)
                                                         <ul class="list-unstyled long-list">
@@ -153,7 +296,7 @@
                                                                         <i class="fas fa-laptop-code"></i>
                                                                         {{ $sub->{app()->getLocale() . '_subcategoryName'} }}
                                                                         <span
-                                                                            class="count">&nbsp;({{ $sub->ads->count() }})</span>
+                                                                            class="count">&nbsp;({{ $sub->nilamcount->count() }})</span>
                                                                     </a>
                                                                     @if ($sub->childcategories->count() > 0)
                                                                         <ul class="list-unstyled long-list">
@@ -164,7 +307,7 @@
                                                                                         <i class="fas fa-laptop-code"></i>
                                                                                         {{ $child->{app()->getLocale() . '_childcategoryName'} }}
                                                                                         <span
-                                                                                            class="count">&nbsp;({{ $child->ads->count() }})</span>
+                                                                                            class="count">&nbsp;({{ $child->nilamcount->count() }})</span>
                                                                                     </a>
                                                                                 </li>
                                                                             @endforeach
@@ -203,12 +346,12 @@
                                                                 <i class="fa fa-camera"></i> {{ $value->images->count() }}
                                                             </span>
                                                             <img src="{{ asset($value->images->first()->image) }}"
-                                                                style="border: 1px solid rgb(231, 231, 231); margin-top: 2px; opacity: 1;height:180px;width:200px"
+                                                                style="border: 1px solid rgb(231, 231, 231); margin-top: 2px; opacity: 1;height:200px;width:100%"
                                                                 alt="{{ $value->title }}">
                                                         </span>
+                                                        <br>
                                                         <span
                                                             class="item-name"style="color: #000;font-weight:bold">{{ $value->title }}</span>
-                                                        <br>
                                                         <br>
                                                         {{-- <a
                                                             href="{{ url(app()->getLocale() . '/customer-post/' . $value->customer->id) }}">
@@ -220,14 +363,14 @@
                                                         </a>
 
                                                         <a
-                                                            href="{{ url(app()->getLocale() . '/all-ads?category=' . $value->categories->id) }}">
+                                                            href="{{ url('/customer/1/nilam?category=' . $value->categories->id) }}">
                                                             <span style="color: #07a4b4" class="mr-2"><i
                                                                     class="far fa-folder"></i>
                                                                 {{ $value->categories->{app()->getLocale() . '_name'} }}
                                                             </span>
                                                         </a>>
                                                         <a
-                                                            href="{{ url(app()->getLocale() . '/all-ads?subcategory=' . $value->subcategories->id) }}">
+                                                            href="{{ url('/customer/1/nilam?subcategory=' . $value->subcategories->id) }}">
                                                             <span style="color: #07a4b4" class="mr-2">
                                                                 {{ $value->subcategories->{app()->getLocale() . '_subcategoryName'} }}
                                                             </span>
@@ -235,14 +378,14 @@
                                                         @if (!is_null($value->childcategory_id))
                                                             >
                                                             <a
-                                                                href="{{ url(app()->getLocale() . '/all-ads?childcategory=' . $value->childcategories->id) }}">
+                                                                href="{{ url('/customer/1/nilam?childcategory=' . $value->childcategories->id) }}">
                                                                 <span style="color: #07a4b4" class="mr-2">
                                                                     {{ $value->childcategories->{app()->getLocale() . '_childcategoryName'} ?? '' }}
                                                                 </span>
                                                             </a>
                                                         @endif
                                                         <a
-                                                            href="{{ url(app()->getLocale() . '/all-ads?location=' . $value->district->id) }}">
+                                                            href="{{ url('/customer/1/nilam?location=' . $value->district->id) }}">
                                                             <span style="color: #07a4b4"><i
                                                                     class="fa fa-location-arrow"></i>
                                                                 {{ $value->district->{app()->getLocale() . '_dist_name'} }}</span>

@@ -1,11 +1,33 @@
 @extends('frontEnd.layouts.master1')
+@section('title', 'সবকিছু হাতের মুঠোয়')
 @section('body')
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous"> --}}
     <!-- this is style.css link-->
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"> --}}
-    <link rel="stylesheet" href="responsive.css">
-    <link rel="stylesheet" href="style1.css">
-
+    {{-- <link rel="stylesheet" href="responsive.css"> --}}
+    {{-- <link rel="stylesheet" href="style1.css"> --}}
+    <style>
+        .vv:hover{
+            background: #140d0421;
+            border-radius: 5px;
+        }
+        @media (max-width:767px) {
+            .navbar-brand.logo.logo-title {
+                padding-top: 20px
+            }
+        }
+        .navbar-toggler {
+            padding: .25rem .75rem;
+            font-size: 1.25rem;
+            line-height: 1;
+            background-color: transparent;
+            border: 1px solid transparent;
+            border-radius: .25rem;
+            transition: box-shadow .15s ease-in-out;
+            margin-left: 170px;
+            margin-top: 40px;
+        }
+    </style>
     <!-- second navbar-->
     @php
     use App\Adsimage;
@@ -139,6 +161,36 @@
                 </div>
             </div>
         </div>
+        <section style="background: #fff">
+            <div class="p-0 mt-lg-4 mt-md-3 mt-3"></div>
+            <div class="container">
+                <div class="col-xl-12 content-box layout-section">
+                    <div class="row row-featured row-featured-category">
+                        <div class="col-xl-12 box-title no-border">
+                            <div class="inner">
+                                <h2>
+                                    <span class="title-3">{{ __('Browse by') }} <span
+                                            style="font-weight: bold;">{{ __('Category') }}</span>
+                                </h2>
+                            </div>
+                        </div>
+
+                        @foreach ($categories as $value)
+                            <div class="col-lg-2 col-md-3 col-sm-4 col-6 f-category">
+                                <a href="{{ url(app()->getLocale() . '/all-ads?category=' . $value->id) }}">
+                                    <img src="{{ asset($value->image) }}" alt="">
+                                    <h6>
+                                        {{ $value->{app()->getLocale() . '_name'} }}
+                                        &nbsp;({{ $value->ads->count() }})
+                                    </h6>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
+            
         <div class="container my-3">
             <div class="col-xl-12 content-box layout-section">
                 <div class="row row-featured row-featured-category">
@@ -200,7 +252,7 @@
                                                             }
                                                         @endphp
                                                         <div class="d-flex justify-content-between pl-2 pr-2">
-                                                            <div class="d-flex justify-content-start">
+                                                            {{-- <div class="d-flex justify-content-start">
                                                                 @if ($review == 0)
                                                                     <span class="fa fa-star" style="color: #fff;"></span>
                                                                     <span class="fa fa-star" style="color: #fff;"></span>
@@ -239,7 +291,10 @@
                                                                     <span class="fa fa-star checked"></span>
                                                                 @endif
 
-                                                            </div>
+                                                            </div> --}}
+                                                            <span class="price">
+                                                                {{ $value->created_at->diffForHumans() }}
+                                                             </span>
 
                                                             <div>
                                                                 <span class="price">
@@ -267,34 +322,6 @@
                 </div>
             </div>
         </div>
-        <section style="background: #fff">
-            <div class="p-0 mt-lg-4 mt-md-3 mt-3"></div>
-            <div class="container">
-                <div class="col-xl-12 content-box layout-section">
-                    <div class="row row-featured row-featured-category">
-                        <div class="col-xl-12 box-title no-border">
-                            <div class="inner">
-                                <h2>
-                                    <span class="title-3">{{ __('Browse by') }} <span
-                                            style="font-weight: bold;">{{ __('Category') }}</span>
-                                </h2>
-                            </div>
-                        </div>
-
-                        @foreach ($categories as $value)
-                            <div class="col-lg-2 col-md-3 col-sm-4 col-6 f-category">
-                                <a href="{{ url(app()->getLocale() . '/all-ads?category=' . $value->id) }}">
-                                    <img src="{{ asset($value->image) }}" alt="">
-                                    <h6>
-                                        {{ $value->{app()->getLocale() . '_name'} }}
-                                        &nbsp;({{ $value->ads->count() }})
-                                    </h6>
-                                </a>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
 
             {{-- <div class="container my-3">
                 <div class="col-xl-12 content-box layout-section">
@@ -413,15 +440,58 @@
                                                                         @endif
                                                                     </span>
                                                                     <span class="item-name">{{ $value->title }}</span>
-                                                                    {{-- <span class="fa fa-star checked"></span>
-                                                        <span class="fa fa-star checked"></span>
-                                                        <span class="fa fa-star checked"></span>
-                                                        <span class="fa fa-star checked"></span>
-                                                        <span class="fa fa-star checked"></span> --}}
-
-                                                                    <span class="price">
-                                                                        {{ number_format($value->price, 2) }} ৳
-                                                                    </span>
+                                                                    <div class="d-flex justify-content-between pl-2 pr-2">
+                                                                        {{-- <div class="d-flex justify-content-start">
+                                                                            @if ($review == 0)
+                                                                                <span class="fa fa-star" style="color: #fff;"></span>
+                                                                                <span class="fa fa-star" style="color: #fff;"></span>
+                                                                                <span class="fa fa-star" style="color: #fff;"></span>
+                                                                                <span class="fa fa-star" style="color: #fff;"></span>
+                                                                                <span class="fa fa-star" style="color: #fff;"></span>
+                                                                            @elseif($review == 1)
+                                                                                <span class="fa fa-star checked"></span>
+                                                                                <span class="fa fa-star" style="color: #fff;"></span>
+                                                                                <span class="fa fa-star" style="color: #fff;"></span>
+                                                                                <span class="fa fa-star" style="color: #fff;"></span>
+                                                                                <span class="fa fa-star" style="color: #fff;"></span>
+                                                                            @elseif($review == 2)
+                                                                                <span class="fa fa-star checked"></span>
+                                                                                <span class="fa fa-star checked"></span>
+                                                                                <span class="fa fa-star" style="color: #fff;"></span>
+                                                                                <span class="fa fa-star" style="color: #fff;"></span>
+                                                                                <span class="fa fa-star" style="color: #fff;"></span>
+                                                                            @elseif($review == 3)
+                                                                                <span class="fa fa-star checked"></span>
+                                                                                <span class="fa fa-star checked"></span>
+                                                                                <span class="fa fa-star checked"></span>
+                                                                                <span class="fa fa-star" style="color: #fff;"></span>
+                                                                                <span class="fa fa-star" style="color: #fff;"></span>
+                                                                            @elseif($review == 4)
+                                                                                <span class="fa fa-star checked"></span>
+                                                                                <span class="fa fa-star checked"></span>
+                                                                                <span class="fa fa-star checked"></span>
+                                                                                <span class="fa fa-star checked"></span>
+                                                                                <span class="fa fa-star" style="color: #fff;"></span>
+                                                                            @elseif($review == 5)
+                                                                                <span class="fa fa-star checked"></span>
+                                                                                <span class="fa fa-star checked"></span>
+                                                                                <span class="fa fa-star checked"></span>
+                                                                                <span class="fa fa-star checked"></span>
+                                                                                <span class="fa fa-star checked"></span>
+                                                                            @endif
+            
+                                                                        </div> --}}
+                                                                        <span class="price">
+                                                                            {{ $value->created_at->diffForHumans() }}
+                                                                         </span>
+            
+                                                                        <div>
+                                                                            <span class="price">
+                                                                                {{ number_format($value->price, 2) }}
+                                                                                ৳{{ $review }}
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -504,52 +574,37 @@
                                                                 }
                                                             @endphp
                                                             <div class="d-flex justify-content-between pl-2 pr-2">
-                                                                <div class="d-flex justify-content-start">
+                                                                {{-- <div class="d-flex justify-content-start">
                                                                     @if ($review == 0)
-                                                                        <span class="fa fa-star"
-                                                                            style="color: #fff;"></span>
-                                                                        <span class="fa fa-star"
-                                                                            style="color: #fff;"></span>
-                                                                        <span class="fa fa-star"
-                                                                            style="color: #fff;"></span>
-                                                                        <span class="fa fa-star"
-                                                                            style="color: #fff;"></span>
-                                                                        <span class="fa fa-star"
-                                                                            style="color: #fff;"></span>
+                                                                        <span class="fa fa-star" style="color: #fff;"></span>
+                                                                        <span class="fa fa-star" style="color: #fff;"></span>
+                                                                        <span class="fa fa-star" style="color: #fff;"></span>
+                                                                        <span class="fa fa-star" style="color: #fff;"></span>
+                                                                        <span class="fa fa-star" style="color: #fff;"></span>
                                                                     @elseif($review == 1)
                                                                         <span class="fa fa-star checked"></span>
-                                                                        <span class="fa fa-star"
-                                                                            style="color: #fff;"></span>
-                                                                        <span class="fa fa-star"
-                                                                            style="color: #fff;"></span>
-                                                                        <span class="fa fa-star"
-                                                                            style="color: #fff;"></span>
-                                                                        <span class="fa fa-star"
-                                                                            style="color: #fff;"></span>
+                                                                        <span class="fa fa-star" style="color: #fff;"></span>
+                                                                        <span class="fa fa-star" style="color: #fff;"></span>
+                                                                        <span class="fa fa-star" style="color: #fff;"></span>
+                                                                        <span class="fa fa-star" style="color: #fff;"></span>
                                                                     @elseif($review == 2)
                                                                         <span class="fa fa-star checked"></span>
                                                                         <span class="fa fa-star checked"></span>
-                                                                        <span class="fa fa-star"
-                                                                            style="color: #fff;"></span>
-                                                                        <span class="fa fa-star"
-                                                                            style="color: #fff;"></span>
-                                                                        <span class="fa fa-star"
-                                                                            style="color: #fff;"></span>
+                                                                        <span class="fa fa-star" style="color: #fff;"></span>
+                                                                        <span class="fa fa-star" style="color: #fff;"></span>
+                                                                        <span class="fa fa-star" style="color: #fff;"></span>
                                                                     @elseif($review == 3)
                                                                         <span class="fa fa-star checked"></span>
                                                                         <span class="fa fa-star checked"></span>
                                                                         <span class="fa fa-star checked"></span>
-                                                                        <span class="fa fa-star"
-                                                                            style="color: #fff;"></span>
-                                                                        <span class="fa fa-star"
-                                                                            style="color: #fff;"></span>
+                                                                        <span class="fa fa-star" style="color: #fff;"></span>
+                                                                        <span class="fa fa-star" style="color: #fff;"></span>
                                                                     @elseif($review == 4)
                                                                         <span class="fa fa-star checked"></span>
                                                                         <span class="fa fa-star checked"></span>
                                                                         <span class="fa fa-star checked"></span>
                                                                         <span class="fa fa-star checked"></span>
-                                                                        <span class="fa fa-star"
-                                                                            style="color: #fff;"></span>
+                                                                        <span class="fa fa-star" style="color: #fff;"></span>
                                                                     @elseif($review == 5)
                                                                         <span class="fa fa-star checked"></span>
                                                                         <span class="fa fa-star checked"></span>
@@ -557,9 +612,12 @@
                                                                         <span class="fa fa-star checked"></span>
                                                                         <span class="fa fa-star checked"></span>
                                                                     @endif
-
-                                                                </div>
-
+    
+                                                                </div> --}}
+                                                                <span class="price">
+                                                                    {{ $value->created_at->diffForHumans() }}
+                                                                 </span>
+    
                                                                 <div>
                                                                     <span class="price">
                                                                         {{ number_format($value->price, 2) }}

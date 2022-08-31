@@ -1,4 +1,5 @@
 @extends('frontEnd.layouts.master1')
+@section('title', 'Customer post area')
 @section('body')
     @php
     use App\Adsimage;
@@ -82,15 +83,6 @@
                                             {{ 'Member sience from ' . $customer->created_at->format('F Y') }}
                                         </b>
                                     </h5>
-
-                                    @if ($customer->website)
-                                        <a href="{{ $customer->website }}">
-                                            <p
-                                                style="color: #57a4bb;
-                                            text-decoration: underline;">
-                                                {{ $customer->website }}</p>
-                                        </a>
-                                    @endif
                                 </div>
                             </div>
 

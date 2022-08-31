@@ -18,4 +18,8 @@ class Subcategory extends Model
       return $this->hasMany('App\Advertisment','subcategory_id',);
    }
 
+   public function nilamcount() {
+      return $this->hasMany(Nilam::class);
+  }
+
 }

@@ -1,4 +1,5 @@
 @extends('frontEnd.layouts.master1')
+@section('title', $page->en_pagename)
 @section('body')
     @php
     use App\Adsimage;

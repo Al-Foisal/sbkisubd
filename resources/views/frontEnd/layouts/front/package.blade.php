@@ -1,4 +1,5 @@
 @extends('frontEnd.layouts.master1')
+@section('title', 'Package pricing')
 @section('body')
     <style>
         .skin .bg-primary {

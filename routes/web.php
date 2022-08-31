@@ -31,6 +31,7 @@ Route::group(['prefix' => '{locale}', 'where' => ['locale' => '[a-zA-Z]{2}']], f
 });
 Route::group(['namespace' => 'FrontEnd'], function () {
     Route::get('/search-category', 'FrontEndController@searchcategory');
+    Route::get('/nilamsearch', 'FrontEndController@nilamsearch');
     Route::get('/search-childcategory', 'FrontEndController@searchildchcategory');
     Route::get('/page/{slug}', 'FrontEndController@footerpage');
     Route::get('/search-district', 'FrontEndController@searchdistrict');

@@ -18,7 +18,7 @@
         <div class="container">
             <nav aria-label="breadcrumb" role="navigation" class="search-breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="http://www.kroyandbikroy.com"><i class="fas fa-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="fas fa-home"></i></a></li>
                     <li class="breadcrumb-item active">
                         {{ request()->search }}
                     </li>
@@ -67,7 +67,7 @@
                                         @foreach ($advertisments as $value)
                                             <div class="col-md-3 mb-5">
                                                 <div class="item">
-                                                    <a href="{{ url(app()->getLocale().'/details/'.$value->id) }}">
+                                                    <a href="{{ url('/customer/1/nilam-details/'.$value->id) }}">
                                                         <span class="item-carousel-thumb">
                                                             <span class="photo-count">
                                                                 <i class="fa fa-camera"></i> {{ $value->images->count() }}
@@ -107,49 +107,46 @@
                                                             }
                                                         @endphp
                                                         <div class="d-flex justify-content-between pl-2 pr-2">
-                                                            {{-- <div class="d-flex justify-content-start">
-                                                                @if ($review == 0)
-                                                                    <span class="fa fa-star" style="color: #fff;"></span>
-                                                                    <span class="fa fa-star" style="color: #fff;"></span>
-                                                                    <span class="fa fa-star" style="color: #fff;"></span>
-                                                                    <span class="fa fa-star" style="color: #fff;"></span>
-                                                                    <span class="fa fa-star" style="color: #fff;"></span>
+                                                            <div class="d-flex justify-content-start">
+                                                                @if($review == 0)
+                                                                <span class="fa fa-star" style="color: #fff;"></span>
+                                                                <span class="fa fa-star" style="color: #fff;"></span>
+                                                                <span class="fa fa-star" style="color: #fff;"></span>
+                                                                <span class="fa fa-star" style="color: #fff;"></span>
+                                                                <span class="fa fa-star" style="color: #fff;"></span>
                                                                 @elseif($review == 1)
-                                                                    <span class="fa fa-star checked"></span>
-                                                                    <span class="fa fa-star" style="color: #fff;"></span>
-                                                                    <span class="fa fa-star" style="color: #fff;"></span>
-                                                                    <span class="fa fa-star" style="color: #fff;"></span>
-                                                                    <span class="fa fa-star" style="color: #fff;"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star" style="color: #fff;"></span>
+                                                                <span class="fa fa-star" style="color: #fff;"></span>
+                                                                <span class="fa fa-star" style="color: #fff;"></span>
+                                                                <span class="fa fa-star" style="color: #fff;"></span>
                                                                 @elseif($review == 2)
-                                                                    <span class="fa fa-star checked"></span>
-                                                                    <span class="fa fa-star checked"></span>
-                                                                    <span class="fa fa-star" style="color: #fff;"></span>
-                                                                    <span class="fa fa-star" style="color: #fff;"></span>
-                                                                    <span class="fa fa-star" style="color: #fff;"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star" style="color: #fff;"></span>
+                                                                <span class="fa fa-star" style="color: #fff;"></span>
+                                                                <span class="fa fa-star" style="color: #fff;"></span>
                                                                 @elseif($review == 3)
-                                                                    <span class="fa fa-star checked"></span>
-                                                                    <span class="fa fa-star checked"></span>
-                                                                    <span class="fa fa-star checked"></span>
-                                                                    <span class="fa fa-star" style="color: #fff;"></span>
-                                                                    <span class="fa fa-star" style="color: #fff;"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star" style="color: #fff;"></span>
+                                                                <span class="fa fa-star" style="color: #fff;"></span>
                                                                 @elseif($review == 4)
-                                                                    <span class="fa fa-star checked"></span>
-                                                                    <span class="fa fa-star checked"></span>
-                                                                    <span class="fa fa-star checked"></span>
-                                                                    <span class="fa fa-star checked"></span>
-                                                                    <span class="fa fa-star" style="color: #fff;"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star" style="color: #fff;"></span>
                                                                 @elseif($review == 5)
-                                                                    <span class="fa fa-star checked"></span>
-                                                                    <span class="fa fa-star checked"></span>
-                                                                    <span class="fa fa-star checked"></span>
-                                                                    <span class="fa fa-star checked"></span>
-                                                                    <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
                                                                 @endif
-
-                                                            </div> --}}
-                                                            <span class="price">
-                                                                {{ $value->created_at->diffForHumans() }}
-                                                             </span>
+                                                                
+                                                            </div>
 
                                                             <div>
                                                                 <span class="price">

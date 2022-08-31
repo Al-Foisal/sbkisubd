@@ -12,7 +12,7 @@
             <form action="{{url('/customer/login')}}" method="POST">
               @csrf
                 <div class="form-group">
-                  <input type="text" class="form-control {{$errors->has('phoneOremail')? 'is-invalid' : ''}}" placeholder="Phone Or Email" name="phoneOremail" value="{{old('phoneOremail')}}">
+                  <input type="text" class="form-control {{$errors->has('phoneOremail')? 'is-invalid' : ''}}" placeholder="Email" name="phoneOremail" value="{{old('phoneOremail')}}">
                   @if($errors->has('phoneOremail'))
                     <span class="invalid-feedback" role="alert">
                       <strong>{{$errors->first('phoneOremail')}}</strong>

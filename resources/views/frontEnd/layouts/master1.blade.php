@@ -24,11 +24,13 @@
         href="{{asset('/')}}logo.png">
         
     <link rel="shortcut icon" href="/storage/app/ico/thumb-32x32-ico-62d282d632e2b.png">
-    <title>what will your title???</title>
+    <title>
+        @yield('title') - {{ config('app.name') }}
+    </title>
     <meta name="description" property="description" content="">
     <meta name="keywords" property="keywords" content="">
 	<link rel="stylesheet" href="{{ asset('frontEnd/') }}/css/bootstrap.min.css">
-    <link rel="canonical" href="http://kroyandbikroy.com/">
+    <link rel="canonical" href="{{ url('/') }}">
 	<link rel="stylesheet" href="{{ asset('/') }}index-style/owl.carousel.min.css">
 	<link rel="stylesheet" href="{{ asset('/') }}index-style/owl.theme.default.min.css">
     <!--<base target="_top">-->
@@ -147,7 +149,8 @@
     </script>
     <script src="{{ asset('/') }}index-style/pace.min.js.download"></script>
     <script src="{{ asset('/') }}index-style/modernizr-custom.js.download"></script>
-
+    <link rel="stylesheet" href="{{ asset('backEnd/') }}/dist/css/toastr.min.css">
+    
     <link rel="dns-prefetch" href="http://fonts.googleapis.com/">
     <link rel="dns-prefetch" href="http://fonts.gstatic.com/">
     <link rel="dns-prefetch" href="http://storage.googleapis.com/">
@@ -1714,6 +1717,22 @@
             background: #140d0421;
             border-radius: 5px;
         }
+        @media (max-width:767px) {
+            .navbar-brand.logo.logo-title {
+                padding-top: 20px
+            }
+        }
+        .navbar-toggler {
+            padding: .25rem .75rem;
+            font-size: 1.25rem;
+            line-height: 1;
+            background-color: transparent;
+            border: 1px solid transparent;
+            border-radius: .25rem;
+            transition: box-shadow .15s ease-in-out;
+            margin-left: 170px;
+            margin-top: 40px;
+        }
     </style>
 </head>
 
@@ -1841,7 +1860,11 @@
                                 $customerInfo = App\Customer::where(['id' => $customerId])->first();
                             @endphp
                             @if ($customerId == null)
-							<li class="nav-item dropdown no-arrow open-on-hover d-md-block d-sm-none d-none">
+                            {{-- <li class="nav-item d-md-none d-sm-block d-block">
+								<a href="{{ url('/customer/login') }}" class="nav-link"
+									data-bs-toggle="modal"><i class="fas fa-user"></i> {{__('Log In')}}</a>
+							</li> --}}
+							<li class="nav-item dropdown no-arrow open-on-hover">
 								<a href="#" class="dropdown-toggle nav-link"
 									data-bs-toggle="dropdown">
 									<i style="margin-right:5px" class="fas fa-user"></i>
@@ -1861,7 +1884,7 @@
 								</ul>
 							</li>
                             @else
-                            <li class="nav-item dropdown no-arrow open-on-hover d-md-block d-sm-none d-none">
+                            <li class="nav-item dropdown no-arrow open-on-hover">
 								<a href="#" class="dropdown-toggle nav-link"
 									data-bs-toggle="dropdown">
 									<i class="fas fa-user"></i>
@@ -1880,15 +1903,18 @@
 									</li>
 								</ul>
 							</li>
-                            @endif
-							<li class="nav-item d-md-none d-sm-block d-block">
-								<a href="{{ url('/customer/login') }}" class="nav-link"
-									data-bs-toggle="modal"><i class="fas fa-user"></i> {{__('Log In')}}</a>
+                            {{-- <li class="nav-item d-md-none d-sm-block d-block">
+								<a href="{{ url('customer/0/control-panel/dashboard') }}" class="nav-link"><i
+										class="far fa-user"></i> {{__('Manage Account')}}</a>
 							</li>
-							<li class="nav-item d-md-none d-sm-block d-block">
+                            <li class="nav-item d-md-none d-sm-block d-block">
 								<a href="{{ url('/customer/register') }}" class="nav-link"><i
-										class="far fa-user"></i> {{__('Sign Up')}}</a>
-							</li>
+										class="far fa-user"></i> {{__('Logout')}}</a>
+							</li> --}}
+                            @endif
+
+							
+							
 		
 		
 		
@@ -2030,7 +2056,7 @@
 
 </div>
 
-
+{!! Toastr::message() !!}
 <script>
     var siteUrl = 'http://kroyandbikroy.com';
     var languageCode = 'en';
@@ -2263,6 +2289,7 @@
         autoplayHoverPause: true
     });
 </script>
+<script src="{{ asset('backEnd/') }}/dist/js/toastr.min.js"></script>
  <script src="{{ asset('frontEnd/') }}/js/bootstrap.min.js"></script>
 <script src="{{ asset('/') }}index-style/jquery.min.js"></script>
 <script src="{{ asset('/') }}index-style/owl.carousel.min.js"></script>

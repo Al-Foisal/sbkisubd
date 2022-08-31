@@ -1,4 +1,5 @@
 @extends('frontEnd.layouts.master1')
+@section('title', $ads->title)
 @section('body')
     {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
     <div class="main-container">

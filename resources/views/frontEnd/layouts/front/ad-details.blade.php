@@ -1,4 +1,5 @@
 @extends('frontEnd.layouts.master1')
+@section('title', $ads->title)
 @section('body')
     <div class="main-container">
 
@@ -182,7 +183,9 @@
                                                             Price:
                                                         </span>
                                                         <span>
-                                                            {{ number_format($ads->price, 2) }} ৳ @if($ads->price_ng == 1) ({{ __('Negotiable') }}) @endif
+                                                            {{ number_format($ads->price, 2) }} ৳ @if ($ads->price_ng == 1)
+                                                                ({{ __('Negotiable') }})
+                                                            @endif
                                                         </span>
                                                     </h4>
                                                 </div>

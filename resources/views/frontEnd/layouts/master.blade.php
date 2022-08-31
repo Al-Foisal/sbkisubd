@@ -46,7 +46,7 @@ Version: 206.0.0
     <!-- owl.theme.default css -->
     <link rel="stylesheet" href="{{ asset('frontEnd/') }}/css/style.css">
     <!-- style css -->
-    <link rel="stylesheet" href="{{ asset('frontEnd/') }}/css/responsive.css">
+    {{-- <link rel="stylesheet" href="{{ asset('frontEnd/') }}/css/responsive.css"> --}}
     <!-- responsive css -->
     <script src="{{ asset('frontEnd/') }}/js/jquery-3.4.1.min.js"></script>
     <script data-ad-client="ca-pub-3346835581317070" async
@@ -71,8 +71,8 @@ Version: 206.0.0
     <link rel="apple-touch-icon-precomposed"
         href="/storage/app/default/ico/apple-touch-icon-57-precomposed.png">
     <link rel="shortcut icon" href="/storage/app/ico/thumb-32x32-ico-62d282d632e2b.png">
-    <title>kroyandbikroy.com - Buy Sell Anything</title>
-    <meta name="description" property="description" content="kroyandbikroy.com - Buy Sell Anything">
+    <title>@yield('title') - {{ config('app.name') }}</title>
+    <meta name="description" property="description" content="@yield('title') - {{ config('app.name') }}">
     <meta name="keywords" property="keywords" content="">
 	<link rel="stylesheet" href="{{ asset('frontEnd/') }}/css/bootstrap.min.css">
     <link rel="canonical" href="http://kroyandbikroy.com/">
@@ -85,15 +85,15 @@ Version: 206.0.0
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
     <meta property="og:url" content="http://kroyandbikroy.com">
-    <meta property="og:title" content="kroyandbikroy.com - Buy Sell Anything">
-    <meta property="og:description" content="kroyandbikroy.com - Buy Sell Anything">
+    <meta property="og:title" content="@yield('title') - {{ config('app.name') }}">
+    <meta property="og:description" content="@yield('title') - {{ config('app.name') }}">
     <meta property="og:image" content="/storage/app/logo/header-62d4fbfe293e3.jpeg">
     <meta property="og:image:width" content="600">
     <meta property="og:image:height" content="600">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="kroyandbikroy.com - Buy Sell Anything">
-    <meta name="twitter:description" content="kroyandbikroy.com - Buy Sell Anything">
+    <meta name="twitter:title" content="@yield('title') - {{ config('app.name') }}">
+    <meta name="twitter:description" content="@yield('title') - {{ config('app.name') }}">
     <meta name="twitter:domain" content="update.kroyandbikroy.com">
 
     <link rel="alternate" type="application/atom+xml" href="http://kroyandbikroy.com/feed" title="My feed">
@@ -1787,7 +1787,7 @@ Version: 206.0.0
     <link rel="stylesheet" href="{{ asset('backEnd/') }}/dist/css/toastr.min.css">
     <link rel="stylesheet" href="{{ asset('frontEnd/') }}/css/style.css">
     <!-- style css -->
-    <link rel="stylesheet" href="{{ asset('frontEnd/') }}/css/responsive.css">
+    {{-- <link rel="stylesheet" href="{{ asset('frontEnd/') }}/css/responsive.css"> --}}
 </head>
 
 <body class="skin  pace-done">
@@ -1808,25 +1808,25 @@ Version: 206.0.0
 				<div class="container-fluid">
 		
 					<div class="navbar-identity p-sm-0">
-		
                         <style>.logo img {
-    width: 80px;
-    height: 75px;
-}
-                            .main-logo {
-    width: 80px;
-    height: 75px;
-    max-width: 430px !important;
-    max-height: 500px !important;
-}
-
-                        </style>
+                            width: 80px;
+                            height: 75px;
+                        }
+                                                    .main-logo {
+                            width: 80px;
+                            height: 75px;
+                            max-width: 430px !important;
+                            max-height: 500px !important;
+                        }
+                        
+                                                </style>
 		
 						<a href="{{ url('/') }}" class="navbar-brand logo logo-title">
-                            @foreach($wlogo as $value)
+							@foreach($wlogo as $value)
 							<img src="{{ asset($value->image) }}"
 								alt="" class="main-logo" data-bs-placement="bottom"
-								data-bs-toggle="tooltip" >
+								data-bs-toggle="tooltip" style="width: 80px;
+                                height: 75px;max-height:1000px;">
                                 @endforeach
 						</a>
 		
@@ -1914,7 +1914,7 @@ Version: 206.0.0
                                 $customerInfo = App\Customer::where(['id' => $customerId])->first();
                             @endphp
                             @if ($customerId == null)
-							<li class="nav-item dropdown no-arrow open-on-hover d-md-block d-sm-none d-none">
+							<li class="nav-item dropdown no-arrow open-on-hover">
 								<a href="#" class="dropdown-toggle nav-link"
 									data-bs-toggle="dropdown">
 									<i style="margin-right:5px" class="fas fa-user"></i>
@@ -1934,7 +1934,7 @@ Version: 206.0.0
 								</ul>
 							</li>
                             @else
-                            <li class="nav-item dropdown no-arrow open-on-hover d-md-block d-sm-none d-none">
+                            <li class="nav-item dropdown no-arrow open-on-hover">
 								<a href="#" class="dropdown-toggle nav-link"
 									data-bs-toggle="dropdown">
 									<i class="fas fa-user"></i>
@@ -1954,14 +1954,14 @@ Version: 206.0.0
 								</ul>
 							</li>
                             @endif
-							<li class="nav-item d-md-none d-sm-block d-block">
+							{{-- <li class="nav-item d-md-none d-sm-block d-block">
 								<a href="{{ url('/customer/login') }}" class="nav-link"
 									data-bs-toggle="modal"><i class="fas fa-user"></i> {{__('Log In')}}</a>
 							</li>
 							<li class="nav-item d-md-none d-sm-block d-block">
 								<a href="{{ url('/customer/register') }}" class="nav-link"><i
 										class="far fa-user"></i> {{__('Sign Up')}}</a>
-							</li>
+							</li> --}}
 		
 		
 		
@@ -2212,8 +2212,8 @@ Version: 206.0.0
 
 
         $('.share').ShareLink({
-            title: 'kroyandbikroy.com - Buy Sell Anything',
-            text: 'kroyandbikroy.com - Buy Sell Anything',
+            title: '@yield('title') - {{ config('app.name') }}',
+            text: '@yield('title') - {{ config('app.name') }}',
             url: 'http://kroyandbikroy.com',
             width: 640,
             height: 480

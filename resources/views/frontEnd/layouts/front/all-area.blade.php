@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <title>All of Bangladesh</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
@@ -269,7 +270,8 @@
                                                         <li>
                                                             <a class="dropdown-item"
                                                                 href="{{ url(app()->getLocale() . '/all-ads?thana=' . $subcity->id) }}">
-                                                                {{ $subcity->{app()->getLocale() . '_name'} }} &raquo;
+                                                                {{ $subcity->{app()->getLocale() . '_name'} }}
+                                                                &raquo;
                                                             </a>
                                                             <ul class="dropdown-menu dropdown-submenu">
                                                                 <li>
@@ -350,3 +352,129 @@
 </body>
 
 </html>
+
+{{-- <div class="mobile">
+    <!DOCTYPE HTML>
+    <html lang="en-US">
+
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Banca - Banking & Business Loan Bootstrap-5 HTML Template</title>
+        <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+
+        <!-- CSS here -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('mobile/css/bootstrap.min.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('mobile/css/elegant-icons.min.css') }}"
+            media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('mobile/css/all.min.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('mobile/css/animate.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('mobile/css/slick.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('mobile/css/slick-theme.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('mobile/css/nice-select.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('mobile/css/animate.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('mobile/css/jquery.fancybox.min.css') }}"
+            media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('mobile/css/nouislider.min.css') }}"
+            media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('mobile/css/default.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('mobile/css/style.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('mobile/css/responsive.css') }}" media="all" />
+    </head>
+
+    <body data-spy="scroll" data-offset="70">
+        <!-- Header -->
+        <header class="header" style="background-color: black;">
+            <div class="header-menu header-menu-4" id="sticky">
+                <nav class="navbar navbar-expand-lg ">
+                    <div class="container">
+                        <a class="navbar-brand sticky_logo" href="index.html">
+                            <img class="main" src="img/logo/Logo.png" srcset="img/logo/Logo@2x.png 2x"
+                                alt="logo">
+                            <img class="sticky" src="img/logo/Logo-2.png" srcset="img/logo/Logo-2@2x.png 2x"
+                                alt="logo">
+                        </a>
+                        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="menu_toggle">
+                                <span class="hamburger">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </span>
+                                <span class="hamburger-cross">
+                                    <span></span>
+                                    <span></span>
+                                </span>
+                            </span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav menu ms-auto">
+                                <li class="nav-item dropdown submenu">
+                                    <a class="nav-link dropdown-toggle" href="loan.html" role="button"
+                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Loan
+                                    </a>
+                                    <i class="arrow_carrot-down_alt2 mobile_dropdown_icon" aria-hidden="false"
+                                        data-bs-toggle="dropdown"></i>
+
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item"><a class="nav-link" href="loan.html">Get loan</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#" role="button"
+                                                data-bs-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">Loan
+                                                Application</a>
+                                            <i class="arrow_carrot-down_alt2 mobile_dropdown_icon" aria-hidden="false"
+                                                data-bs-toggle="dropdown"></i>
+
+                                            <ul class="dropdown-menu">
+                                                <li class="nav-item"><a class="nav-link"
+                                                        href="loan-details.html">Step
+                                                        01</a></li>
+                                                <li class="nav-item"><a class="nav-link"
+                                                        href="personal-details.html">Step
+                                                        02</a></li>
+                                                <li class="nav-item"><a class="nav-link"
+                                                        href="document-upload.html">Step
+                                                        03</a></li>
+
+                                            </ul>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- Header end-->
+
+
+        <!-- Back to top button -->
+        <a id="back-to-top" title="Back to Top"></a>
+
+        <!-- JS here -->
+        <script type="text/javascript" src="{{ asset('mobile/js/jquery-3.6.0.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('mobile/js/preloader.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('mobile/js/bootstrap.bundle.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('mobile/js/jquery.smoothscroll.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('mobile/js/jquery.nice-select.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('mobile/js/jquery.fancybox.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('mobile/js/slick.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('mobile/js/nouislider.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('mobile/js/wNumb.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('mobile/js/parallax.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('mobile/js/jquery.parallax-scroll.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('mobile/js/wow.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('mobile/js/custom.js') }}"></script>
+    </body>
+
+
+    </html>
+</div> --}}

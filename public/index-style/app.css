@@ -21235,8 +21235,9 @@ fieldset:disabled .btn {
     border: 1px solid transparent;
     border-radius: .25rem;
     transition: box-shadow .15s ease-in-out;
-    margin-left: 143px;
+    margin-left: 305px;
     margin-top: 18px;
+    margin-bottom: 18px;
 }
 
 @media (prefers-reduced-motion:reduce) {
@@ -40118,7 +40119,7 @@ button.btn-search {
 
 @media (max-width:767px) {
     .navbar-brand.logo.logo-title {
-        padding-top: 20px
+        padding-top: 43px
     }
 }
 

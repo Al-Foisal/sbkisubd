@@ -87,17 +87,17 @@ class FrontEndController extends Controller {
 
     public function index() {
         $data               = [];
-        $data['nilam']      = Nilam::where('adsduration', '>=', today())->whereNotNull('package_id')->with('images')->orderBy('id', 'desc')->get();
-        $data['member_ads'] = Advertisment::where('adsduration', '>=', today())->whereNotNull('package_id')->where('status', 1)->where('request', 1)->with('images')->orderBy('id', 'desc')->get();
+        $data['nilam']      = Nilam::where('adsduration', '>=', today())->whereNotNull('package_id')->with('images')->orderBy('id', 'desc')->limit(12)->get();
+        $data['member_ads'] = Advertisment::where('adsduration', '>=', today())->whereNotNull('package_id')->where('status', 1)->where('request', 1)->with('images')->orderBy('id', 'desc')->limit(12)->get();
         $data['categories'] = Category::with(['ads' => function ($query) {
-            return $query->where('status', 1)->where('request', 1)->where('adsduration', '>=', today())->get();
+            return $query->where('status', 1)->where('request', 1)->where('adsduration', '>=', today())->limit(12)->get();
         },
         ])->get();
         $data['front_category'] = Category::where('on_front', 1)->with(['ads' => function ($query) {
-            return $query->where('status', 1)->where('request', 1)->where('adsduration', '>=', today())->get();
+            return $query->where('status', 1)->where('request', 1)->where('adsduration', '>=', today())->limit(12)->get();
         },
         ])->get();
-        $data['new_ads']   = Advertisment::where('adsduration', '>=', today())->where('status', 1)->where('request', 1)->orderBy('id', 'desc')->get();
+        $data['new_ads']   = Advertisment::where('adsduration', '>=', today())->where('status', 1)->where('request', 1)->orderBy('id', 'desc')->limit(12)->get();
         $data['total_ads'] = Advertisment::where('adsduration', '>=', today())->where('status', 1)->where('request', 1)->count();
         $data['customer']  = Customer::count();
 
@@ -666,6 +666,19 @@ class FrontEndController extends Controller {
             ->paginate(28);
 
         return view('frontEnd.layouts.front.search', $data);
+
+    }
+
+    public function nilamsearch(Request $request) {
+        $search                = $request->input('search');
+        $data                  = [];
+        $data['advertisments'] = Nilam::query()
+            ->where('title', 'LIKE', "%{$search}%")
+            ->orWhere('description', 'LIKE', "%{$search}%")
+            ->where('adsduration', '>=', today())
+            ->paginate(28);
+
+        return view('frontEnd.layouts.front.nilamsearch', $data);
 
     }
 
