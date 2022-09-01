@@ -82,6 +82,7 @@ return array(
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\Review' => $baseDir . '/app/Review.php',
     'App\\Role' => $baseDir . '/app/Role.php',
+    'App\\Socialmedia' => $baseDir . '/app/Socialmedia.php',
     'App\\Subcategory' => $baseDir . '/app/Subcategory.php',
     'App\\SubscriptionPackage' => $baseDir . '/app/SubscriptionPackage.php',
     'App\\Thana' => $baseDir . '/app/Thana.php',

@@ -124,7 +124,7 @@
                                     <!-- col end -->
                                     <div class="col-lg-4 col-md-6 col-sm-12">
                                         <div class="form-group">
-                                            <label for="thana_id">Thana <span>*</span></label>
+                                            <label for="thana_id">Upazila <span>*</span></label>
                                             <div class="form-group">
                                                 <select class="form-control" name="thana_id" id="thana"
                                                     required="required">
@@ -177,6 +177,127 @@
                                         <!-- form group -->
                                     </div>
                                     <!-- col end -->
+                                    <hr>
+
+                                    <h5>Division subcity area (optional)</h5>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="division_subcity_id">Divistion Subcity(optional)</label>
+                                            <select
+                                                class="form-control{{ $errors->has('division_subcity_id') ? ' is-invalid' : '' }}"
+                                                name="division_subcity_id" id="division_subcity">
+                                                <option value="">Division Subcity</option>
+
+                                                @if ($errors->has('division_subcity_id'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('division_subcity_id') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </select>
+                                        </div>
+                                        <!-- form group -->
+                                    </div>
+                                    <!-- col end -->
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="division_childcity_id">Division Childcity(optional)</label>
+                                            <div class="form-group">
+                                                <select class="form-control" name="division_childcity_id" id="division_childcity"
+                                                    required="required">
+                                                    <option value="">Division Childcity</option>
+                                                </select>
+                                                @if ($errors->has('division_childcity_id'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('division_childcity_id') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
+                                            <!--form-group end-->
+                                        </div>
+                                        <!-- form group -->
+                                    </div>
+
+                                    <hr>
+
+
+                                    <h5>District subcity area (optional)</h5>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="district_subcity_id">District Subcity(optional)</label>
+                                            <select
+                                                class="form-control{{ $errors->has('district_subcity_id') ? ' is-invalid' : '' }}"
+                                                name="district_subcity_id" id="district_subcity">
+                                                <option value="">District Subcity</option>
+
+                                                @if ($errors->has('district_subcity_id'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('district_subcity_id') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </select>
+                                        </div>
+                                        <!-- form group -->
+                                    </div>
+                                    <!-- col end -->
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="district_childcity_id">District Childcity(optional)</label>
+                                            <div class="form-group">
+                                                <select class="form-control" name="district_childcity_id" id="district_childcity"
+                                                    required="required">
+                                                    <option value="">District Childcity</option>
+                                                </select>
+                                                @if ($errors->has('district_childcity_id'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('district_childcity_id') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
+                                            <!--form-group end-->
+                                        </div>
+                                        <!-- form group -->
+                                    </div>
+
+                                    <hr>
+                                    <h5>Upazila subcity area (optional)</h5>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="thana_subcity_id">Upazila Subcity(optional)</label>
+                                            <select
+                                                class="form-control{{ $errors->has('thana_subcity_id') ? ' is-invalid' : '' }}"
+                                                name="thana_subcity_id" id="thana_subcity">
+                                                <option value="">Upazila Subcity</option>
+
+                                                @if ($errors->has('thana_subcity_id'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('thana_subcity_id') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </select>
+                                        </div>
+                                        <!-- form group -->
+                                    </div>
+                                    <!-- col end -->
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="thana_childcity_id">Upazila Childcity(optional)</label>
+                                            <div class="form-group">
+                                                <select class="form-control" name="thana_childcity_id" id="thana_childcity"
+                                                    required="required">
+                                                    <option value="">Upazila Childcity</option>
+                                                </select>
+                                                @if ($errors->has('thana_childcity_id'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('thana_childcity_id') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
+                                            <!--form-group end-->
+                                        </div>
+                                        <!-- form group -->
+                                    </div>
+
+                                    <hr>
                                     <div class="col-lg-6 col-md-6 col-sm-12">
                                         <div class="form-group">
                                             <label for="version">Condition <span>*</span></label>

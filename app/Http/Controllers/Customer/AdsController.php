@@ -68,6 +68,7 @@ class AdsController extends Controller {
     }
 
     public function postads() {
+
         if ($this->validCustomer()) {
             $sp       = SubscriptionPackage::where('customer_id', Session::get('customerId'))->where('available', '!=', 0)->where('validity', '>=', today())->pluck('package_id')->toArray();
             $packages = Package::whereIn('id', $sp)->get();
@@ -114,30 +115,36 @@ class AdsController extends Controller {
 
         }
 
-        $store_data                   = new Advertisment();
-        $store_data->title            = $request->title;
-        $store_data->slug             = strtolower(preg_replace('/\s+/u', '-', trim($request->title)));
-        $store_data->package_id       = $request->package_id;
-        $store_data->category_id      = $request->category;
-        $store_data->subcategory_id   = $request->subcategory;
-        $store_data->childcategory_id = $request->childcategory;
-        $store_data->division_id      = $request->division_id;
-        $store_data->dist_id          = $request->dist_id;
-        $store_data->thana_id         = $request->thana_id;
-        $store_data->union_id         = $request->union_id;
-        $store_data->price_ng         = $request->price_ng;
-        $store_data->village_id       = $request->village_id;
-        $store_data->phone            = $request->phone;
-        $store_data->email            = $request->email;
-        $store_data->version          = $request->version;
-        $store_data->brand            = $request->brand;
-        $store_data->price            = $request->price;
-        $store_data->full_address     = $request->full_address;
-        $store_data->adsduration      = $sub->validity ?? today();
-        $store_data->status           = 0;
-        $store_data->request          = 1;
-        $store_data->description      = $request->description;
-        $store_data->customer_id      = Session::get('customerId');
+        $store_data                        = new Advertisment();
+        $store_data->title                 = $request->title;
+        $store_data->slug                  = strtolower(preg_replace('/\s+/u', '-', trim($request->title)));
+        $store_data->package_id            = $request->package_id;
+        $store_data->category_id           = $request->category;
+        $store_data->subcategory_id        = $request->subcategory;
+        $store_data->childcategory_id      = $request->childcategory;
+        $store_data->division_id           = $request->division_id;
+        $store_data->dist_id               = $request->dist_id;
+        $store_data->thana_id              = $request->thana_id;
+        $store_data->union_id              = $request->union_id;
+        $store_data->price_ng              = $request->price_ng;
+        $store_data->village_id            = $request->village_id;
+        $store_data->division_subcity_id   = $request->division_subcity_id;
+        $store_data->division_childcity_id = $request->division_childcity_id;
+        $store_data->district_subcity_id   = $request->district_subcity_id;
+        $store_data->district_childcity_id = $request->district_childcity_id;
+        $store_data->thana_subcity_id      = $request->thana_subcity_id;
+        $store_data->thana_childcity_id    = $request->thana_childcity_id;
+        $store_data->phone                 = $request->phone;
+        $store_data->email                 = $request->email;
+        $store_data->version               = $request->version;
+        $store_data->brand                 = $request->brand;
+        $store_data->price                 = $request->price;
+        $store_data->full_address          = $request->full_address;
+        $store_data->adsduration           = $sub->validity ?? today();
+        $store_data->status                = 0;
+        $store_data->request               = 1;
+        $store_data->description           = $request->description;
+        $store_data->customer_id           = Session::get('customerId');
         $store_data->save();
 
         $ads_id = $store_data->id;
@@ -229,9 +236,9 @@ class AdsController extends Controller {
             $divisions   = Division::where('status', '=', '1')->get();
             $division_id = Advertisment::find($id)->division_id;
             $district    = District::where('division_id', '=', $division_id)->get();
-            $additional = AdditionalDetail::where('advertisment_id',$id)->get();
+            $additional  = AdditionalDetail::where('advertisment_id', $id)->get();
 
-            return view('frontEnd.customer.editads', compact('edit_data', 'category', 'subcategory', 'divisions', 'district', 'packages','additional'));
+            return view('frontEnd.customer.editads', compact('edit_data', 'category', 'subcategory', 'divisions', 'district', 'packages', 'additional'));
         } else {
             return redirect()->back();
         }
@@ -259,39 +266,43 @@ class AdsController extends Controller {
             $update_data->adsduration = $sub->validity;
         }
 
-        $update_data->title            = $request->title;
-        $update_data->slug             = strtolower(preg_replace('/\s+/u', '-', trim($request->title)));
-        $update_data->category_id      = $request->category;
-        $update_data->subcategory_id   = $request->subcategory;
-        $update_data->childcategory_id = $request->childcategory;
-        $update_data->division_id      = $request->division_id;
-        $update_data->dist_id          = $request->dist_id;
-        $update_data->thana_id         = $request->thana_id;
-        $update_data->union_id         = $request->union_id;
-        $update_data->price_ng         = $request->price_ng;
-        $update_data->village_id       = $request->village_id;
-        $update_data->phone            = $request->phone;
-        $update_data->email            = $request->email;
-        $update_data->version          = $request->version;
-        $update_data->brand            = $request->brand;
-        $update_data->price            = $request->price;
-        $update_data->full_address     = $request->full_address;
-        $update_data->status           = 1;
-        $update_data->request          = 0;
-        $update_data->description      = $request->description;
-        $update_data->customer_id      = $request->customer;
-        $update_data->package_id       = $request->package_id;
+        $update_data->title                 = $request->title;
+        $update_data->slug                  = strtolower(preg_replace('/\s+/u', '-', trim($request->title)));
+        $update_data->category_id           = $request->category;
+        $update_data->subcategory_id        = $request->subcategory;
+        $update_data->childcategory_id      = $request->childcategory;
+        $update_data->division_id           = $request->division_id;
+        $update_data->dist_id               = $request->dist_id;
+        $update_data->thana_id              = $request->thana_id;
+        $update_data->union_id              = $request->union_id;
+        $update_data->price_ng              = $request->price_ng;
+        $update_data->village_id            = $request->village_id;
+        $update_data->division_subcity_id   = $request->division_subcity_id;
+        $update_data->division_childcity_id = $request->division_childcity_id;
+        $update_data->district_subcity_id   = $request->district_subcity_id;
+        $update_data->district_childcity_id = $request->district_childcity_id;
+        $update_data->thana_subcity_id      = $request->thana_subcity_id;
+        $update_data->thana_childcity_id    = $request->thana_childcity_id;
+        $update_data->phone                 = $request->phone;
+        $update_data->email                 = $request->email;
+        $update_data->version               = $request->version;
+        $update_data->brand                 = $request->brand;
+        $update_data->price                 = $request->price;
+        $update_data->full_address          = $request->full_address;
+        $update_data->status                = 1;
+        $update_data->request               = 0;
+        $update_data->description           = $request->description;
+        $update_data->customer_id           = $request->customer;
+        $update_data->package_id            = $request->package_id;
         $update_data->save();
 
-        $additional = AdditionalDetail::where('advertisment_id',$update_data->id)->get();
+        $additional = AdditionalDetail::where('advertisment_id', $update_data->id)->get();
 
-        foreach($additional as $a){
+        foreach ($additional as $a) {
             $a->delete();
         }
 
         foreach ($request->a_title as $key => $value) {
-
-
 
             if ($value == null || $request->a_detail[$key] == null) {
                 continue;

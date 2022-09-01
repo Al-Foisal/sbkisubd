@@ -2035,45 +2035,65 @@ Version: 206.0.0
                                 <h4 class="footer-title ">{{__('Follow us on')}}</h4>
                                 <ul
                                     class="list-unstyled list-inline mx-0 footer-nav social-list-footer social-list-color footer-nav-inline">
+                                    @if($social->facebook)
                                     <li class="solcial_icon">
                                         <a class="icon-color fb" data-bs-placement="top"
                                             data-bs-toggle="tooltip"
-                                            href="http://facebook.com/kroyandbikroyltd" title=""
+                                            href="{{ $social->facebook }}" title=""
                                             data-bs-original-title="Facebook">
                                             <i class="fab fa-facebook"></i>
                                         </a>
                                     </li>
+                                    @endif
+                                    @if($social->twitter)
                                     <li class="solcial_icon">
                                         <a class="icon-color tw" data-bs-placement="top"
-                                            data-bs-toggle="tooltip" href="https://twitter.com/sbkichu"
+                                            data-bs-toggle="tooltip" href="{{ $social->twitter }}"
                                             title="" data-bs-original-title="Twitter">
                                             <i class="fab fa-twitter"></i>
                                         </a>
                                     </li>
+                                    @endif
+                                    @if($social->instagram)
                                     <li class="solcial_icon">
                                         <a class="icon-color pin" data-bs-placement="top"
                                             data-bs-toggle="tooltip"
-                                            href="https://www.instagram.com/sbkichultd/" title=""
+                                            href="{{ $social->instagram }}" title=""
                                             data-bs-original-title="Instagram">
                                             <i class="fab fa-instagram"></i>
                                         </a>
                                     </li>
+                                    @endif
+                                    @if($social->linkedin)
                                     <li class="solcial_icon">
                                         <a class="icon-color lin" data-bs-placement="top"
                                             data-bs-toggle="tooltip"
-                                            href="https://www.linkedin.com/in/sbkichu-ltd-a511a0242/"
+                                            href="{{ $social->linkedin }}"
                                             title="" data-bs-original-title="LinkedIn">
                                             <i class="fab fa-linkedin"></i>
                                         </a>
                                     </li>
+                                    @endif
+                                    @if($social->pinterest)
                                     <li class="solcial_icon">
                                         <a class="icon-color pin" data-bs-placement="top"
                                             data-bs-toggle="tooltip"
-                                            href="https://www.pinterest.com/kroyandbikroy" title=""
+                                            href="{{ $social->pinterest }}" title=""
                                             data-bs-original-title="Pinterest">
                                             <i class="fab fa-pinterest-p"></i>
                                         </a>
                                     </li>
+                                    @endif
+                                    @if($social->youtube)
+                                    <li class="solcial_icon">
+                                        <a class="icon-color tw" data-bs-placement="top"
+                                            data-bs-toggle="tooltip"
+                                            href="{{ $social->youtube }}" title=""
+                                            data-bs-original-title="Pinterest">
+                                            <i class="fab fa-youtube"></i>
+                                        </a>
+                                    </li>
+                                    @endif
                                 </ul>
                             </div>
                         </div>
@@ -2491,11 +2511,64 @@ Version: 206.0.0
                         }
                     }
                 });
+
+                $.ajax({
+                    type: "GET",
+                    url: "{{ url('division_subcity') }}?division_id=" + ajaxId,
+                    success: function(res) {
+                        if (res) {
+                            $("#division_subcity").empty();
+                            $("#division_subcity").append('<option>Division Subcity</option>');
+                            $.each(res, function(key, value) {
+                                $("#division_subcity").append('<option value="' + key + '">' + value +
+                                    '</option>');
+                            });
+
+                        } else {
+                            $("#division_subcity").empty();
+                            $("#division_subcity").empty().append('<option>Division Subcity</option>');;
+                        }
+                    }
+                });
             } else {
                 $("#district").empty();
-                $("#district").append('<option>District</option>');;
+                $("#district").append('<option>District</option>');
+                $("#division_subcity").empty();
+                $("#division_subcity").append('<option>Division Subcity</option>');
             }
         });
+
+        //division childcity
+        $('#division_subcity').change(function() {
+            // alert('data');
+            var ajaxId = $(this).val();
+            if (ajaxId) {
+                // alert('in ajaxId');
+                $.ajax({
+                    type: "GET",
+                    url: "{{ url('division_childcity') }}?division_subcity_id=" + ajaxId,
+                    success: function(res) {
+                        if (res) {
+                            $("#division_childcity").empty();
+                            $("#division_childcity").append('<option>Division Childcity</option>');
+                            $.each(res, function(key, value) {
+                                $("#division_childcity").append('<option value="' + key + '">' + value +
+                                    '</option>');
+                            });
+
+                        } else {
+                            $("#division_childcity").empty();
+                            $("#division_childcity").empty().append('<option>Division Childcity</option>');;
+                        }
+                    }
+                });
+            } else {
+                $("#division_childcity").empty();
+                $("#division_childcity").append('<option>Division Childcity</option>');;
+            }
+        });
+
+
         // Thana Find
         $('#district').change(function() {
             // alert('data');
@@ -2520,9 +2593,60 @@ Version: 206.0.0
                         }
                     }
                 });
+
+                $.ajax({
+                    type: "GET",
+                    url: "{{ url('district_subcity') }}?district_id=" + ajaxId,
+                    success: function(res) {
+                        if (res) {
+                            $("#district_subcity").empty();
+                            $("#district_subcity").append('<option>Select</option>');
+                            $.each(res, function(key, value) {
+                                $("#district_subcity").append('<option value="' + key + '">' + value +
+                                    '</option>');
+                            });
+
+                        } else {
+                            $("#district_subcity").empty();
+                            $("#district_subcity").empty().append('<option>Select</option>');;
+                        }
+                    }
+                });
             } else {
                 $("#thana").empty();
-                $("#thana").append('<option>Select</option>');;
+                $("#thana").append('<option>Select</option>');
+                $("#district_subcity").empty();
+                $("#district_subcity").append('<option>Select</option>');
+            }
+        });
+
+        //district childcity
+        $('#district_subcity').change(function() {
+            // alert('data');
+            var ajaxId = $(this).val();
+            if (ajaxId) {
+                // alert('in ajaxId');
+                $.ajax({
+                    type: "GET",
+                    url: "{{ url('district_childcity') }}?district_subcity_id=" + ajaxId,
+                    success: function(res) {
+                        if (res) {
+                            $("#district_childcity").empty();
+                            $("#district_childcity").append('<option>district Childcity</option>');
+                            $.each(res, function(key, value) {
+                                $("#district_childcity").append('<option value="' + key + '">' + value +
+                                    '</option>');
+                            });
+
+                        } else {
+                            $("#district_childcity").empty();
+                            $("#district_childcity").empty().append('<option>district Childcity</option>');;
+                        }
+                    }
+                });
+            } else {
+                $("#district_childcity").empty();
+                $("#district_childcity").append('<option>district Childcity</option>');;
             }
         });
         // Union Find
@@ -2549,9 +2673,61 @@ Version: 206.0.0
                         }
                     }
                 });
+
+                $.ajax({
+                    type: "GET",
+                    url: "{{ url('thana_subcity') }}?thana_id=" + ajaxId,
+                    success: function(res) {
+                        if (res) {
+                            $("#thana_subcity").empty();
+                            $("#thana_subcity").append('<option>Select</option>');
+                            $.each(res, function(key, value) {
+                                $("#thana_subcity").append('<option value="' + key + '">' + value +
+                                    '</option>');
+                            });
+
+                        } else {
+                            $("#thana_subcity").empty();
+                            $("#thana_subcity").empty().append('<option>Select</option>');;
+                        }
+                    }
+                });
             } else {
+                $("#thana_subcity").empty();
+                $("#thana_subcity").append('<option>Select</option>');
+                
                 $("#union").empty();
-                $("#union").append('<option>Select</option>');;
+                $("#union").append('<option>Select</option>');
+            }
+        });
+
+        //thana childcity
+        $('#thana_subcity').change(function() {
+            // alert('data');
+            var ajaxId = $(this).val();
+            if (ajaxId) {
+                // alert('in ajaxId');
+                $.ajax({
+                    type: "GET",
+                    url: "{{ url('thana_childcity') }}?thana_subcity_id=" + ajaxId,
+                    success: function(res) {
+                        if (res) {
+                            $("#thana_childcity").empty();
+                            $("#thana_childcity").append('<option>thana Childcity</option>');
+                            $.each(res, function(key, value) {
+                                $("#thana_childcity").append('<option value="' + key + '">' + value +
+                                    '</option>');
+                            });
+
+                        } else {
+                            $("#thana_childcity").empty();
+                            $("#thana_childcity").empty().append('<option>thana Childcity</option>');;
+                        }
+                    }
+                });
+            } else {
+                $("#thana_childcity").empty();
+                $("#thana_childcity").append('<option>thana Childcity</option>');;
             }
         });
 

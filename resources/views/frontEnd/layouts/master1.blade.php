@@ -149,7 +149,6 @@
     </script>
     <script src="{{ asset('/') }}index-style/pace.min.js.download"></script>
     <script src="{{ asset('/') }}index-style/modernizr-custom.js.download"></script>
-    <link rel="stylesheet" href="{{ asset('backEnd/') }}/dist/css/toastr.min.css">
     
     <link rel="dns-prefetch" href="http://fonts.googleapis.com/">
     <link rel="dns-prefetch" href="http://fonts.gstatic.com/">
@@ -1734,6 +1733,8 @@
             margin-top: 40px;
         }
     </style>
+    
+    <link rel="stylesheet" href="{{ asset('backEnd/') }}/dist/css/toastr.min.css">
 </head>
 
 <body class="skin  pace-done">
@@ -1989,45 +1990,65 @@
                                 <h4 class="footer-title ">{{__('Follow us on')}}</h4>
                                 <ul
                                     class="list-unstyled list-inline mx-0 footer-nav social-list-footer social-list-color footer-nav-inline">
-                                    <li>
+                                    @if($social->facebook)
+                                    <li class="solcial_icon">
                                         <a class="icon-color fb" data-bs-placement="top"
                                             data-bs-toggle="tooltip"
-                                            href="http://facebook.com/kroyandbikroyltd" title=""
+                                            href="{{ $social->facebook }}" title=""
                                             data-bs-original-title="Facebook">
                                             <i class="fab fa-facebook"></i>
                                         </a>
                                     </li>
-                                    <li>
+                                    @endif
+                                    @if($social->twitter)
+                                    <li class="solcial_icon">
                                         <a class="icon-color tw" data-bs-placement="top"
-                                            data-bs-toggle="tooltip" href="https://twitter.com/sbkichu"
+                                            data-bs-toggle="tooltip" href="{{ $social->twitter }}"
                                             title="" data-bs-original-title="Twitter">
                                             <i class="fab fa-twitter"></i>
                                         </a>
                                     </li>
-                                    <li>
+                                    @endif
+                                    @if($social->instagram)
+                                    <li class="solcial_icon">
                                         <a class="icon-color pin" data-bs-placement="top"
                                             data-bs-toggle="tooltip"
-                                            href="https://www.instagram.com/sbkichultd/" title=""
+                                            href="{{ $social->instagram }}" title=""
                                             data-bs-original-title="Instagram">
                                             <i class="fab fa-instagram"></i>
                                         </a>
                                     </li>
-                                    <li>
+                                    @endif
+                                    @if($social->linkedin)
+                                    <li class="solcial_icon">
                                         <a class="icon-color lin" data-bs-placement="top"
                                             data-bs-toggle="tooltip"
-                                            href="https://www.linkedin.com/in/sbkichu-ltd-a511a0242/"
+                                            href="{{ $social->linkedin }}"
                                             title="" data-bs-original-title="LinkedIn">
                                             <i class="fab fa-linkedin"></i>
                                         </a>
                                     </li>
-                                    <li>
+                                    @endif
+                                    @if($social->pinterest)
+                                    <li class="solcial_icon">
                                         <a class="icon-color pin" data-bs-placement="top"
                                             data-bs-toggle="tooltip"
-                                            href="https://www.pinterest.com/kroyandbikroy" title=""
+                                            href="{{ $social->pinterest }}" title=""
                                             data-bs-original-title="Pinterest">
                                             <i class="fab fa-pinterest-p"></i>
                                         </a>
                                     </li>
+                                    @endif
+                                    @if($social->youtube)
+                                    <li class="solcial_icon">
+                                        <a class="icon-color tw" data-bs-placement="top"
+                                            data-bs-toggle="tooltip"
+                                            href="{{ $social->youtube }}" title=""
+                                            data-bs-original-title="Pinterest">
+                                            <i class="fab fa-youtube"></i>
+                                        </a>
+                                    </li>
+                                    @endif
                                 </ul>
                             </div>
                         </div>
@@ -2289,10 +2310,10 @@
         autoplayHoverPause: true
     });
 </script>
-<script src="{{ asset('backEnd/') }}/dist/js/toastr.min.js"></script>
- <script src="{{ asset('frontEnd/') }}/js/bootstrap.min.js"></script>
+<script src="{{ asset('frontEnd/') }}/js/bootstrap.min.js"></script>
 <script src="{{ asset('/') }}index-style/jquery.min.js"></script>
 <script src="{{ asset('/') }}index-style/owl.carousel.min.js"></script>
+<script src="{{ asset('backEnd/') }}/dist/js/toastr.min.js"></script>
 </body>
 
-</html>
+</html>														

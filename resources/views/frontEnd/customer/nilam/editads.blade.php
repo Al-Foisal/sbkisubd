@@ -362,14 +362,14 @@
                                                             class="fa fa-plus"></i></button>
                                                 </div>
                                             </div>
-                                            @foreach ($adsimage as $image)
-                                                @if ($edit_data->id == $image->ads_id)
+                                            @foreach ($nilamadsimage as $image)
+                                                @if ($edit_data->id == $image->nilam_id)
                                                     <div class="edit-img">
                                                         <input type="hidden" class="form-control"
                                                             value="{{ $image->id }}" name="hidden_img">
                                                         <img src="{{ asset($image->image) }}" class="editimage"
                                                             alt="">
-                                                        <a href="{{ url('customer/ads/image/delete/' . $image->id) }}"
+                                                        <a href="{{ url('customer/1/nilam-image/delete/' . $image->id) }}"
                                                             class="btn btn-danger">Delete</a>
                                                     </div>
                                                 @endif

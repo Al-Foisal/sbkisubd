@@ -517,6 +517,7 @@ class ComposerStaticInit89db5f4f3e1ed8496b5fe196fb0c0c3a
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Review' => __DIR__ . '/../..' . '/app/Review.php',
         'App\\Role' => __DIR__ . '/../..' . '/app/Role.php',
+        'App\\Socialmedia' => __DIR__ . '/../..' . '/app/Socialmedia.php',
         'App\\Subcategory' => __DIR__ . '/../..' . '/app/Subcategory.php',
         'App\\SubscriptionPackage' => __DIR__ . '/../..' . '/app/SubscriptionPackage.php',
         'App\\Thana' => __DIR__ . '/../..' . '/app/Thana.php',

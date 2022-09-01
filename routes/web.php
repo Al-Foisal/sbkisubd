@@ -39,6 +39,14 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::get('/search-union', 'FrontEndController@searchunion');
     Route::get('/search-village', 'FrontEndController@searchvillage');
     Route::post('post-review', 'FrontEndController@postreview');
+
+    //city
+    Route::get('/division_subcity','FrontendController@divisionsubcity');
+    Route::get('/division_childcity','FrontendController@divisionchildcity');
+    Route::get('/district_subcity','FrontendController@districtsubcity');
+    Route::get('/district_childcity','FrontendController@districtchildcity');
+    Route::get('/thana_subcity','FrontendController@thanasubcity');
+    Route::get('/thana_childcity','FrontendController@thanachildcity');
 });
 Route::post('message/visitor/to/publisher', 'EmailController@publisherEmail');
 Route::post('visitor/support/', 'EmailController@visitorsupport');
@@ -100,6 +108,7 @@ Route::group(['namespace' => 'Customer', 'prefix' => 'customer'], function () {
     Route::get('/1/nilam', 'NilamController@showNilamAds');
     Route::get('/1/nilam-details/{id}', 'NilamController@showNilamAdsDetails');
     Route::post('/1/nilam-details/bid', 'NilamController@bid');
+    Route::get('/1/nilam-image/delete/{id}', 'NilamController@nilamimagedel');
 
 });
 
@@ -180,6 +189,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'namespace' => 'Admin', 'mi
 });
 
 Route::group(['as' => 'editor.', 'prefix' => 'editor', 'namespace' => 'Editor', 'middleware' => ['auth', 'editor']], function () {
+    Route::resource('/social_links','SocialmediaController');
     // editor dashboard
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 

@@ -439,7 +439,7 @@ class NilamController extends Controller {
                 $img->insert($watermark, 'bottom-right', 20, 20);
                 $img->save($imageUrl);
 
-                $newimage           = new Adsimage();
+                $newimage           = new Nilamimages();
                 $newimage->nilam_id = $nilam_id;
                 $newimage->image    = $imageUrl;
                 $newimage->save();
@@ -459,10 +459,10 @@ class NilamController extends Controller {
         return redirect('customer/0/nilam/control-panel/manage-my-ads');
     }
 
-    public function adsimagedel($id) {
-        $delete_img = Adsimage::find($id);
+    public function nilamimagedel($id) {
+        $delete_img = Nilamimages::find($id);
         $delete_img->delete();
-        Toastr::success('message', 'advertisments image  delete successfully!');
+        Toastr::success('message', 'Image  delete successfully!');
 
         return redirect()->back();
     }

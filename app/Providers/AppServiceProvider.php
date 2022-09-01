@@ -9,6 +9,7 @@ use App\District;
 use App\Division;
 use App\Logo;
 use App\Pagecategory;
+use App\Socialmedia;
 use App\Subcategory;
 use App\Thana;
 use App\Union;
@@ -33,6 +34,8 @@ class AppServiceProvider extends ServiceProvider {
      * @return void
      */
     public function boot() {
+        $social = Socialmedia::find(1);
+        view()->share(['social' => $social]);
         $locale = session('language') ?? app()->getLocale();
         Schema::defaultStringLength(191);
         $categories = Category::where('status', 1)->get();
@@ -51,8 +54,8 @@ class AppServiceProvider extends ServiceProvider {
         $dlogo = Logo::where(['status' => 1, 'type' => 2])->limit(1, 0)->get();
         view()->share('dlogo', $dlogo);
         // dlogo
-        $divisions = Division::where('status', 1)->with(['ads'=>function($query){
-            return $query->where('status',1)->where('request',1)->where('adsduration','>=', today())->get();
+        $divisions = Division::where('status', 1)->with(['ads' => function ($query) {
+            return $query->where('status', 1)->where('request', 1)->where('adsduration', '>=', today())->get();
         }])->get();
         view()->share('divisions', $divisions);
         // Division
@@ -79,6 +82,13 @@ class AppServiceProvider extends ServiceProvider {
             ->orderBy('adsimages.id', 'DESC')
             ->get();
         view()->share('adsimage', $adsimage);
+
+        $nilamadsimage = DB::table('nilamimages')
+            ->join('nilams', 'nilamimages.nilam_id', '=', 'nilams.id')
+            ->select('nilams.title', 'nilamimages.*')
+            ->orderBy('nilamimages.id', 'DESC')
+            ->get();
+        view()->share('nilamadsimage', $nilamadsimage);
 
         // adsimage
         $customerslist = Customer::get();

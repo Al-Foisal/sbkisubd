@@ -7,6 +7,11 @@
     <div class="row">
       <div class="col-lg-4 col-md-4 col-sm-0"></div>
       <div class="col-lg-4 col-md-4 col-sm-12">
+        @if(Session::has('message'))
+          <div class="alert alert-danger">
+            {{ session('message') }}
+          </div>
+        @endif
         <div class="commonpanelform">
           <h5 class="title"> {{__('Log In')}}</h5>
             <form action="{{url('/customer/login')}}" method="POST">
@@ -32,10 +37,10 @@
                 <div class="form-group">
                   <div class="stayandforgate d-flex justify-content-between">
                      <div class="ls-checkbox auth">
-                      <label class="cat-chechbox">
+                      {{-- <label class="cat-chechbox">
                         <input type="checkbox" value="1">
                         <span class="checkmark">{{__('remember me')}}</span>
-                      </label>
+                      </label> --}}
                      </div>
                      <div class="forgatepassowre">
                         <a href="{{url('customer/forget/password')}}">{{__('forgate passowrd')}}</a>

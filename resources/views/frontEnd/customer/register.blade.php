@@ -8,7 +8,7 @@
       <div class="col-lg-4 col-md-4 col-sm-0"></div>
       <div class="col-lg-4 col-md-4 col-sm-12">
         <div class="commonpanelform">
-          <h5 class="title">{{__('Log In')}}</h5>
+          <h5 class="title">{{__('Sign Up')}}</h5>
             <form action="{{url('customer/register')}}" method="POST">
             	@csrf
                 <div class="form-group">

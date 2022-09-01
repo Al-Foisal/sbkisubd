@@ -85,6 +85,54 @@ class FrontEndController extends Controller {
         return response()->json($union);
     }
 
+    public function divisionsubcity(Request $request) {
+        $division_subcity = DB::table("division_subcities")
+            ->where("division_id", $request->division_id)
+            ->pluck('en_name', 'id');
+
+        return response()->json($division_subcity);
+    }
+
+    public function divisionchildcity(Request $request) {
+        $division_childcity = DB::table("division_childcities")
+            ->where("division_subcity_id", $request->division_subcity_id)
+            ->pluck('en_name', 'id');
+
+        return response()->json($division_childcity);
+    }
+
+    public function districtsubcity(Request $request) {
+        $district_subcity = DB::table("district_subcities")
+            ->where("district_id", $request->district_id)
+            ->pluck('en_name', 'id');
+
+        return response()->json($district_subcity);
+    }
+
+    public function districtchildcity(Request $request) {
+        $district_childcity = DB::table("district_childcities")
+            ->where("district_subcity_id", $request->district_subcity_id)
+            ->pluck('en_name', 'id');
+
+        return response()->json($district_childcity);
+    }
+
+    public function thanasubcity(Request $request) {
+        $thana_subcity = DB::table("thana_subcities")
+            ->where("thana_id", $request->thana_id)
+            ->pluck('en_name', 'id');
+
+        return response()->json($thana_subcity);
+    }
+
+    public function thanachildcity(Request $request) {
+        $thana_childcity = DB::table("thana_childcities")
+            ->where("thana_subcity_id", $request->thana_subcity_id)
+            ->pluck('en_name', 'id');
+
+        return response()->json($thana_childcity);
+    }
+
     public function index() {
         $data               = [];
         $data['nilam']      = Nilam::where('adsduration', '>=', today())->whereNotNull('package_id')->with('images')->orderBy('id', 'desc')->limit(12)->get();

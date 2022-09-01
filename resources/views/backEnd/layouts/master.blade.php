@@ -773,15 +773,15 @@
                             <a href="#" class="nav-link">
                                 <i class="fas fa-comments"></i>
                                 <p>
-                                    Ad Report
+                                    Social Link
                                     <i class="right fa fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ url('/editor/ad/reports/') }}" class="nav-link">
+                                    <a href="{{ route('editor.social_links.index') }}" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>Ad Report List </p>
+                                        <p>Social Link List </p>
                                     </a>
                                 </li>
                             </ul>

@@ -11,6 +11,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use DB;
 use File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session as FacadesSession;
 use Mail;
 use Session;
 
@@ -106,27 +107,26 @@ class CustomerController extends Controller {
 // return $customerCheck;
         if ($customerCheck) {
             if ($customerCheck->status == 0) {
-                Toastr::error('message', 'Opps! your account has been suspends');
+                Session::flash('message','Opps! your account has been suspends');
 
                 return redirect()->back();
             } else {
                 if (password_verify($request->password, $customerCheck->password)) {
                     $customerId = $customerCheck->id;
                     Session::put('customerId', $customerId);
-                    Toastr::success('congratulation you login successfully', 'success!');
+                    Session::flash('message','congratulation you login successfully', 'success!');
 
                     return redirect('/customer/0/control-panel/dashboard');
 
                 } else {
-                    Toastr::error('message', 'Opps! your password wrong');
-
+                    Session::flash('message', 'Opps! your password wrong');
                     return redirect()->back();
                 }
 
             }
 
         } else {
-            Toastr::error('message', 'Sorry! You have no account');
+            Session::flash('message', 'Sorry! You have no account');
 
             return redirect()->back();
         }

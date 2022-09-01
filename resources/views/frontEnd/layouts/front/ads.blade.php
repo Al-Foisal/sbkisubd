@@ -125,17 +125,16 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <form id="search" action="{{ url(app()->getLocale() . '/search') }}"
-                            method="GET">
+                        <form id="search" action="{{ url(app()->getLocale() . '/search') }}" method="GET">
                             <div class="row search-row animated fadeInUp mb-3" style="max-width: 100%;">
 
                                 <div
                                     class="col-md-10 col-sm-12 search-col relative locationicon mb-1 mb-xxl-0 mb-xl-0 mb-lg-0 mb-md-0">
                                     <div class="search-col-inner" style="border-width: 2px;">
                                         <div class="search-col-input" style="margin-left: 10px;">
-                                            <input class="form-control"
-                                                id="locSearch" name="search" placeholder="What are you looking for?"
-                                                type="text" value="" style="border-radius:0px">
+                                            <input class="form-control" id="locSearch" name="search"
+                                                placeholder="What are you looking for?" type="text" value=""
+                                                style="border-radius:0px">
                                         </div>
                                     </div>
                                 </div>
@@ -369,25 +368,24 @@
                         <div class="menu-overly-mask"></div> --}}
 
 
-
                         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
                                 @foreach ($package_ads as $key => $pads)
                                     <li data-target="#carouselExampleIndicators" data-slide-to="{{ $key }}"
-                                        class="@if ($key == 0) active @endif"></li>
+                                        class="@if ($key == 0) {{ 'active' }} @endif"></li>
                                 @endforeach
                             </ol>
                             <div class="carousel-inner">
-                                @foreach ($package_ads as $key => $pads)
-                                    <a href="{{ url(app()->getLocale() . '/details/' . $pads->id) }}">
-                                        <div class="carousel-item @if ($key == 0) active @endif">
+                                @foreach ($package_ads as $k_ey => $pads)
+                                    <div class="carousel-item @if ($k_ey == 0) active @endif">
+                                        <a href="{{ url(app()->getLocale() . '/details/' . $pads->id) }}">
                                             <img class="d-block w-100" src="{{ asset($pads->images->first()->image) }}"
                                                 style="height:450px">
                                             <div class="carousel-caption d-none d-md-block">
                                                 <h5 style="color: white;font-weight:bold;">{{ $pads->title }}</h5>
                                             </div>
-                                        </div>
-                                    </a>
+                                        </a>
+                                    </div>
                                 @endforeach
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
@@ -520,7 +518,7 @@
 
                                                             </div> --}}
                                                             <span class="price">
-                                                               {{ $value->created_at->diffForHumans() }}
+                                                                {{ $value->created_at->diffForHumans() }}
                                                             </span>
                                                             <div>
                                                                 <span class="price">
