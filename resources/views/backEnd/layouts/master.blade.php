@@ -215,6 +215,12 @@
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
+                                        <a href="{{ url('/editor/ad/nilam/reports') }}" class="nav-link">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>Nilam Ads ({{ $nilamads }})</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
                                         <a href="{{ url('admin/show/ads-new/request') }}" class="nav-link">
                                             <i class="far fa-dot-circle nav-icon"></i>
                                             <p>New Ads ({{ $newadsrequest->count() }})</p>
@@ -762,12 +768,12 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="{{ url('/editor/ad/review') }}" class="nav-link">
                                 <i class="fas fa-pen"></i>
                                 <p>Reviews</p>
                             </a>
-                        </li>
+                        </li> --}}
                         <!-- nav item end -->
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">

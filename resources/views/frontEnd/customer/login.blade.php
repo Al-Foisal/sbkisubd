@@ -2,6 +2,7 @@
 
 @section('title','Sign In')
 @section('body')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 <section class="section-padding commonpanel  mt-5 mt-5">
   <div class="container-fluid">
     <div class="row">
@@ -26,7 +27,15 @@
                  </div>
                 <!-- form group -->
                 <div class="form-group">
-                  <input type="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Your Password" name="password"  value="{{old('password')}}" >
+                  <div class="d-flex justify-content-start">
+                    <input type="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Your Password" name="password"  value="{{old('password')}}" id="password">
+                  <i class="bi bi-eye-slash" id="togglePassword" style="margin-left: -30px;
+                  cursor: pointer;
+                  bottom: -36px;
+                  margin-bottom: 2px;
+                  padding: 0.5rem 0.75rem;"></i>
+                  </div>
+                  {{-- <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i> --}}
                    @if ($errors->has('password'))
                   <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('password') }}</strong>
@@ -61,4 +70,23 @@
     </div>
   </div>
 </section>
+<script>
+  const togglePassword = document.querySelector("#togglePassword");
+  const password = document.querySelector("#password");
+
+  togglePassword.addEventListener("click", function () {
+      // toggle the type attribute
+      const type = password.getAttribute("type") === "password" ? "text" : "password";
+      password.setAttribute("type", type);
+      
+      // toggle the icon
+      this.classList.toggle("bi-eye");
+  });
+
+  // prevent form submit
+  const form = document.querySelector("form");
+  form.addEventListener('submit', function (e) {
+      e.preventDefault();
+  });
+</script>
 @endsection

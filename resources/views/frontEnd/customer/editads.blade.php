@@ -139,11 +139,11 @@
                                     <!-- col end -->
                                     <div class="col-lg-4 col-md-6 col-sm-12">
                                         <div class="form-group">
-                                            <label for="thana_id">Thana <span>*</span></label>
+                                            <label for="thana_id">Upazila <span>*</span></label>
                                             <div class="form-group">
                                                 <select class="form-control" name="thana_id" id="thana"
                                                     required="required">
-                                                    <option value="">Thana</option>
+                                                    <option value="">Upazila</option>
                                                     @foreach ($thanas as $key => $value)
                                                         <option value="{{ $value->id }}">{{ $value->en_thana_name }}
                                                         </option>
@@ -205,6 +205,142 @@
                                         <!-- form group -->
                                     </div>
                                     <!-- col end -->
+
+                                    <hr>
+
+                                    <h5>Division subcity area (optional)</h5>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="division_subcity_id">Divistion Subcity(optional)</label>
+                                            <select
+                                                class="form-control{{ $errors->has('division_subcity_id') ? ' is-invalid' : '' }}"
+                                                name="division_subcity_id" id="division_subcity">
+                                                @foreach ($div_subcity as $sc)
+                                                    <option value="{{ $sc->id }}">{{ $sc->en_name }}</option>
+                                                @endforeach
+
+                                                @if ($errors->has('division_subcity_id'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('division_subcity_id') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </select>
+                                        </div>
+                                        <!-- form group -->
+                                    </div>
+                                    <!-- col end -->
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="division_childcity_id">Division Childcity(optional)</label>
+                                            <div class="form-group">
+                                                <select class="form-control" name="division_childcity_id"
+                                                    id="division_childcity">
+                                                    @foreach ($div_childcity as $cc)
+                                                        <option value="{{ $cc->id }}">{{ $cc->en_name }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @if ($errors->has('division_childcity_id'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('division_childcity_id') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
+                                            <!--form-group end-->
+                                        </div>
+                                        <!-- form group -->
+                                    </div>
+
+                                    <hr>
+
+
+                                    <h5>District subcity area (optional)</h5>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="district_subcity_id">District Subcity(optional)</label>
+                                            <select
+                                                class="form-control{{ $errors->has('district_subcity_id') ? ' is-invalid' : '' }}"
+                                                name="district_subcity_id" id="district_subcity">
+                                                @foreach($dist_subcity as $sc)
+                                                <option value="{{ $sc->id }}">{{ $sc->en_name }}</option>
+                                                @endforeach
+
+                                                @if ($errors->has('district_subcity_id'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('district_subcity_id') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </select>
+                                        </div>
+                                        <!-- form group -->
+                                    </div>
+                                    <!-- col end -->
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="district_childcity_id">District Childcity(optional)</label>
+                                            <div class="form-group">
+                                                <select class="form-control" name="district_childcity_id"
+                                                    id="district_childcity">
+                                                    @foreach ($dist_childcity as $cc)
+                                                        <option value="{{ $cc->id }}">{{ $cc->en_name }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @if ($errors->has('district_childcity_id'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('district_childcity_id') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
+                                            <!--form-group end-->
+                                        </div>
+                                        <!-- form group -->
+                                    </div>
+
+                                    <hr>
+                                    <h5>Upazila subcity area (optional)</h5>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="thana_subcity_id">Upazila Subcity(optional)</label>
+                                            <select
+                                                class="form-control{{ $errors->has('thana_subcity_id') ? ' is-invalid' : '' }}"
+                                                name="thana_subcity_id" id="thana_subcity">
+                                                @foreach($thana_subcity as $sc)
+                                                <option value="{{ $sc->id }}">{{ $sc->en_name }}</option>
+                                                @endforeach
+
+                                                @if ($errors->has('thana_subcity_id'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('thana_subcity_id') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </select>
+                                        </div>
+                                        <!-- form group -->
+                                    </div>
+                                    <!-- col end -->
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="thana_childcity_id">Upazila Childcity(optional)</label>
+                                            <div class="form-group">
+                                                <select class="form-control" name="thana_childcity_id"
+                                                    id="thana_childcity">
+                                                    @foreach ($thana_childcity as $cc)
+                                                        <option value="{{ $cc->id }}">{{ $cc->en_name }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @if ($errors->has('thana_childcity_id'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('thana_childcity_id') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
+                                            <!--form-group end-->
+                                        </div>
+                                        <!-- form group -->
+                                    </div>
+
+                                    <hr>
+
+
                                     <div class="col-lg-6 col-md-6 col-sm-12">
                                         <div class="form-group">
                                             <label for="version">Condition <span>*</span></label>
@@ -430,7 +566,7 @@
                                                 class="form-control{{ $errors->has('package_id') ? ' is-invalid' : '' }}"
                                                 value="{{ old('package_id') }}">
                                                 <option value="">Select package</option>
-                                                @foreach ($packages as $key => $value)
+                                                @foreach ($packages->where('type','!=', 2) as $key => $value)
                                                     <option value="{{ $value->id }}"
                                                         @if ($edit_data->package_id == $value->id) selected @endif>
                                                         {{ $value->en_name }}</option>
@@ -458,8 +594,9 @@
                                                     <input type="text" name="a_detail[]" class="myfrm form-control"
                                                         placeholder="Value">
                                                     <div class="input-group-btn">
-                                                        <button class="btn add" style="background-color: #2ecc71;border-color:#2ecc71;color:white;" type="button"><i
-                                                                class="far fa-plus-square"></i> Add</button>
+                                                        <button class="btn add"
+                                                            style="background-color: #2ecc71;border-color:#2ecc71;color:white;"
+                                                            type="button"><i class="far fa-plus-square"></i> Add</button>
                                                     </div>
                                                 </div>
                                                 <div class="clone1 hide">
@@ -470,8 +607,9 @@
                                                         <input type="text" name="a_detail[]"
                                                             class="myfrm form-control" placeholder="Value">
                                                         <div class="input-group-btn">
-                                                            <button class="btn remove" style="background-color: rgba(201, 48, 44, 0.9);border-color:rgba(201, 48, 44, 0.9);color:white;" type="button"> <i
-                                                                    class="far fa-minus-square"></i> Remove
+                                                            <button class="btn remove"
+                                                                style="background-color: rgba(201, 48, 44, 0.9);border-color:rgba(201, 48, 44, 0.9);color:white;"
+                                                                type="button"> <i class="far fa-minus-square"></i> Remove
                                                             </button>
 
                                                         </div>
@@ -486,8 +624,10 @@
                                                             <input type="text" name="a_detail[]"
                                                                 class="myfrm form-control" value="{{ $pd->detail }}">
                                                             <div class="input-group-btn">
-                                                                <button class="btn remove" style="background-color: rgba(201, 48, 44, 0.9);border-color:rgba(201, 48, 44, 0.9);color:white;" type="button"> <i
-                                                                        class="far fa-minus-square"></i> Remove
+                                                                <button class="btn remove"
+                                                                    style="background-color: rgba(201, 48, 44, 0.9);border-color:rgba(201, 48, 44, 0.9);color:white;"
+                                                                    type="button"> <i class="far fa-minus-square"></i>
+                                                                    Remove
                                                                 </button>
 
                                                             </div>
@@ -502,7 +642,9 @@
                                     <div class="col-lg-6 col-md-6 col-sm-12 pt-2 pb-5">
                                         <!-- form group -->
                                         <div class="form-check">
-                                            <input type="checkbox" value="1" name="price_ng" class="form-check-input" id="exampleCheck1" @if($edit_data->price_ng == 1) checked @endif>
+                                            <input type="checkbox" value="1" name="price_ng"
+                                                class="form-check-input" id="exampleCheck1"
+                                                @if ($edit_data->price_ng == 1) checked @endif>
                                             <label class="form-check-label" for="exampleCheck1">Price Negotiation</label>
                                         </div>
                                     </div>
@@ -525,7 +667,7 @@
             </div>
         </div>
     </section>
-    
+
     {{-- for multiple file insertion --}}
     <script type="text/javascript">
         $(document).ready(function() {
@@ -542,6 +684,13 @@
         });
     </script>
     <script type="text/javascript">
+        document.forms['editForm'].elements['division_subcity'].value = "{{ $edit_data->division_subcity_id }}"
+        document.forms['editForm'].elements['division_childcity'].value = "{{ $edit_data->division_childcity_id }}"
+        document.forms['editForm'].elements['district_subcity'].value = "{{ $edit_data->district_subcity_id }}"
+        document.forms['editForm'].elements['district_subcity'].value = "{{ $edit_data->district_subcity_id }}"
+        document.forms['editForm'].elements['thana_subcity'].value = "{{ $edit_data->thana_subcity_id }}"
+        document.forms['editForm'].elements['thana_childcity'].value = "{{ $edit_data->thana_childcity_id }}"
+
         document.forms['editForm'].elements['category'].value = "{{ $edit_data->category_id }}"
         document.forms['editForm'].elements['subcategory'].value = "{{ $edit_data->subcategory_id }}"
         document.forms['editForm'].elements['childcategory'].value = "{{ $edit_data->childcategory_id }}"

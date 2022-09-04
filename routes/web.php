@@ -1,6 +1,5 @@
 <?php
 
-
 use Illuminate\Support\Facades\Route;
 
 Auth::routes();
@@ -9,7 +8,7 @@ Route::get('/', function () {
 });
 Route::group(['prefix' => '{locale}', 'where' => ['locale' => '[a-zA-Z]{2}']], function () {
     Route::group(['namespace' => 'FrontEnd'], function () {
-        Route::get('/', 'FrontEndController@index'); //
+        Route::get('/', 'FrontEndController@index');           //
         Route::get('/all-area', 'FrontEndController@allArea'); //
         Route::get('/category/{slug}/', 'FrontEndController@category');
         Route::get('/category/{catslug}/{subslug}', 'FrontEndController@subcategory');
@@ -41,12 +40,12 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::post('post-review', 'FrontEndController@postreview');
 
     //city
-    Route::get('/division_subcity','FrontEndController@divisionsubcity');
-    Route::get('/division_childcity','FrontEndController@divisionchildcity');
-    Route::get('/district_subcity','FrontEndController@districtsubcity');
-    Route::get('/district_childcity','FrontEndController@districtchildcity');
-    Route::get('/thana_subcity','FrontEndController@thanasubcity');
-    Route::get('/thana_childcity','FrontEndController@thanachildcity');
+    Route::get('/division_subcity', 'FrontEndController@divisionsubcity');
+    Route::get('/division_childcity', 'FrontEndController@divisionchildcity');
+    Route::get('/district_subcity', 'FrontEndController@districtsubcity');
+    Route::get('/district_childcity', 'FrontEndController@districtchildcity');
+    Route::get('/thana_subcity', 'FrontEndController@thanasubcity');
+    Route::get('/thana_childcity', 'FrontEndController@thanachildcity');
 });
 Route::post('message/visitor/to/publisher', 'EmailController@publisherEmail');
 Route::post('visitor/support/', 'EmailController@visitorsupport');
@@ -189,7 +188,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'namespace' => 'Admin', 'mi
 });
 
 Route::group(['as' => 'editor.', 'prefix' => 'editor', 'namespace' => 'Editor', 'middleware' => ['auth', 'editor']], function () {
-    Route::resource('/social_links','SocialmediaController');
+    Route::resource('/social_links', 'SocialmediaController');
     // editor dashboard
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
@@ -329,6 +328,7 @@ Route::group(['as' => 'editor.', 'prefix' => 'editor', 'namespace' => 'Editor', 
     Route::post('ad/reviews/delete', 'DashboardController@deletereview');
 
     // customer ads
+    Route::get('ad/nilam/reports', 'DashboardController@nilamads');
     Route::get('ad/reports/', 'DashboardController@allreports');
     Route::post('/reports/unpublished', 'DashboardController@unpublished');
     Route::post('/reports/published', 'DashboardController@published');

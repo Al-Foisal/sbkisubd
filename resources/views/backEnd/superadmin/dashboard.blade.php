@@ -78,14 +78,14 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>{{$premiumads}}</h3>
+                        <h3>{{$nilamads}}</h3>
 
-                        <p>Premium Ads</p>
+                        <p>Nilam Ads</p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-ad"></i>
                     </div>
-                    <a href="{{url('admin/show/ads-premium/request')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{url('editor/ad/nilam/reports')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -108,44 +108,14 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>{{$membeReqeuest}}</h3>
+                        <h3>{{count($packagesname)}}</h3>
 
-                        <p>Membership Request</p>
+                        <p>Total Package</p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-user-cog"></i>
                     </div>
-                    <a href="{{url('superadmin/customer/membership-request')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-warning">
-                    <div class="inner">
-                        <h3>{{$totalMember}}</h3>
-
-                        <p>Total Members</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fa fa-handshake"></i>
-                    </div>
-                    <a href="{{url('/superadmin/customer/all-membership')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-danger">
-                    <div class="inner">
-                        <h3>{{$cancelMember}}</h3>
-
-                        <p>Membership Cancel</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fa fa-user-alt-slash"></i>
-                    </div>
-                    <a href="{{url('superadmin/customer/membership-cancel')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{url('editor/package/manage')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->

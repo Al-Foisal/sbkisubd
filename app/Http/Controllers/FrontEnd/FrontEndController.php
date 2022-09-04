@@ -6,7 +6,11 @@ use App\Category;
 use App\Createpage;
 use App\Customer;
 use App\District;
+use App\DistrictChildcity;
+use App\DistrictSubcity;
 use App\Division;
+use App\DivisionChildcity;
+use App\DivisionSubcity;
 use App\Http\Controllers\Controller;
 use App\Nilam;
 use App\OpeningHour;
@@ -15,6 +19,8 @@ use App\Pagecategory;
 use App\Review;
 use App\Subcategory;
 use App\Thana;
+use App\ThanaChildcity;
+use App\ThanaSubcity;
 use App\Union;
 use App\Village;
 use Carbon\Carbon;
@@ -142,7 +148,7 @@ class FrontEndController extends Controller {
         },
         ])->get();
         $data['front_category'] = Category::where('on_front', 1)->with(['ads' => function ($query) {
-            return $query->where('status', 1)->where('request', 1)->where('adsduration', '>=', today())->limit(12)->get();
+            return $query->where('status', 1)->where('request', 1)->where('adsduration', '>=', today())->orderBy('id', 'desc')->limit(12)->get();
         },
         ])->get();
         $data['new_ads']   = Advertisment::where('adsduration', '>=', today())->where('status', 1)->where('request', 1)->orderBy('id', 'desc')->limit(12)->get();
@@ -156,7 +162,17 @@ class FrontEndController extends Controller {
         $thana            = Thana::count();
         $union            = Union::count();
         $village          = Village::count();
-        $data['location'] = $division + $district + $thana + $union + $village;
+
+        $div_sub = DivisionSubcity::count();
+        $div_child = DivisionChildcity::count();
+
+        $dist_sub = DistrictSubcity::count();
+        $dist_child = DistrictChildcity::count();
+
+        $thana_sub =  ThanaSubcity::count();
+        $thana_child = ThanaChildcity::count();
+
+        $data['location'] = $division + $district + $thana + $union + $village+$div_sub+$div_child+$dist_sub+$dist_child+$thana_sub+$thana_child;
 
         return view('frontEnd.layouts.front.index', $data);
     }
@@ -661,6 +677,48 @@ class FrontEndController extends Controller {
                 ->where('status', 1)->where('request', 1)
                 ->with('image')
                 ->paginate(25);
+        } elseif ($request->division_subcity) {
+            $advertisments = Advertisment::where('division_subcity_id', $request->division_subcity)->orderBy('id', 'DESC')
+                ->where('adsduration', '>=', today())
+                ->where('status', 1)->where('request', 1)
+                ->with('image')
+                ->paginate(25);
+        } elseif ($request->division_childcity) {
+            $advertisments = Advertisment::where('division_childcity_id', $request->division_childcity)->orderBy('id', 'DESC')
+                ->where('adsduration', '>=', today())
+                ->where('status', 1)->where('request', 1)
+                ->with('image')
+                ->paginate(25);
+        } elseif ($request->district_subcity) {
+            $advertisments = Advertisment::where('district_subcity_id', $request->district_subcity)->orderBy('id', 'DESC')
+                ->where('adsduration', '>=', today())
+                ->where('status', 1)->where('request', 1)
+                ->with('image')
+                ->paginate(25);
+        } elseif ($request->district_childcity) {
+            $advertisments = Advertisment::where('district_childcity_id', $request->district_childcity)->orderBy('id', 'DESC')
+                ->where('adsduration', '>=', today())
+                ->where('status', 1)->where('request', 1)
+                ->with('image')
+                ->paginate(25);
+        } elseif ($request->thana_subcity) {
+            $advertisments = Advertisment::where('thana_subcity_id', $request->thana_subcity)->orderBy('id', 'DESC')
+                ->where('adsduration', '>=', today())
+                ->where('status', 1)->where('request', 1)
+                ->with('image')
+                ->paginate(25);
+        } elseif ($request->thana_childcity) {
+            $advertisments = Advertisment::where('thana_childcity_id', $request->thana_childcity)->orderBy('id', 'DESC')
+                ->where('adsduration', '>=', today())
+                ->where('status', 1)->where('request', 1)
+                ->with('image')
+                ->paginate(25);
+        } elseif ($request->all_bangladesh) {
+            $advertisments = Advertisment::orderBy('id', 'DESC')
+                ->where('adsduration', '>=', today())
+                ->where('status', 1)->where('request', 1)
+                ->with('image')
+                ->paginate(25);
         } else {
             $advertisments = Advertisment::orderBy('id', 'DESC')
                 ->where('adsduration', '>=', today())
@@ -698,7 +756,18 @@ class FrontEndController extends Controller {
         $reviews     = Review::where('ad_id', $id)->where('status', 1)->get();
         $checkreview = Review::where('customer_id', session('customerId'))->where('ad_id', $id)->first();
 
-        return view('frontEnd.layouts.front.ad-details', compact('ads', 'customer', 'reviews', 'checkreview'));
+        $shareButtons = \Share::page(
+            url(app()->getLocale().'/details/'.$ads->id),
+            $ads->title,
+        )
+        ->facebook()
+        ->twitter()
+        ->linkedin()
+        ->telegram()
+        ->whatsapp()        
+        ->reddit();
+
+        return view('frontEnd.layouts.front.ad-details', compact('ads', 'customer', 'reviews', 'checkreview','shareButtons'));
 
     }
 

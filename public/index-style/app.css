@@ -32875,9 +32875,20 @@ nav.slider-nav a.next {
     opacity: .75;
     padding: 0 3px;
     position: absolute;
-    right: 4px;
+    left: 15px;
     top: 5px;
     border-radius: 3px
+}
+
+.photo-count1 {
+    
+    border: 0 none;
+    font-size: 12px;
+    opacity: .75;
+    padding: 0 3px;
+    position: absolute;
+    right: 9px;
+    top: 3px;
 }
 
 .add-image a {

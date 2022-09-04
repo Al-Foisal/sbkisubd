@@ -78,23 +78,65 @@
                             <i class="fas fa-map-marker-alt"
                                 style="font-size: 20px;margin:15px 10px 0 0;color:#068436;"></i>
                             <span style="font-size: 20px;font-weight: bold;margin: 10px 0 0 0;">
-                                @if (request()->category)
+                                @if (request()->division)
                                     @php
-                                        $l = App\Category::find(request()->category);
+                                        $l = App\Division::find(request()->division);
                                     @endphp
                                     {{ $l->{app()->getLocale() . '_name'} }}
-                                @elseif (request()->subcategory)
+                                @elseif (request()->district)
                                     @php
-                                        $l = App\Subcategory::find(request()->subcategory);
+                                        $l = App\District::find(request()->district);
                                     @endphp
-                                    {{ $l->{app()->getLocale() . '_subcategoryName'} }}
-                                @elseif (request()->childcategory)
+                                    {{ $l->{app()->getLocale() . '_dist_name'} }}
+                                @elseif (request()->thana)
                                     @php
-                                        $l = App\Childcategory::find(request()->childcategory);
+                                        $l = App\Thana::find(request()->thana);
                                     @endphp
-                                    {{ $l->{app()->getLocale() . '_childcategoryName'} }}
+                                    {{ $l->{app()->getLocale() . '_thana_name'} }}
+                                @elseif (request()->union)
+                                    @php
+                                        $l = App\Union::find(request()->union);
+                                    @endphp
+                                    {{ $l->{app()->getLocale() . '_union_name'} }}
+                                @elseif (request()->village)
+                                    @php
+                                        $l = App\Village::find(request()->village);
+                                    @endphp
+                                    {{ $l->{app()->getLocale() . '_village_name'} }}
+                                @elseif (request()->division_subcity)
+                                    @php
+                                        $l = App\DivisionSubcity::find(request()->division_subcity);
+                                    @endphp
+                                    {{ $l->{app()->getLocale() . '_name'} }}
+                                @elseif (request()->division_childcity)
+                                    @php
+                                        $l = App\DivisionChildcity::find(request()->division_childcity);
+                                    @endphp
+                                    {{ $l->{app()->getLocale() . '_name'} }}
+                                @elseif (request()->district_subcity)
+                                    @php
+                                        $l = App\DistrictSubcity::find(request()->district_subcity);
+                                    @endphp
+                                    {{ $l->{app()->getLocale() . '_name'} }}
+                                @elseif (request()->district_childcity)
+                                    @php
+                                        $l = App\DistrictChildcity::find(request()->district_childcity);
+                                    @endphp
+                                    {{ $l->{app()->getLocale() . '_name'} }}
+                                @elseif (request()->thana_subcity)
+                                    @php
+                                        $l = App\ThanaSubcity::find(request()->thana_subcity);
+                                    @endphp
+                                    {{ $l->{app()->getLocale() . '_name'} }}
+                                @elseif (request()->thana_childcity)
+                                    @php
+                                        $l = App\ThanaChildcity::find(request()->thana_childcity);
+                                    @endphp
+                                    {{ $l->{app()->getLocale() . '_name'} }}
+                                @elseif (request()->all_bangladesh)
+                                    {{ __('All of Bangladesh') }}
                                 @else
-                                    {{ __('All Ads') }}
+                                    {{ __('Location') }}
                                 @endif
                             </span>
                         </div>
@@ -119,7 +161,7 @@
                                     @endphp
                                     {{ $l->{app()->getLocale() . '_childcategoryName'} }}
                                 @else
-                                    {{ __('All Ads') }}
+                                    {{ __('Category') }}
                                 @endif
                             </span>
                         </div>
@@ -201,7 +243,7 @@
                                 <ul class="browse-list list-unstyled long-list">
                                     @foreach ($divisions as $value)
                                         <li>
-                                            <a href="{{ url(app()->getLocale() . '/all-ads?location=' . $value->id) }}"
+                                            <a href="{{ url(app()->getLocale() . '/all-ads?division=' . $value->id) }}"
                                                 title="{{ $value->{app()->getLocale() . '_name'} }}">
                                                 {{ $value->{app()->getLocale() . '_name'} }}
                                                 <span class="count">&nbsp;- {{ $value->ads->count() }}</span>
@@ -413,6 +455,9 @@
                                                         <span class="item-carousel-thumb">
                                                             <span class="photo-count">
                                                                 <i class="fa fa-camera"></i> {{ $value->images->count() }}
+                                                            </span>
+                                                            <span class="photo-count1">
+                                                                <img src="{{ asset(app()->getLocale().'_urgent.png') }}" alt="">
                                                             </span>
                                                             @php
                                                                 $img = Adsimage::where('ads_id', $value->id)->first();

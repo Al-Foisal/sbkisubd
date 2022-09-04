@@ -111,6 +111,7 @@ class ComposerStaticInit89db5f4f3e1ed8496b5fe196fb0c0c3a
         ),
         'J' => 
         array (
+            'Jorenvh\\Share\\' => 14,
             'JakubOnderka\\PhpConsoleHighlighter\\' => 35,
             'JakubOnderka\\PhpConsoleColor\\' => 29,
         ),
@@ -345,6 +346,10 @@ class ComposerStaticInit89db5f4f3e1ed8496b5fe196fb0c0c3a
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
         ),
+        'Jorenvh\\Share\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jorenvanhocht/laravel-share/src',
+        ),
         'JakubOnderka\\PhpConsoleHighlighter\\' => 
         array (
             0 => __DIR__ . '/..' . '/php-parallel-lint/php-console-highlighter/src',
@@ -478,6 +483,7 @@ class ComposerStaticInit89db5f4f3e1ed8496b5fe196fb0c0c3a
         'App\\Http\\Controllers\\Editor\\DivisionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Editor/DivisionController.php',
         'App\\Http\\Controllers\\Editor\\DivisionSubcityController' => __DIR__ . '/../..' . '/app/Http/Controllers/Editor/DivisionSubcityController.php',
         'App\\Http\\Controllers\\Editor\\PagecategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Editor/PagecategoryController.php',
+        'App\\Http\\Controllers\\Editor\\SocialmediaController' => __DIR__ . '/../..' . '/app/Http/Controllers/Editor/SocialmediaController.php',
         'App\\Http\\Controllers\\Editor\\SubcategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Editor/SubcategoryController.php',
         'App\\Http\\Controllers\\Editor\\ThanaChildcityController' => __DIR__ . '/../..' . '/app/Http/Controllers/Editor/ThanaChildcityController.php',
         'App\\Http\\Controllers\\Editor\\ThanaSubcityController' => __DIR__ . '/../..' . '/app/Http/Controllers/Editor/ThanaSubcityController.php',
@@ -2297,6 +2303,9 @@ class ComposerStaticInit89db5f4f3e1ed8496b5fe196fb0c0c3a
         'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => __DIR__ . '/..' . '/php-parallel-lint/php-console-color/src/ConsoleColor.php',
         'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => __DIR__ . '/..' . '/php-parallel-lint/php-console-color/src/InvalidStyleException.php',
         'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => __DIR__ . '/..' . '/php-parallel-lint/php-console-highlighter/src/Highlighter.php',
+        'Jorenvh\\Share\\Providers\\ShareServiceProvider' => __DIR__ . '/..' . '/jorenvanhocht/laravel-share/src/Providers/ShareServiceProvider.php',
+        'Jorenvh\\Share\\Share' => __DIR__ . '/..' . '/jorenvanhocht/laravel-share/src/Share.php',
+        'Jorenvh\\Share\\ShareFacade' => __DIR__ . '/..' . '/jorenvanhocht/laravel-share/src/ShareFacade.php',
         'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
         'Laravel\\Tinker\\ClassAliasAutoloader' => __DIR__ . '/..' . '/laravel/tinker/src/ClassAliasAutoloader.php',
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',

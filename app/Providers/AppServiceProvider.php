@@ -90,6 +90,9 @@ class AppServiceProvider extends ServiceProvider {
             ->get();
         view()->share('nilamadsimage', $nilamadsimage);
 
+        $nilamads = DB::table('nilams')->count();
+        view()->share('nilamads', $nilamads);
+
         // adsimage
         $customerslist = Customer::get();
         view()->share('customerslist', $customerslist);

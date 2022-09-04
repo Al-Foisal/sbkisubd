@@ -389,7 +389,7 @@
                                                 class="form-control{{ $errors->has('package_id') ? ' is-invalid' : '' }}"
                                                 value="{{ old('package_id') }}">
                                                 <option value="">Select package</option>
-                                                @foreach ($packages as $key => $value)
+                                                @foreach ($packages->where('type', 2) as $key => $value)
                                                     <option value="{{ $value->id }}" @if($edit_data->package_id == $value->id) selected @endif>{{ $value->en_name }}</option>
                                                 @endforeach
                                             </select>

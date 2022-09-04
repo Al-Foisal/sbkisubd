@@ -42,6 +42,35 @@ class Advertisment extends Model {
         return $this->belongsTo('App\Union', 'union_id');
     }
 
+    public function village() {
+        return $this->belongsTo('App\Village', 'village_id');
+    }
+
+    public function divisionsubcity() {
+        return $this->belongsTo('App\DivisionSubcity', 'division_subcity_id');
+    }
+
+    public function divisionchildcity() {
+        return $this->belongsTo('App\DivisionChildcity', 'division_childcity_id');
+    }
+
+    public function districtsubcity() {
+        return $this->belongsTo('App\DistrictSubcity', 'district_subcity_id');
+    }
+
+    public function districtchildcity() {
+        return $this->belongsTo('App\DistrictChildcity', 'district_childcity_id');
+    }
+    
+
+    public function thanasubcity() {
+        return $this->belongsTo('App\ThanaSubcity', 'thana_subcity_id');
+    }
+
+    public function thanachildcity() {
+        return $this->belongsTo('App\ThanaChildcity', 'thana_childcity_id');
+    }
+
     public function image() {
         return $this->hasOne('App\Adsimage', 'ads_id', 'id');
     }

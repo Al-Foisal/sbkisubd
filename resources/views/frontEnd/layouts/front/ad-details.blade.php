@@ -113,7 +113,7 @@
 
                                             <div class="row">
 
-                                                <div class="col-md-6 col-sm-6 col-6 d-flex justify-content-start">
+                                                {{-- <div class="col-md-6 col-sm-6 col-6 d-flex justify-content-start">
                                                     <h4 class="fw-normal p-0  mr-3" style="color: black">
                                                         <span class="fw-bold"><i class="fa fa-location-arrow"></i> Location:
                                                         </span>
@@ -174,17 +174,17 @@
 
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
 
-                                                <div class="col-md-6 col-sm-6 col-6 text-end">
+                                                <div class="col-12">
                                                     <h4 class="fw-normal p-0" style="color: black">
                                                         <span class="fw-bold">
                                                             Price:
                                                         </span>
                                                         <span>
-                                                            {{ number_format($ads->price, 2) }} ৳ @if ($ads->price_ng == 1)
-                                                                ({{ __('Negotiable') }})
+                                                            {{ number_format($ads->price, 2) }}৳ @if ($ads->price_ng == 1)
+                                                                - ({{ __('Negotiable') }})
                                                             @endif
                                                         </span>
                                                     </h4>
@@ -193,9 +193,111 @@
                                             <hr class="border-0 bg-secondary">
 
 
-
-
                                             <div class="row">
+
+                                                <div class="col-12">
+                                                    <h4 class="fw-normal p-0  mr-3" style="color: black">
+                                                        <span class="fw-bold" style="text-decoration: underline">Ad host
+                                                            provider location:
+                                                        </span>
+                                                    </h4>
+                                                </div>
+                                                <div class="col-12">
+                                                    <h3>Division Area:</h3>
+                                                    <ul>
+                                                        <li style="list-style-type: circle;">Division: <i>
+                                                                {{ $ads->division->{app()->getLocale() . '_name'} }}
+                                                            </i>
+                                                        </li>
+                                                        @if ($ads->division_subcity_id)
+                                                            <li style="list-style-type: circle;">Division City:
+                                                                <i>
+                                                                    {{ $ads->divisionsubcity->{app()->getLocale() . '_name'} }}
+                                                                </i>
+                                                            </li>
+                                                        @endif
+                                                        @if ($ads->division_childcity_id)
+                                                            <li style="list-style-type: circle;">Division City Area:
+                                                                <i>
+                                                                    {{ $ads->divisionchildcity->{app()->getLocale() . '_name'} }}
+                                                                </i>
+                                                            </li>
+                                                        @endif
+                                                    </ul>
+
+                                                </div>
+                                                <div class="col-12">
+                                                    <h3>District Area:</h3>
+                                                    <ul>
+                                                        <li style="list-style-type: disclosure-closed;">District: <i>
+                                                                {{ $ads->district->{app()->getLocale() . '_dist_name'} }}
+                                                            </i>
+                                                        </li>
+                                                        @if ($ads->district_subcity_id)
+                                                            <li style="list-style-type: disclosure-closed;">District City:
+                                                                <i>
+                                                                    {{ $ads->districtsubcity->{app()->getLocale() . '_name'} }}
+                                                                </i>
+                                                            </li>
+                                                        @endif
+                                                        @if ($ads->district_childcity_id)
+                                                            <li style="list-style-type: disclosure-closed;">District City
+                                                                Area:
+                                                                <i>
+                                                                    {{ $ads->districtchildcity->{app()->getLocale() . '_name'} }}
+                                                                </i>
+                                                            </li>
+                                                        @endif
+                                                    </ul>
+
+                                                </div>
+                                                <div class="col-12">
+                                                    <h3>Upazila Area:</h3>
+                                                    <ul>
+                                                        <li style="list-style-type: disc;">Upazila: <i>
+                                                                {{ $ads->thana->{app()->getLocale() . '_thana_name'} }}
+                                                            </i>
+                                                        </li>
+                                                        @if ($ads->thana_subcity_id)
+                                                            <li style="list-style-type: disc;">Upazila City:
+                                                                <i>
+                                                                    {{ $ads->thanasubcity->{app()->getLocale() . '_name'} }}
+                                                                </i>
+                                                            </li>
+                                                        @endif
+                                                        @if ($ads->thana_childcity_id)
+                                                            <li style="list-style-type: disc;">Upazila City Area:
+                                                                <i>
+                                                                    {{ $ads->thanachildcity->{app()->getLocale() . '_name'} }}
+                                                                </i>
+                                                            </li>
+                                                        @endif
+                                                    </ul>
+
+                                                </div>
+                                                <div class="col-12">
+                                                    <h3>Union:</h3>
+                                                    <ul>
+                                                        <li style="list-style-type: circle;">Union: <i>
+                                                                {{ $ads->union->{app()->getLocale() . '_union_name'} }}
+                                                            </i>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                @if ($ads->village_id)
+                                                    <div class="col-12">
+                                                        <h3>Village:</h3>
+                                                        <ul>
+                                                            <li style="list-style-type: circle;">Village: <i>
+                                                                    {{ $ads->village->{app()->getLocale() . '_village_name'} }}
+                                                                </i>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                @endif
+                                            </div>
+                                            <div class="row">
+                                                <h3>Description:</h3>
                                                 <div class="col-12 detail-line-content">
                                                     {!! $ads->description !!}
                                                 </div>
@@ -210,6 +312,49 @@
 
                             </div>
                         </div>
+                        <hr>
+                        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+                            rel="stylesheet">
+                        <style>
+                            #social-links {
+                                margin: 0 auto;
+                                max-width: 500px;
+                            }
+
+                            #social-links ul {
+                                display: flex;
+                                justify-content: start;
+                            }
+
+                            #social-links ul li {
+                                display: inline-block;
+                            }
+
+                            #social-links ul li a {
+                                padding: 15px;
+                                border: 1px solid #ccc;
+                                margin: 1px;
+                                font-size: 30px;
+                            }
+
+                            table #social-links {
+                                display: inline-table;
+                            }
+
+                            table #social-links ul li {
+                                display: inline;
+                            }
+
+                            table #social-links ul li a {
+                                padding: 5px;
+                                border: 1px solid #ccc;
+                                margin: 1px;
+                                font-size: 15px;
+                                background: #e3e3ea;
+                            }
+                        </style>
+                        Click to share
+                        {!! $shareButtons !!}
                         {{-- @if ($reviews->count() > 0)
                             <hr>
                             Customer Review for <b><i>{{ $ads->title }}</i></b>

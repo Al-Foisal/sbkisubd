@@ -2518,7 +2518,6 @@ Version: 206.0.0
                     success: function(res) {
                         if (res) {
                             $("#division_subcity").empty();
-                            $("#division_subcity").append('<option>Division Subcity</option>');
                             $.each(res, function(key, value) {
                                 $("#division_subcity").append('<option value="' + key + '">' + value +
                                     '</option>');
@@ -2526,7 +2525,6 @@ Version: 206.0.0
 
                         } else {
                             $("#division_subcity").empty();
-                            $("#division_subcity").empty().append('<option>Division Subcity</option>');;
                         }
                     }
                 });
@@ -2534,7 +2532,6 @@ Version: 206.0.0
                 $("#district").empty();
                 $("#district").append('<option>District</option>');
                 $("#division_subcity").empty();
-                $("#division_subcity").append('<option>Division Subcity</option>');
             }
         });
 
@@ -2550,7 +2547,6 @@ Version: 206.0.0
                     success: function(res) {
                         if (res) {
                             $("#division_childcity").empty();
-                            $("#division_childcity").append('<option>Division Childcity</option>');
                             $.each(res, function(key, value) {
                                 $("#division_childcity").append('<option value="' + key + '">' + value +
                                     '</option>');
@@ -2558,13 +2554,11 @@ Version: 206.0.0
 
                         } else {
                             $("#division_childcity").empty();
-                            $("#division_childcity").empty().append('<option>Division Childcity</option>');;
                         }
                     }
                 });
             } else {
                 $("#division_childcity").empty();
-                $("#division_childcity").append('<option>Division Childcity</option>');;
             }
         });
 
@@ -2600,7 +2594,6 @@ Version: 206.0.0
                     success: function(res) {
                         if (res) {
                             $("#district_subcity").empty();
-                            $("#district_subcity").append('<option>Select</option>');
                             $.each(res, function(key, value) {
                                 $("#district_subcity").append('<option value="' + key + '">' + value +
                                     '</option>');
@@ -2608,7 +2601,6 @@ Version: 206.0.0
 
                         } else {
                             $("#district_subcity").empty();
-                            $("#district_subcity").empty().append('<option>Select</option>');;
                         }
                     }
                 });
@@ -2616,7 +2608,6 @@ Version: 206.0.0
                 $("#thana").empty();
                 $("#thana").append('<option>Select</option>');
                 $("#district_subcity").empty();
-                $("#district_subcity").append('<option>Select</option>');
             }
         });
 
@@ -2632,7 +2623,6 @@ Version: 206.0.0
                     success: function(res) {
                         if (res) {
                             $("#district_childcity").empty();
-                            $("#district_childcity").append('<option>district Childcity</option>');
                             $.each(res, function(key, value) {
                                 $("#district_childcity").append('<option value="' + key + '">' + value +
                                     '</option>');
@@ -2640,13 +2630,11 @@ Version: 206.0.0
 
                         } else {
                             $("#district_childcity").empty();
-                            $("#district_childcity").empty().append('<option>district Childcity</option>');;
                         }
                     }
                 });
             } else {
                 $("#district_childcity").empty();
-                $("#district_childcity").append('<option>district Childcity</option>');;
             }
         });
         // Union Find
@@ -2680,7 +2668,6 @@ Version: 206.0.0
                     success: function(res) {
                         if (res) {
                             $("#thana_subcity").empty();
-                            $("#thana_subcity").append('<option>Select</option>');
                             $.each(res, function(key, value) {
                                 $("#thana_subcity").append('<option value="' + key + '">' + value +
                                     '</option>');
@@ -2688,13 +2675,11 @@ Version: 206.0.0
 
                         } else {
                             $("#thana_subcity").empty();
-                            $("#thana_subcity").empty().append('<option>Select</option>');;
                         }
                     }
                 });
             } else {
                 $("#thana_subcity").empty();
-                $("#thana_subcity").append('<option>Select</option>');
                 
                 $("#union").empty();
                 $("#union").append('<option>Select</option>');
@@ -2713,7 +2698,6 @@ Version: 206.0.0
                     success: function(res) {
                         if (res) {
                             $("#thana_childcity").empty();
-                            $("#thana_childcity").append('<option>thana Childcity</option>');
                             $.each(res, function(key, value) {
                                 $("#thana_childcity").append('<option value="' + key + '">' + value +
                                     '</option>');
@@ -2721,13 +2705,11 @@ Version: 206.0.0
 
                         } else {
                             $("#thana_childcity").empty();
-                            $("#thana_childcity").empty().append('<option>thana Childcity</option>');;
                         }
                     }
                 });
             } else {
                 $("#thana_childcity").empty();
-                $("#thana_childcity").append('<option>thana Childcity</option>');;
             }
         });
 

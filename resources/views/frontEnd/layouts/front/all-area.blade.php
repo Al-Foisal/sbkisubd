@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>All of Bangladesh</title>
+    <title>All of Bangladesh - {{ config('app.name') }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
@@ -152,20 +152,33 @@
                 {{ __('Division City') }}
             </button>
             <ul class="dropdown-menu" aria-labelledby="" style="display: block;width:20%;border-radius:0;">
+                <li>
+                    <a class="dropdown-item" href="{{ url(app()->getLocale() . '/all-ads?all_bangladesh=' . true) }}">
+                        {{ __('All of Bangladesh') }}
+                    </a>
+                </li>
                 @foreach ($divisions as $division)
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item"
+                            href="{{ url(app()->getLocale() . '/all-ads?division=' . $division->id) }}">
                             {{ $division->{app()->getLocale() . '_name'} }} &raquo;
                         </a>
                         <ul class="dropdown-menu dropdown-submenu">
                             <li>
                                 <a class="dropdown-item bg-primary"
                                     style="font-weight: bold;color:white;border-radius:0;"
-                                    href="javascript:;">{{ __('Division Suc-city') }}</a>
+                                    href="javascript:;">{{ __('Division Sub-city') }}</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item"
+                                    href="{{ url(app()->getLocale() . '/all-ads?division=' . $division->id) }}">
+                                    {{ __('All of ') }}{{ $division->{app()->getLocale() . '_name'} }}
+                                </a>
                             </li>
                             @foreach ($division->divisionsubcity as $subcity)
                                 <li>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item"
+                                        href="{{ url(app()->getLocale() . '/all-ads?division_subcity=' . $subcity->id) }}">
                                         {{ $subcity->{app()->getLocale() . '_name'} }} &raquo;
                                     </a>
                                     <ul class="dropdown-menu dropdown-submenu">
@@ -174,9 +187,16 @@
                                                 style="font-weight: bold;color:white;border-radius:0;"
                                                 href="javascript:;">{{ __('Division Child-city') }}</a>
                                         </li>
+                                        <li>
+                                            <a class="dropdown-item"
+                                                href="{{ url(app()->getLocale() . '/all-ads?division_subcity=' . $subcity->id) }}">
+                                                {{ __('All of ') }}{{ $subcity->{app()->getLocale() . '_name'} }}
+                                            </a>
+                                        </li>
                                         @foreach ($subcity->divisionchildcity as $child)
                                             <li>
-                                                <a class="dropdown-item" href="#">
+                                                <a class="dropdown-item"
+                                                    href="{{ url(app()->getLocale() . '/all-ads?division_childcity=' . $child->id) }}">
                                                     {{ $child->{app()->getLocale() . '_name'} }}
                                                 </a>
                                             </li>
@@ -213,10 +233,16 @@
                                             <a class="dropdown-item bg-primary" style="font-weight: bold;color:white;"
                                                 href="javascript:;">{{ __('District Sub-city') }}</a>
                                         </li>
+                                        <li>
+                                            <a class="dropdown-item"
+                                                href="{{ url(app()->getLocale() . '/all-ads?district=' . $district->id) }}">
+                                                {{ __('All of ') }}{{ $district->{app()->getLocale() . '_dist_name'} }}
+                                            </a>
+                                        </li>
                                         @foreach ($district->districtsubcity as $subcity)
                                             <li>
                                                 <a class="dropdown-item"
-                                                    href="{{ url(app()->getLocale() . '/all-ads?districtsubcity=' . $subcity->id) }}">
+                                                    href="{{ url(app()->getLocale() . '/all-ads?district_subcity=' . $subcity->id) }}">
                                                     {{ $subcity->{app()->getLocale() . '_name'} }} &raquo;
                                                 </a>
                                                 <ul class="dropdown-menu dropdown-submenu">
@@ -225,10 +251,16 @@
                                                             style="font-weight: bold;color:white;"
                                                             href="javascript:;">{{ __('District Child-city') }}</a>
                                                     </li>
+                                                    <li>
+                                                        <a class="dropdown-item"
+                                                            href="{{ url(app()->getLocale() . '/all-ads?district_subcity=' . $subcity->id) }}">
+                                                            {{ __('All of ') }}{{ $subcity->{app()->getLocale() . '_name'} }}
+                                                        </a>
+                                                    </li>
                                                     @foreach ($subcity->districtchildcity as $child)
                                                         <li>
                                                             <a class="dropdown-item"
-                                                                href="{{ url(app()->getLocale() . '/all-ads?districtchildcity=' . $child->id) }}">
+                                                                href="{{ url(app()->getLocale() . '/all-ads?district_childcity=' . $child->id) }}">
                                                                 {{ $child->{app()->getLocale() . '_name'} }}
                                                             </a>
                                                         </li>
@@ -266,10 +298,16 @@
                                                             style="font-weight: bold;color:white;"
                                                             href="javascript:;">{{ __('Upazila Sub-city') }}</a>
                                                     </li>
+                                                    <li>
+                                                        <a class="dropdown-item"
+                                                            href="{{ url(app()->getLocale() . '/all-ads?thana=' . $thana->id) }}">
+                                                            {{ __('All of ') }}{{ $thana->{app()->getLocale() . '_thana_name'} }}
+                                                        </a>
+                                                    </li>
                                                     @foreach ($thana->thanasubcity as $subcity)
                                                         <li>
                                                             <a class="dropdown-item"
-                                                                href="{{ url(app()->getLocale() . '/all-ads?thana=' . $subcity->id) }}">
+                                                                href="{{ url(app()->getLocale() . '/all-ads?thana_subcity=' . $subcity->id) }}">
                                                                 {{ $subcity->{app()->getLocale() . '_name'} }}
                                                                 &raquo;
                                                             </a>
@@ -279,10 +317,16 @@
                                                                         style="font-weight: bold;color:white;"
                                                                         href="javascript:;">{{ __('Upazila Child-city') }}</a>
                                                                 </li>
+                                                                <li>
+                                                                    <a class="dropdown-item"
+                                                                        href="{{ url(app()->getLocale() . '/all-ads?thana_subcity=' . $subcity->id) }}">
+                                                                        {{ __('All of ') }}{{ $subcity->{app()->getLocale() . '_name'} }}
+                                                                    </a>
+                                                                </li>
                                                                 @foreach ($subcity->thanachildcity as $child)
                                                                     <li>
                                                                         <a class="dropdown-item"
-                                                                            href="{{ url(app()->getLocale() . '/all-ads?thana=' . $child->id) }}">
+                                                                            href="{{ url(app()->getLocale() . '/all-ads?thana_childcity=' . $child->id) }}">
                                                                             {{ $child->{app()->getLocale() . '_name'} }}
                                                                         </a>
                                                                     </li>

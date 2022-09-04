@@ -5,6 +5,7 @@ namespace App\Http\Controllers\editor;
 use App\Adreport;
 use App\Customer;
 use App\Http\Controllers\Controller;
+use App\Nilam;
 use App\Review;
 use Brian2694\Toastr\Facades\Toastr;
 use DB;
@@ -13,6 +14,12 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller {
     public function index() {
         return view('backEnd.superadmin.dashboard');
+    }
+
+    public function nilamads()
+    {
+        $show_datas = Nilam::with('nilamhistory','customer','bidder','image')->orderBy('id','desc')->get();
+        return view('backEnd.adsmanage.nilam',compact('show_datas'));
     }
 
     public function allads($slug, $id) {

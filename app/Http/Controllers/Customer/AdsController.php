@@ -8,11 +8,17 @@ use App\Advertisment;
 use App\Category;
 use App\Customer;
 use App\District;
+use App\DistrictChildcity;
+use App\DistrictSubcity;
 use App\Division;
+use App\DivisionChildcity;
+use App\DivisionSubcity;
 use App\Http\Controllers\Controller;
 use App\Package;
 use App\Subcategory;
 use App\SubscriptionPackage;
+use App\ThanaChildcity;
+use App\ThanaSubcity;
 use Brian2694\Toastr\Facades\Toastr;
 use DB;
 use File;
@@ -238,7 +244,16 @@ class AdsController extends Controller {
             $district    = District::where('division_id', '=', $division_id)->get();
             $additional  = AdditionalDetail::where('advertisment_id', $id)->get();
 
-            return view('frontEnd.customer.editads', compact('edit_data', 'category', 'subcategory', 'divisions', 'district', 'packages', 'additional'));
+            $city = Advertisment::where('id',$id)->first();
+
+            $div_subcity = DivisionSubcity::where('division_id',$city->division_id)->get();
+            $dist_subcity = DistrictSubcity::where('district_id',$city->dist_id)->get();
+            $thana_subcity = ThanaSubcity::where('thana_id',$city->thana_id)->get();
+
+            $div_childcity = DivisionChildcity::where('division_subcity_id', $city->division_subcity_id)->get();
+            $dist_childcity = DistrictChildcity::where('district_subcity_id', $city->district_subcity_id)->get();
+            $thana_childcity = ThanaChildcity::where('thana_subcity_id', $city->thana_subcity_id)->get();
+            return view('frontEnd.customer.editads', compact('edit_data', 'category', 'subcategory', 'divisions', 'district', 'packages', 'additional','div_subcity','dist_subcity','thana_subcity','div_childcity','dist_childcity','thana_childcity'));
         } else {
             return redirect()->back();
         }

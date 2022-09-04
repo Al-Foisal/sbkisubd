@@ -14,7 +14,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session as FacadesSession;
 use Mail;
 use Session;
-
 class CustomerController extends Controller {
     public function openclose() {
         $open = OpeningHour::where('customer_id', session('customerId'))->get();

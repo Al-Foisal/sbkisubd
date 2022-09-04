@@ -7,15 +7,17 @@
     {{-- <link rel="stylesheet" href="responsive.css"> --}}
     {{-- <link rel="stylesheet" href="style1.css"> --}}
     <style>
-        .vv:hover{
+        .vv:hover {
             background: #140d0421;
             border-radius: 5px;
         }
+
         @media (max-width:767px) {
             .navbar-brand.logo.logo-title {
                 padding-top: 20px
             }
         }
+
         .navbar-toggler {
             padding: .25rem .75rem;
             font-size: 1.25rem;
@@ -30,7 +32,7 @@
     </style>
     <!-- second navbar-->
     @php
-    use App\Adsimage;
+        use App\Adsimage;
     @endphp
 
     <div class="main-container" id="homepage">
@@ -42,36 +44,38 @@
 
 
                 <h3 style="border: none">
-                    
-                    <a href="{{ url(app()->getLocale().'/all-area') }}" type="button"
+
+                    <a href="{{ url(app()->getLocale() . '/all-area') }}" type="button"
                         style="background: #0000002b;
 						color: #fff;
 						border: none;
 						padding: 5px 10px;
 						border-radius: 100px;
                         font-size:15px;
-					"><i class="fas fa-map-marker-alt"></i> {{ __('All of Bangladesh') }}</a>
+					"><i
+                            class="fas fa-map-marker-alt"></i> {{ __('All of Bangladesh') }}</a>
                 </h3>
                 <form id="search" name="search" action="{{ url(app()->getLocale() . '/search') }}" method="GET">
                     <div class="row search-row animated fadeInUp">
 
-                        <div
-                            class="col-md-10 col-sm-12 search-col relative">
-                            <div class="search-col-inner">
-                                
-                                <div class="">
-                                    <input class="form-control " id="locSearch"
-                                        name="search" placeholder="What are you looking for?" type="text"
-                                        value="" autocomplete="off">
+                        <div class="d-flex justify-content-start">
+                            <div class="col-md-10 col-sm-12 search-col relative">
+                                <div class="search-col-inner">
+
+                                    <div class="">
+                                        <input class="form-control " id="locSearch" name="search"
+                                            placeholder="What are you looking for?" type="text" value=""
+                                            autocomplete="off">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="col-md-2 col-sm-12 search-col">
-                            <div class="search-btn-border bg-primary">
-                                <button class="btn btn-primary btn-search btn-block btn-gradient">
-                                    <i class="fas fa-search"></i> <strong>{{ __('Search') }} </strong>
-                                </button>
+                            <div class="col-md-2 col-sm-12 search-col">
+                                <div class="search-btn-border bg-primary">
+                                    <button class="btn btn-primary btn-search btn-block btn-gradient">
+                                        <i class="fas fa-search"></i> <strong>{{ __('Search') }} </strong>
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
@@ -190,69 +194,72 @@
                 </div>
             </div>
 
-            
-        <div class="container my-3">
-            <div class="col-xl-12 content-box layout-section">
-                <div class="row row-featured row-featured-category">
-                    <div class="col-xl-12 box-title">
-                        <div class="inner">
-                            <h2>
-                                <span class="title-3">{{ __('Member') }} <span
-                                        style="font-weight: bold;">{{ __('Ad') }}</span></span>
-                                <a href="{{ url(app()->getLocale() . '/all-ads?filter=6') }}" class="sell-your-item">
-                                    {{ __('View more') }} <i class="fas fa-bars"></i>
-                                </a>
-                            </h2>
+
+            <div class="container my-3">
+                <div class="col-xl-12 content-box layout-section">
+                    <div class="row row-featured row-featured-category">
+                        <div class="col-xl-12 box-title">
+                            <div class="inner">
+                                <h2>
+                                    <span class="title-3">{{ __('Member') }} <span
+                                            style="font-weight: bold;">{{ __('Ad') }}</span></span>
+                                    <a href="{{ url(app()->getLocale() . '/all-ads?filter=6') }}" class="sell-your-item">
+                                        {{ __('View more') }} <i class="fas fa-bars"></i>
+                                    </a>
+                                </h2>
+                            </div>
                         </div>
-                    </div>
 
-                    <div style="clear: both"></div>
+                        <div style="clear: both"></div>
 
-                    <div class="relative content featured-list-row clearfix">
+                        <div class="relative content featured-list-row clearfix">
 
-                        <div class="large-12 columns">
-                            <div class="no-margin featured-list-slider _mOx17M owl-carousel owl-theme owl-loaded owl-drag">
-
-
+                            <div class="large-12 columns">
+                                <div
+                                    class="no-margin featured-list-slider _mOx17M owl-carousel owl-theme owl-loaded owl-drag">
 
 
-                                <div class="owl-stage-outer">
-                                    <div class="owl-stage"
-                                        style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 868px;">
-                                        @foreach ($member_ads as $value)
-                                            <div class="owl-item" style="width: auto;">
-                                                <div class="item">
-                                                    <a href="{{ url(app()->getLocale() . '/details/' . $value->id) }}">
-                                                        <span class="item-carousel-thumb">
-                                                            <span class="photo-count">
-                                                                <i class="fa fa-camera"></i> {{ $value->images->count() }}
+
+
+                                    <div class="owl-stage-outer">
+                                        <div class="owl-stage"
+                                            style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 868px;">
+                                            @foreach ($member_ads as $value)
+                                                <div class="owl-item" style="width: auto;">
+                                                    <div class="item">
+                                                        <a
+                                                            href="{{ url(app()->getLocale() . '/details/' . $value->id) }}">
+                                                            <span class="item-carousel-thumb">
+                                                                <span class="photo-count">
+                                                                    <i class="fa fa-camera"></i>
+                                                                    {{ $value->images->count() }}
+                                                                </span>
+                                                                <div class="call-media">
+                                                                    @php
+                                                                        $img = Adsimage::where('ads_id', $value->id)->first();
+                                                                    @endphp
+                                                                    @if (!empty($img->image))
+                                                                        <img src="{{ asset($img->image) }}"
+                                                                            style="border: 1px solid rgb(231, 231, 231); margin-top: 2px; opacity: 1;height:180px;width:200px"
+                                                                            alt="{{ $value->title }}">
+                                                                    @endif
+                                                                </div>
                                                             </span>
-                                                            <div class="call-media">
-                                                                @php
-                                                                    $img = Adsimage::where('ads_id', $value->id)->first();
-                                                                @endphp
-                                                                @if (!empty($img->image))
-                                                                    <img src="{{ asset($img->image) }}"
-                                                                        style="border: 1px solid rgb(231, 231, 231); margin-top: 2px; opacity: 1;height:180px;width:200px"
-                                                                        alt="{{ $value->title }}">
-                                                                @endif
-                                                            </div>
-                                                        </span>
-                                                        <span class="item-name">{{ $value->title }} -
-                                                            {{ $value->id }}</span>
-                                                        @php
-                                                            $total = 0;
-                                                            $sum = 0;
-                                                            $total = App\Review::where('ad_id', $value->id)->count();
-                                                            $sum = App\Review::where('ad_id', $value->id)->sum('review');
-                                                            if ($sum == 0 || $total == 0) {
-                                                                $review = 0;
-                                                            } else {
-                                                                $review = round($sum / $total);
-                                                            }
-                                                        @endphp
-                                                        <div class="d-flex justify-content-between pl-2 pr-2">
-                                                            {{-- <div class="d-flex justify-content-start">
+                                                            <span class="item-name">{{ $value->title }} -
+                                                                {{ $value->id }}</span>
+                                                            @php
+                                                                $total = 0;
+                                                                $sum = 0;
+                                                                $total = App\Review::where('ad_id', $value->id)->count();
+                                                                $sum = App\Review::where('ad_id', $value->id)->sum('review');
+                                                                if ($sum == 0 || $total == 0) {
+                                                                    $review = 0;
+                                                                } else {
+                                                                    $review = round($sum / $total);
+                                                                }
+                                                            @endphp
+                                                            <div class="d-flex justify-content-between pl-2 pr-2">
+                                                                {{-- <div class="d-flex justify-content-start">
                                                                 @if ($review == 0)
                                                                     <span class="fa fa-star" style="color: #fff;"></span>
                                                                     <span class="fa fa-star" style="color: #fff;"></span>
@@ -292,36 +299,36 @@
                                                                 @endif
 
                                                             </div> --}}
-                                                            <span class="price">
-                                                                {{ $value->created_at->diffForHumans() }}
-                                                             </span>
-
-                                                            <div>
                                                                 <span class="price">
-                                                                    {{ number_format($value->price, 2) }}
-                                                                    ৳{{ $review }}
+                                                                    {{ $value->created_at->diffForHumans() }}
                                                                 </span>
+
+                                                                <div>
+                                                                    <span class="price">
+                                                                        {{ number_format($value->price, 2) }}
+                                                                        ৳{{ $review }}
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </a>
+                                                        </a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        @endforeach
+                                            @endforeach
 
+                                        </div>
                                     </div>
+                                    <div class="owl-nav disabled"><button type="button" role="presentation"
+                                            class="owl-prev">prev</button><button type="button" role="presentation"
+                                            class="owl-next">next</button></div>
+                                    <div class="owl-dots disabled"><button role="button"
+                                            class="owl-dot active"><span></span></button></div>
                                 </div>
-                                <div class="owl-nav disabled"><button type="button" role="presentation"
-                                        class="owl-prev">prev</button><button type="button" role="presentation"
-                                        class="owl-next">next</button></div>
-                                <div class="owl-dots disabled"><button role="button"
-                                        class="owl-dot active"><span></span></button></div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
             {{-- <div class="container my-3">
                 <div class="col-xl-12 content-box layout-section">
@@ -483,8 +490,8 @@
                                                                         </div> --}}
                                                                         <span class="price">
                                                                             {{ $value->created_at->diffForHumans() }}
-                                                                         </span>
-            
+                                                                        </span>
+
                                                                         <div>
                                                                             <span class="price">
                                                                                 {{ number_format($value->price, 2) }}
@@ -616,8 +623,8 @@
                                                                 </div> --}}
                                                                 <span class="price">
                                                                     {{ $value->created_at->diffForHumans() }}
-                                                                 </span>
-    
+                                                                </span>
+
                                                                 <div>
                                                                     <span class="price">
                                                                         {{ number_format($value->price, 2) }}

@@ -202,8 +202,7 @@
                                         <div class="form-group">
                                             <label for="division_childcity_id">Division Childcity(optional)</label>
                                             <div class="form-group">
-                                                <select class="form-control" name="division_childcity_id" id="division_childcity"
-                                                    required="required">
+                                                <select class="form-control" name="division_childcity_id" id="division_childcity">
                                                     <option value="">Division Childcity</option>
                                                 </select>
                                                 @if ($errors->has('division_childcity_id'))
@@ -243,8 +242,7 @@
                                         <div class="form-group">
                                             <label for="district_childcity_id">District Childcity(optional)</label>
                                             <div class="form-group">
-                                                <select class="form-control" name="district_childcity_id" id="district_childcity"
-                                                    required="required">
+                                                <select class="form-control" name="district_childcity_id" id="district_childcity">
                                                     <option value="">District Childcity</option>
                                                 </select>
                                                 @if ($errors->has('district_childcity_id'))
@@ -282,8 +280,7 @@
                                         <div class="form-group">
                                             <label for="thana_childcity_id">Upazila Childcity(optional)</label>
                                             <div class="form-group">
-                                                <select class="form-control" name="thana_childcity_id" id="thana_childcity"
-                                                    required="required">
+                                                <select class="form-control" name="thana_childcity_id" id="thana_childcity">
                                                     <option value="">Upazila Childcity</option>
                                                 </select>
                                                 @if ($errors->has('thana_childcity_id'))
@@ -511,7 +508,7 @@
                                                 class="form-control{{ $errors->has('package_id') ? ' is-invalid' : '' }}"
                                                 value="{{ old('package_id') }}">
                                                 <option value="">Select package</option>
-                                                @foreach ($packages as $p_key => $value)
+                                                @foreach ($packages->where('type','!=', 2) as $p_key => $value)
                                                     <option value="{{ $value->id }}"
                                                         {{ old('package_id') == ++$p_key ? 'selected' : '' }}>
                                                         {{ $value->en_name }} - ({{ $value->package_type }})
