@@ -41,12 +41,12 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::post('post-review', 'FrontEndController@postreview');
 
     //city
-    Route::get('/division_subcity','FrontendController@divisionsubcity');
-    Route::get('/division_childcity','FrontendController@divisionchildcity');
-    Route::get('/district_subcity','FrontendController@districtsubcity');
-    Route::get('/district_childcity','FrontendController@districtchildcity');
-    Route::get('/thana_subcity','FrontendController@thanasubcity');
-    Route::get('/thana_childcity','FrontendController@thanachildcity');
+    Route::get('/division_subcity','FrontEndController@divisionsubcity');
+    Route::get('/division_childcity','FrontEndController@divisionchildcity');
+    Route::get('/district_subcity','FrontEndController@districtsubcity');
+    Route::get('/district_childcity','FrontEndController@districtchildcity');
+    Route::get('/thana_subcity','FrontEndController@thanasubcity');
+    Route::get('/thana_childcity','FrontEndController@thanachildcity');
 });
 Route::post('message/visitor/to/publisher', 'EmailController@publisherEmail');
 Route::post('visitor/support/', 'EmailController@visitorsupport');
