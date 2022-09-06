@@ -44,7 +44,7 @@
                                 {{ $ads->title }}
                             </strong>
                             @if (!is_null($ads->package_id))
-                                <small class="label label-default adlistingtype">Member Ads</small>
+                                <small class="label label-default adlistingtype">{{ __('Member Ads') }}</small>
                             @endif
                         </h1>
                         <span class="info-row">
@@ -98,7 +98,7 @@
                                     <button class="nav-link active" id="item-details-tab" data-bs-toggle="tab"
                                         data-bs-target="#item-details" role="tab" aria-controls="item-details"
                                         aria-selected="true">
-                                        <h4 style="color: black">Ad Details</h4>
+                                        <h4 style="color: black">{{ __('Ad Details') }}</h4>
                                     </button>
                                 </li>
                             </ul>
@@ -180,7 +180,7 @@
                                                 <div class="col-12">
                                                     <h4 class="fw-normal p-0" style="color: black">
                                                         <span class="fw-bold">
-                                                            Price:
+                                                            {{ __('Price') }}:
                                                         </span>
                                                         <span>
                                                             {{ number_format($ads->price, 2) }}৳ @if ($ads->price_ng == 1)
@@ -197,27 +197,26 @@
 
                                                 <div class="col-12">
                                                     <h4 class="fw-normal p-0  mr-3" style="color: black">
-                                                        <span class="fw-bold" style="text-decoration: underline">Ad host
-                                                            provider location:
+                                                        <span class="fw-bold" style="text-decoration: underline">{{ __('Ad host provider location') }}:
                                                         </span>
                                                     </h4>
                                                 </div>
                                                 <div class="col-12">
-                                                    <h3>Division Area:</h3>
+                                                    <h3>{{ __('Division Area') }}:</h3>
                                                     <ul>
-                                                        <li style="list-style-type: circle;">Division: <i>
+                                                        <li style="list-style-type: circle;">{{ __('Division') }}: <i>
                                                                 {{ $ads->division->{app()->getLocale() . '_name'} }}
                                                             </i>
                                                         </li>
                                                         @if ($ads->division_subcity_id)
-                                                            <li style="list-style-type: circle;">Division City:
+                                                            <li style="list-style-type: circle;">{{ __('Division City') }}:
                                                                 <i>
                                                                     {{ $ads->divisionsubcity->{app()->getLocale() . '_name'} }}
                                                                 </i>
                                                             </li>
                                                         @endif
                                                         @if ($ads->division_childcity_id)
-                                                            <li style="list-style-type: circle;">Division City Area:
+                                                            <li style="list-style-type: circle;">{{ __('Division City Area') }}:
                                                                 <i>
                                                                     {{ $ads->divisionchildcity->{app()->getLocale() . '_name'} }}
                                                                 </i>
@@ -227,22 +226,21 @@
 
                                                 </div>
                                                 <div class="col-12">
-                                                    <h3>District Area:</h3>
+                                                    <h3>{{ __('District Area') }}:</h3>
                                                     <ul>
-                                                        <li style="list-style-type: disclosure-closed;">District: <i>
+                                                        <li style="list-style-type: disclosure-closed;">{{ __('District Area') }}: <i>
                                                                 {{ $ads->district->{app()->getLocale() . '_dist_name'} }}
                                                             </i>
                                                         </li>
                                                         @if ($ads->district_subcity_id)
-                                                            <li style="list-style-type: disclosure-closed;">District City:
+                                                            <li style="list-style-type: disclosure-closed;">{{ __('District City') }}:
                                                                 <i>
                                                                     {{ $ads->districtsubcity->{app()->getLocale() . '_name'} }}
                                                                 </i>
                                                             </li>
                                                         @endif
                                                         @if ($ads->district_childcity_id)
-                                                            <li style="list-style-type: disclosure-closed;">District City
-                                                                Area:
+                                                            <li style="list-style-type: disclosure-closed;">{{ __('District City Area') }}:
                                                                 <i>
                                                                     {{ $ads->districtchildcity->{app()->getLocale() . '_name'} }}
                                                                 </i>
@@ -252,21 +250,21 @@
 
                                                 </div>
                                                 <div class="col-12">
-                                                    <h3>Upazila Area:</h3>
+                                                    <h3>{{ __('Upazila Area') }}:</h3>
                                                     <ul>
-                                                        <li style="list-style-type: disc;">Upazila: <i>
+                                                        <li style="list-style-type: disc;">{{ __('Upazila') }}: <i>
                                                                 {{ $ads->thana->{app()->getLocale() . '_thana_name'} }}
                                                             </i>
                                                         </li>
                                                         @if ($ads->thana_subcity_id)
-                                                            <li style="list-style-type: disc;">Upazila City:
+                                                            <li style="list-style-type: disc;">{{ __('Upazila City') }}:
                                                                 <i>
                                                                     {{ $ads->thanasubcity->{app()->getLocale() . '_name'} }}
                                                                 </i>
                                                             </li>
                                                         @endif
                                                         @if ($ads->thana_childcity_id)
-                                                            <li style="list-style-type: disc;">Upazila City Area:
+                                                            <li style="list-style-type: disc;">{{ __('Upazila City Area') }}:
                                                                 <i>
                                                                     {{ $ads->thanachildcity->{app()->getLocale() . '_name'} }}
                                                                 </i>
@@ -276,9 +274,9 @@
 
                                                 </div>
                                                 <div class="col-12">
-                                                    <h3>Union:</h3>
+                                                    <h3>{{ __('Union') }}:</h3>
                                                     <ul>
-                                                        <li style="list-style-type: circle;">Union: <i>
+                                                        <li style="list-style-type: circle;">{{ __('Union') }}: <i>
                                                                 {{ $ads->union->{app()->getLocale() . '_union_name'} }}
                                                             </i>
                                                         </li>
@@ -286,9 +284,9 @@
                                                 </div>
                                                 @if ($ads->village_id)
                                                     <div class="col-12">
-                                                        <h3>Village:</h3>
+                                                        <h3>{{ __('Village') }}:</h3>
                                                         <ul>
-                                                            <li style="list-style-type: circle;">Village: <i>
+                                                            <li style="list-style-type: circle;">{{ __('Village') }}: <i>
                                                                     {{ $ads->village->{app()->getLocale() . '_village_name'} }}
                                                                 </i>
                                                             </li>
@@ -297,7 +295,7 @@
                                                 @endif
                                             </div>
                                             <div class="row">
-                                                <h3>Description:</h3>
+                                                <h3>{{ __('Full Description') }}:</h3>
                                                 <div class="col-12 detail-line-content">
                                                     {!! $ads->description !!}
                                                 </div>
@@ -353,7 +351,7 @@
                                 background: #e3e3ea;
                             }
                         </style>
-                        Click to share
+                        {{ __('Click to share') }}
                         {!! $shareButtons !!}
                         {{-- @if ($reviews->count() > 0)
                             <hr>
@@ -415,17 +413,17 @@
                                     </span>
                                     @if ($ads->package_id)
                                         <div class="badge bg-secondary">
-                                            <i class="fas fa-star mr-1 text-warning"></i>Member
+                                            <i class="fas fa-star mr-1 text-warning"></i>{{ __('Member') }}
                                         </div>
                                     @endif
                                     <h5 class="title">
                                         <b style="color: black">
-                                            {{ 'Member sience from ' . $customer->created_at->format('F Y') }}
+                                            {{ 'Member from '.$customer->created_at->format('F Y') }}
                                         </b>
                                     </h5>
 
                                     <a href="{{ url(app()->getLocale() . '/customer-post/' . $customer->id) }}">
-                                        See member's shop details
+                                        {{ __('See members shop details') }}
                                     </a>
                                 </div>
                             </div>
@@ -439,7 +437,7 @@
                                             color: #1e934b;"></i>
                                         </div>
                                         <div>
-                                            <h3>Call Seller</h3>
+                                            <h3>{{ __('Call Seller') }}</h3>
                                             <button class="btn btn-light" style="background-color:#e7edee;">
                                                 <a href="tel:{{ $customer->phone }}">
                                                     <b>{{ $customer->phone }}</b>
@@ -461,7 +459,7 @@
                                                 color: #1e934b;"></i>
                                             </div>
                                             <div>
-                                                <p>Chat with seller</p>
+                                                <p>{{ __('Chat with seller') }}</p>
                                             </div>
                                         </div>
                                     </a>
@@ -471,13 +469,13 @@
                         </div>
 
                         <div class="card sidebar-card">
-                            <div class="card-header">Safety Tips for Buyers</div>
+                            <div class="card-header">{{ __('Safety Tips for Buyers') }}</div>
                             <div class="card-content">
                                 <div class="card-body text-start">
                                     <ul class="list-check">
-                                        <li> Meet seller at a public place </li>
-                                        <li> Check the item before you buy </li>
-                                        <li> Pay only after collecting the item </li>
+                                        <li> {{ __('Meet seller at a public place') }} </li>
+                                        <li> {{ __('Check the item before you buy') }} </li>
+                                        <li> {{ __('Pay only after collecting the item') }} </li>
                                     </ul>
                                 </div>
                             </div>

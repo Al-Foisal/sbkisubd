@@ -45,7 +45,7 @@
                                 {{ $ads->title }}
                             </strong>
                             @if (!is_null($ads->package_id))
-                                <small class="label label-default adlistingtype">Member Ads</small>
+                                <small class="label label-default adlistingtype">{{ __('Member Ads') }}</small>
                             @endif
                         </h1>
                         <span class="info-row">
@@ -91,24 +91,23 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-12 p-3">
-                                        <h3 style="color: #828282;">Condition: <b
+                                        <h3 style="color: #828282;">{{ __('Condition') }}: <b
                                                 style="color: black;">{{ $ads->version == 1 ? 'Used' : 'New' }}</b></h3>
-                                        <h3 style="color: #828282;">Brand: <b style="color: black;">{{ $ads->brand }}</b>
+                                        <h3 style="color: #828282;">{{ __('Brand') }}: <b style="color: black;">{{ $ads->brand }}</b>
                                         </h3>
-                                        <h3 style="color: #828282;">Current Bid: <span
+                                        <h3 style="color: #828282;">{{ __('Current Bid') }}: <span
                                                 class="text-warning">৳{{ number_format($ads->bid_price, 2) }}</span></h3>
 
-                                        <h3 style="color: #828282;">Total Bidded: <span
+                                        <h3 style="color: #828282;">{{ __('Total Bidded') }}: <span
                                                 class="text-warning">{{ $ads->nilamhistory->count() }}</span></h3>
-                                        <p class="btn btn-link" data-toggle="modal" data-target="#exampleModal">View nilam
-                                            details</p>
+                                        <p class="btn btn-link" data-toggle="modal" data-target="#exampleModal">{{ __('View nilam details') }}</p>
 
                                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Bidding List</h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel">{{ __('Bidding List') }}</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
@@ -119,10 +118,10 @@
                                                             <thead>
                                                                 <tr>
                                                                     <th scope="col">#</th>
-                                                                    <th scope="col">Customer Image</th>
-                                                                    <th scope="col">Customer Name</th>
-                                                                    <th scope="col">Bidded Price</th>
-                                                                    <th scope="col">Bidded_at</th>
+                                                                    <th scope="col">{{ __('Customer Image') }}</th>
+                                                                    <th scope="col">{{ __('Customer Name') }}</th>
+                                                                    <th scope="col">{{ __('Bidded Price') }}</th>
+                                                                    <th scope="col">{{ __('Bidded_at') }}</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -153,8 +152,7 @@
                                                         <input type="hidden" name="ads_id" value="{{ $ads->id }}">
                                                         <input type="hidden" name="bidder_id"
                                                             value="{{ session('customerId') }}">
-                                                        <button type="submit" class="btn btn-success btn-block"><b>Make
-                                                                Your Bit for
+                                                        <button type="submit" class="btn btn-success btn-block"><b>{{ __('Make your bid') }}
                                                                 ৳{{ number_format($ads->bid_price + $ads->bid_range, 2) }}</b></button>
                                                     </form>
                                                 </div>
@@ -172,15 +170,14 @@
                                                                 min="{{ $ads->bid_price + $ads->bid_range }}"
                                                                 name="custom_bid_price" class="form-control">
                                                             </div>
-                                                            <button type="submit" class="btn btn-success btn-block"><b>Bid
-                                                                    Now</b></button>
+                                                            <button type="submit" class="btn btn-success btn-block"><b>{{ __('Bid Now') }}</b></button>
                                                         </div>
                                                     </form>
                                                 </div>
                                             </div>
                                         @else
                                             <a href="{{ url('customer/login') }}" class="btn btn-primary btn-block">
-                                                Login to Bid
+                                                {{ __('Login to Bid') }}
                                             </a>
                                         @endif
                                     </div>
@@ -195,7 +192,7 @@
                                     <button class="nav-link active" id="item-details-tab" data-bs-toggle="tab"
                                         data-bs-target="#item-details" role="tab" aria-controls="item-details"
                                         aria-selected="true">
-                                        <h4 style="color: black">Ad Details</h4>
+                                        <h4 style="color: black">{{ __('Ad Details') }}</h4>
                                     </button>
                                 </li>
                             </ul>
@@ -213,7 +210,7 @@
                                                 <div class="col-md-6 col-sm-6 col-6">
                                                     <h4 class="fw-normal p-0" style="color: black">
                                                         <span class="fw-bold"><i class="fa fa-location-arrow"></i>
-                                                            Location:
+                                                            {{ __('Location') }}:
                                                         </span>
                                                         <span style="color: black">
                                                             {{ $ads->division->{app()->getLocale() . '_name'} }}
@@ -225,7 +222,7 @@
                                                 <div class="col-md-6 col-sm-6 col-6 text-end">
                                                     <h4 class="fw-normal p-0" style="color: black">
                                                         <span class="fw-bold">
-                                                            Price:
+                                                            {{ __('Price') }}:
                                                         </span>
                                                         <span>
                                                             {{ number_format($ads->bid_price, 2) }} ৳
@@ -269,17 +266,17 @@
                                     </span>
                                     @if ($ads->package_id)
                                         <div class="badge bg-secondary">
-                                            <i class="fas fa-star mr-1 text-warning"></i>Member
+                                            <i class="fas fa-star mr-1 text-warning"></i>{{ __('Member') }}
                                         </div>
                                     @endif
                                     <h5 class="title">
                                         <b style="color: black">
-                                            {{ 'Member sience from ' . $customer->created_at->format('F Y') }}
+                                            {{ 'Member from ' . $customer->created_at->format('F Y') }}
                                         </b>
                                     </h5>
 
                                     <a href="{{ url(app()->getLocale() . '/customer-post/' . $customer->id) }}">
-                                        See member's shop details
+                                        {{ __('See members shop details') }}
                                     </a>
                                 </div>
                             </div>
@@ -293,7 +290,7 @@
                                             color: #1e934b;"></i>
                                         </div>
                                         <div>
-                                            <h3>Call Seller</h3>
+                                            <h3>{{ __('Call Seller') }}</h3>
                                             <button class="btn btn-light" style="background-color:#e7edee;">
                                                 <a href="tel:{{ $customer->phone }}">
                                                     <b>{{ $customer->phone }}</b>
@@ -307,29 +304,31 @@
                             <hr>
                             <div class="card-content">
                                 <div class="card-body text-start">
-                                    <div class="d-flex justify-content-start">
-                                        <div class="mr-3">
-                                            <i class="fas fa-comment-alt"
-                                                style="font-size: xx-large;
-                                            color: #1e934b;"></i>
+                                    <a href="{{ route('chatwithseller',$customer->id) }}" style="text-decoration: none;">
+                                        <div class="d-flex justify-content-start">
+                                            <div class="mr-3">
+                                                <i class="fas fa-comment-alt"
+                                                    style="font-size: xx-large;
+                                                color: #1e934b;"></i>
+                                            </div>
+                                            <div>
+                                                <p>{{ __('Chat with seller') }}</p>
+                                            </div>
                                         </div>
-                                        <div id="atr" onclick="atr()">
-                                            <h3>Chat with seller</h3>
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
 
                             </div>
                         </div>
 
                         <div class="card sidebar-card">
-                            <div class="card-header">Safety Tips for Buyers</div>
+                            <div class="card-header">{{ __('Safety Tips for Buyers') }}</div>
                             <div class="card-content">
                                 <div class="card-body text-start">
                                     <ul class="list-check">
-                                        <li> Meet seller at a public place </li>
-                                        <li> Check the item before you buy </li>
-                                        <li> Pay only after collecting the item </li>
+                                        <li> {{ __('Meet seller at a public place') }} </li>
+                                        <li> {{ __('Check the item before you buy') }} </li>
+                                        <li> {{ __('Pay only after collecting the item') }} </li>
                                     </ul>
                                 </div>
                             </div>
