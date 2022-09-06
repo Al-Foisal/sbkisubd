@@ -2314,6 +2314,7 @@
 <script src="{{ asset('/') }}index-style/jquery.min.js"></script>
 <script src="{{ asset('/') }}index-style/owl.carousel.min.js"></script>
 <script src="{{ asset('backEnd/') }}/dist/js/toastr.min.js"></script>
+
 </body>
 
 </html>														

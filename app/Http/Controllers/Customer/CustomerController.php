@@ -11,10 +11,12 @@ use Brian2694\Toastr\Facades\Toastr;
 use DB;
 use File;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session as FacadesSession;
 use Mail;
 use Session;
+
 class CustomerController extends Controller {
+    
+
     public function openclose() {
         $open = OpeningHour::where('customer_id', session('customerId'))->get();
 
@@ -106,19 +108,20 @@ class CustomerController extends Controller {
 // return $customerCheck;
         if ($customerCheck) {
             if ($customerCheck->status == 0) {
-                Session::flash('message','Opps! your account has been suspends');
+                Session::flash('message', 'Opps! your account has been suspends');
 
                 return redirect()->back();
             } else {
                 if (password_verify($request->password, $customerCheck->password)) {
                     $customerId = $customerCheck->id;
                     Session::put('customerId', $customerId);
-                    Session::flash('message','congratulation you login successfully', 'success!');
+                    Session::flash('message', 'congratulation you login successfully', 'success!');
 
                     return redirect('/customer/0/control-panel/dashboard');
 
                 } else {
                     Session::flash('message', 'Opps! your password wrong');
+
                     return redirect()->back();
                 }
 

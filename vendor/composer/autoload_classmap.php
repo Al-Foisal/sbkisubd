@@ -12,6 +12,7 @@ return array(
     'App\\Advertisment' => $baseDir . '/app/Advertisment.php',
     'App\\Banner' => $baseDir . '/app/Banner.php',
     'App\\Category' => $baseDir . '/app/Category.php',
+    'App\\Chat' => $baseDir . '/app/Chat.php',
     'App\\Childcategory' => $baseDir . '/app/Childcategory.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Createpage' => $baseDir . '/app/Createpage.php',

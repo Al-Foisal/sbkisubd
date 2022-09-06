@@ -30,7 +30,6 @@
                   <div class="d-flex justify-content-start">
                     <input type="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Your Password" name="password"  value="{{old('password')}}" id="password">
                   <i class="bi bi-eye-slash" id="togglePassword" style="margin-left: -30px;
-                  cursor: pointer;
                   bottom: -36px;
                   margin-bottom: 2px;
                   padding: 0.5rem 0.75rem;"></i>
@@ -83,10 +82,5 @@
       this.classList.toggle("bi-eye");
   });
 
-  // prevent form submit
-  const form = document.querySelector("form");
-  form.addEventListener('submit', function (e) {
-      e.preventDefault();
-  });
 </script>
 @endsection

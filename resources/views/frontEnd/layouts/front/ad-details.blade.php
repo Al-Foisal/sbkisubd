@@ -453,16 +453,18 @@
                             <hr>
                             <div class="card-content">
                                 <div class="card-body text-start">
-                                    <div class="d-flex justify-content-start">
-                                        <div class="mr-3">
-                                            <i class="fas fa-comment-alt"
-                                                style="font-size: xx-large;
-                                            color: #1e934b;"></i>
+                                    <a href="{{ route('chatwithseller',$customer->id) }}" style="text-decoration: none;">
+                                        <div class="d-flex justify-content-start">
+                                            <div class="mr-3">
+                                                <i class="fas fa-comment-alt"
+                                                    style="font-size: xx-large;
+                                                color: #1e934b;"></i>
+                                            </div>
+                                            <div>
+                                                <p>Chat with seller</p>
+                                            </div>
                                         </div>
-                                        <div id="atr" onclick="atr()">
-                                            <h3>Chat with seller</h3>
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
 
                             </div>

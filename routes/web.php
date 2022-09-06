@@ -103,6 +103,13 @@ Route::group(['namespace' => 'Customer', 'prefix' => 'customer'], function () {
     Route::post('/0/nilam/control-panel/post-new-ads', 'NilamController@adspublished');
     Route::get('{slug}/0/nilam/control-panel/{id}/post-delete-ads', 'NilamController@deleteads');
 
+    //chat
+    Route::get('/chat/with/sellerlist','AdsController@chatwithsellerlist')->name('chatwithsellerlist');
+    Route::get('/chat/with/customerlist','AdsController@chatwithcustomerlist')->name('chatwithcustomerlist');
+    Route::get('chat/{id}','AdsController@chatwithseller')->name('chatwithseller');
+    Route::get('chat/customer/{id}','AdsController@chatwithcustomer')->name('chatwithcustomer');
+    Route::post('chat/store','AdsController@chatstore')->name('storechat');
+
     //buy nilam product
     Route::get('/1/nilam', 'NilamController@showNilamAds');
     Route::get('/1/nilam-details/{id}', 'NilamController@showNilamAdsDetails');

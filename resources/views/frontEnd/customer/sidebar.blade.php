@@ -26,6 +26,9 @@
             <li class="{{{ Request::is('customer/'.$customerInfo->slug.'/0/control-panel/'.$customerInfo->id.'/post-new-ads') ? 'active':'' }}}"><a href="{{url('customer/0/control-panel/post-new-ads')}}"><i class="fe fe-rocket"></i> New Ads </a></li>
 
             <li class="{{{ Request::is('customer/0/nilam/control-panel/manage-my-ads') ? 'active':'' }}}"><a href="{{url('customer/0/nilam/control-panel/manage-my-ads')}}"><i class="fe fe-target"></i> Manage Bidding Ads </a></li>
+
+            <li class="{{ Request::is('customer/chat/with/sellerlist') ? 'active':'' }}"><a href="{{route('chatwithsellerlist')}}"><i class="fas fa-user-shield"></i> Chat With Seller</a></li>
+            <li class="{{{ Request::is('customer/chat/with/customerlist') ? 'active':'' }}}"><a href="{{route('chatwithcustomerlist')}}"><i class="fas fa-users"></i> Chat With Customer</a></li>
             
             <li><a href="{{url('customer/shop/open-list')}}"><i class="fe fe-clock"></i>Shop Open Schedule</a></li>
             <li><a href="{{url('customer/logout')}}"><i class="fe fe-logout"></i>Logout</a></li>

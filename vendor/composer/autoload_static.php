@@ -452,6 +452,7 @@ class ComposerStaticInit89db5f4f3e1ed8496b5fe196fb0c0c3a
         'App\\Advertisment' => __DIR__ . '/../..' . '/app/Advertisment.php',
         'App\\Banner' => __DIR__ . '/../..' . '/app/Banner.php',
         'App\\Category' => __DIR__ . '/../..' . '/app/Category.php',
+        'App\\Chat' => __DIR__ . '/../..' . '/app/Chat.php',
         'App\\Childcategory' => __DIR__ . '/../..' . '/app/Childcategory.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Createpage' => __DIR__ . '/../..' . '/app/Createpage.php',
