@@ -167,7 +167,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         'Intervention\Image\ImageServiceProvider',
         Brian2694\Toastr\ToastrServiceProvider::class,
-
+        Jorenvh\Share\Providers\ShareServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -195,6 +195,7 @@ return [
      */
 
     'aliases'         => [
+        'Share' => Jorenvh\Share\ShareFacade::class,
         'Toastr'  => Brian2694\Toastr\Facades\Toastr::class,
         'App'          => Illuminate\Support\Facades\App::class,
         'Arr'          => Illuminate\Support\Arr::class,
