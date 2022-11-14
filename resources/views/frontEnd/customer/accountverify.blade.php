@@ -42,6 +42,7 @@
                                 </div>
                             </div>
                         </form>
+                        <a href="/customer/0/account/otp/resend">Resend code</a>
                     </div>
                 </div>
             </div>

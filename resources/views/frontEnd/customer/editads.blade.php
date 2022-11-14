@@ -260,8 +260,8 @@
                                             <select
                                                 class="form-control{{ $errors->has('district_subcity_id') ? ' is-invalid' : '' }}"
                                                 name="district_subcity_id" id="district_subcity">
-                                                @foreach($dist_subcity as $sc)
-                                                <option value="{{ $sc->id }}">{{ $sc->en_name }}</option>
+                                                @foreach ($dist_subcity as $sc)
+                                                    <option value="{{ $sc->id }}">{{ $sc->en_name }}</option>
                                                 @endforeach
 
                                                 @if ($errors->has('district_subcity_id'))
@@ -303,8 +303,8 @@
                                             <select
                                                 class="form-control{{ $errors->has('thana_subcity_id') ? ' is-invalid' : '' }}"
                                                 name="thana_subcity_id" id="thana_subcity">
-                                                @foreach($thana_subcity as $sc)
-                                                <option value="{{ $sc->id }}">{{ $sc->en_name }}</option>
+                                                @foreach ($thana_subcity as $sc)
+                                                    <option value="{{ $sc->id }}">{{ $sc->en_name }}</option>
                                                 @endforeach
 
                                                 @if ($errors->has('thana_subcity_id'))
@@ -518,7 +518,7 @@
                                     </div>
                                     <!-- col end -->
 
-                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
                                         <div class="form-group">
                                             <strong>Size: max:6MB, Weight:695, Height:325 ,type:jpg,jpeg,png</strong>
                                             <label for="image">Product Picture<span>*</span></label>
@@ -559,14 +559,28 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <strong>Size: max:10MB, type:mp4, mov, mvk</strong>
+                                            <label for="image">Product Video (optional)</label>
+
+                                            <div class="control-group input-group">
+                                                <input type="file" name="video" class="form-control">
+                                            </div>
+                                            @if ($edit_data->video)
+                                                
+                                                <video controls loop src="{{ asset($edit_data->video) }}" poster="benefits-of-coding.jpg" style="height: 150px;width:100%"></video>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
                                         <div class="form-group">
                                             <label for="package_id">Membership Packages <span>*</span></label>
                                             <select name="package_id"
                                                 class="form-control{{ $errors->has('package_id') ? ' is-invalid' : '' }}"
                                                 value="{{ old('package_id') }}">
                                                 <option value="">Select package</option>
-                                                @foreach ($packages->where('type','!=', 2) as $key => $value)
+                                                @foreach ($packages->where('type', '!=', 2) as $key => $value)
                                                     <option value="{{ $value->id }}"
                                                         @if ($edit_data->package_id == $value->id) selected @endif>
                                                         {{ $value->en_name }}</option>

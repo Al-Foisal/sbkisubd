@@ -469,7 +469,7 @@
                                     </div>
                                     <!-- col end -->
 
-                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
                                         <div class="form-group">
                                             <strong>Size: max:6MB, Weight:695, Height:325
                                                 ,type:jpg,jpeg,png</strong><br>
@@ -501,7 +501,17 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <strong>Size: max:10MB, type:mp4, mov, mvk</strong>
+                                            <label for="image">Product Video (optional)</label>
+
+                                            <div class="control-group input-group">
+                                                <input type="file" name="video" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
                                         <div class="form-group">
                                             <label for="package_id">Membership Packages <span>*</span></label>
                                             <select name="package_id" id="package_id"

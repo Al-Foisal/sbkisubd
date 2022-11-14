@@ -1,524 +1,316 @@
 <!doctype html>
-<html lang="en">
-
+<html lang="zxx" class="theme-light">
+    
+<!-- Mirrored from templates.envytheme.com/raque/default/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 13 Apr 2022 10:43:09 GMT -->
 <head>
-    <title>All of Bangladesh - {{ config('app.name') }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-    <!-- MDB -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.4.0/mdb.min.css" rel="stylesheet" />
-    <style>
-        .dropdown-menu li {
-            position: relative;
-        }
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        .dropdown-menu .dropdown-submenu {
-            display: none;
-            position: absolute;
-            left: 100%;
-            top: -7px;
-        }
+        <!-- Links of CSS files -->
+        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/boxicons.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/flaticon.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/owl.theme.default.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/odometer.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/meanmenu.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/animate.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/nice-select.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/viewer.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/slick.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/dark.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
 
-        .dropdown-menu .dropdown-submenu-left {
-            right: 100%;
-            left: auto;
-        }
+        <title>{{ __('Find your location') }}</title>
 
-        .dropdown-menu>li:hover>.dropdown-submenu {
-            display: block;
-        }
-    </style>
-</head>
-
-<body>
-    <header>
-        @php
-            $news = DB::table('news')
-                ->where('id', 1)
-                ->first();
-        @endphp
-        <div style="background: #fff">
-            <marquee style="vertical-align: middle;padding: 7px;color: rgb(0, 0, 0); " behavior="scroll"
-                direction="left">
-                <span
-                    style="vertical-align: middle;padding: 11px;background: #07A4B4;
-        color: #fff;">{{ __('Notice') }}:</span>
-                {{ $news->text }}
-            </marquee>
-        </div>
-
-
-
-        <nav class="navbar  navbar-light  navbar-expand-md" role="navigation" style="background: #07A4B4">
-
-            <div class="container-fluid">
-
-                <div class="navbar-identity p-sm-0">
-
-                    <style>
-                        .logo img {
-                            width: 80px;
-                            height: 75px;
-                        }
-
-                        .main-logo {
-                            width: 80px;
-                            height: 75px;
-                            max-width: 430px !important;
-                            max-height: 500px !important;
-                        }
-                    </style>
-
-                    <a href="{{ url('/') }}" class="navbar-brand logo logo-title">
-                        @foreach ($wlogo as $value)
-                            <img src="{{ asset($value->image) }}" alt="" class="main-logo"
-                                data-bs-placement="bottom" data-bs-toggle="tooltip">
-                        @endforeach
-                    </a>
-
-                    <button class="navbar-toggler -toggler float-end" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30"
-                            focusable="false">
-                            <title>Menu</title>
-                            <path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10"
-                                d="M4 7h22M4 15h22M4 23h22"></path>
-                        </svg>
-                    </button>
-
-
-                </div>
-
-                <div class="navbar-collapse collapse" id="navbarsDefault">
-
-
-                    <ul class="nav navbar-nav me-md-auto navbar-left">
-
-                        <li class="nav-item d-lg-block d-md-none d-sm-block d-block">
-                            <a href="{{ url(app()->getLocale() . '/all-ads') }}" class="nav-link">
-                                <i style="margin-right:5px" class="fas fa-th-list"></i> {{ __('All Ads') }}
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown lang-menu ">
-                            @if (app()->getLocale() == 'bn')
-                                <a style="border: 1px solid #3cbcc9;
-                            padding: 13px 14px;
-                            border-radius: 6px;border: 1px solid #3cbcc9;
-                            padding: 8px 29px;
-                            border-radius: 6px;
-                            margin-left: 2rem;"
-                                    href="{{ url()->current() }}?change_language=en" class="nav-link">
-                                    <span>English</span>
-                                </a>
-                            @elseif(app()->getLocale() == 'en')
-                                <a style="border: 1px solid #3cbcc9;
-                            padding: 13px 14px;
-                            border-radius: 6px;border: 1px solid #3cbcc9;
-                            padding: 8px 29px;
-                            border-radius: 6px;
-                            margin-left: 2rem;"
-                                    href="{{ url()->current() }}?change_language=bn" class="nav-link">
-                                    <span>বাংলা</span>
-                                </a>
-                            @endif
-                        </li>
-                    </ul>
-                    <style>
-                        a.nav-link {
-                            color: #fff !important;
-                        }
-                    </style>
-                    <ul class="nav navbar-nav ms-auto navbar-right">
-                        <li class="nav-item pricing">
-                            <h1 style="color: white">{{ __('Find your location') }}</h1>
-                        </li>
-                    </ul>
-                </div>
-
-
-            </div>
-        </nav>
-
-    </header>
-    <div class="container mt-5 pb-5">
-        <div class="dropdown">
-            <button class="btn btn-primary" type="button"
-                style="padding: 5px;border-radius:0;width:20%;letter-spacing:1px;" id="dropdownMenuButton"
-                aria-expanded="true">
-                {{ __('Division City') }}
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="" style="display: block;width:20%;border-radius:0;">
-                <li>
-                    <a class="dropdown-item" href="{{ url(app()->getLocale() . '/all-ads?all_bangladesh=' . true) }}">
-                        {{ __('All of Bangladesh') }}
-                    </a>
-                </li>
-                @foreach ($divisions as $division)
-                    <li>
-                        <a class="dropdown-item"
-                            href="{{ url(app()->getLocale() . '/all-ads?division=' . $division->id) }}">
-                            {{ $division->{app()->getLocale() . '_name'} }} &raquo;
-                        </a>
-                        <ul class="dropdown-menu dropdown-submenu">
-                            <li>
-                                <a class="dropdown-item bg-primary"
-                                    style="font-weight: bold;color:white;border-radius:0;"
-                                    href="javascript:;">{{ __('Division Sub-city') }}</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item"
-                                    href="{{ url(app()->getLocale() . '/all-ads?division=' . $division->id) }}">
-                                    {{ __('All of ') }}{{ $division->{app()->getLocale() . '_name'} }}
-                                </a>
-                            </li>
-                            @foreach ($division->divisionsubcity as $subcity)
-                                <li>
-                                    <a class="dropdown-item"
-                                        href="{{ url(app()->getLocale() . '/all-ads?division_subcity=' . $subcity->id) }}">
-                                        {{ $subcity->{app()->getLocale() . '_name'} }} &raquo;
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-submenu">
-                                        <li>
-                                            <a class="dropdown-item bg-primary"
-                                                style="font-weight: bold;color:white;border-radius:0;"
-                                                href="javascript:;">{{ __('Division Child-city') }}</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item"
-                                                href="{{ url(app()->getLocale() . '/all-ads?division_subcity=' . $subcity->id) }}">
-                                                {{ __('All of ') }}{{ $subcity->{app()->getLocale() . '_name'} }}
-                                            </a>
-                                        </li>
-                                        @foreach ($subcity->divisionchildcity as $child)
-                                            <li>
-                                                <a class="dropdown-item"
-                                                    href="{{ url(app()->getLocale() . '/all-ads?division_childcity=' . $child->id) }}">
-                                                    {{ $child->{app()->getLocale() . '_name'} }}
-                                                </a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </li>
-                @endforeach
-                <li>
-                    <a class="dropdown-item bg-primary" style="font-weight: bold;color:white;"
-                        href="javascript:;">{{ __('Division') }}</a>
-                </li>
-                @foreach ($divisions as $division)
-                    <li>
-                        <a class="dropdown-item"
-                            href="{{ url(app()->getLocale() . '/all-ads?division=' . $division->id) }}">
-                            {{ $division->{app()->getLocale() . '_name'} }} &raquo;
-                        </a>
-                        <ul class="dropdown-menu dropdown-submenu">
-                            <li>
-                                <a class="dropdown-item bg-primary" style="font-weight: bold;color:white;"
-                                    href="javascript:;">{{ __('District City') }}</a>
-                            </li>
-                            @foreach ($division->districts as $district)
-                                <li>
-                                    <a class="dropdown-item"
-                                        href="{{ url(app()->getLocale() . '/all-ads?district=' . $district->id) }}">
-                                        {{ $district->{app()->getLocale() . '_dist_name'} }} &raquo;
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-submenu">
-                                        <li>
-                                            <a class="dropdown-item bg-primary" style="font-weight: bold;color:white;"
-                                                href="javascript:;">{{ __('District Sub-city') }}</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item"
-                                                href="{{ url(app()->getLocale() . '/all-ads?district=' . $district->id) }}">
-                                                {{ __('All of ') }}{{ $district->{app()->getLocale() . '_dist_name'} }}
-                                            </a>
-                                        </li>
-                                        @foreach ($district->districtsubcity as $subcity)
-                                            <li>
-                                                <a class="dropdown-item"
-                                                    href="{{ url(app()->getLocale() . '/all-ads?district_subcity=' . $subcity->id) }}">
-                                                    {{ $subcity->{app()->getLocale() . '_name'} }} &raquo;
-                                                </a>
-                                                <ul class="dropdown-menu dropdown-submenu">
-                                                    <li>
-                                                        <a class="dropdown-item bg-primary"
-                                                            style="font-weight: bold;color:white;"
-                                                            href="javascript:;">{{ __('District Child-city') }}</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item"
-                                                            href="{{ url(app()->getLocale() . '/all-ads?district_subcity=' . $subcity->id) }}">
-                                                            {{ __('All of ') }}{{ $subcity->{app()->getLocale() . '_name'} }}
-                                                        </a>
-                                                    </li>
-                                                    @foreach ($subcity->districtchildcity as $child)
-                                                        <li>
-                                                            <a class="dropdown-item"
-                                                                href="{{ url(app()->getLocale() . '/all-ads?district_childcity=' . $child->id) }}">
-                                                                {{ $child->{app()->getLocale() . '_name'} }}
-                                                            </a>
-                                                        </li>
-                                                    @endforeach
-                                                </ul>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </li>
-                            @endforeach
-                            <li>
-                                <a class="dropdown-item bg-primary" style="font-weight: bold;color:white;"
-                                    href="javascript:;">{{ __('District') }}</a>
-                            </li>
-                            @foreach ($division->districts as $district)
-                                <li>
-                                    <a class="dropdown-item"
-                                        href="{{ url(app()->getLocale() . '/all-ads?district=' . $district->id) }}">
-                                        {{ $district->{app()->getLocale() . '_dist_name'} }} &raquo;
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-submenu mb-5">
-                                        <li>
-                                            <a class="dropdown-item bg-primary" style="font-weight: bold;color:white;"
-                                                href="javascript:;">{{ __('Upazila City') }}</a>
-                                        </li>
-                                        @foreach ($district->thanas as $thana)
-                                            <li>
-                                                <a class="dropdown-item"
-                                                    href="{{ url(app()->getLocale() . '/all-ads?thana=' . $thana->id) }}">
-                                                    {{ $thana->{app()->getLocale() . '_thana_name'} }} &raquo;
-                                                </a>
-                                                <ul class="dropdown-menu dropdown-submenu">
-                                                    <li>
-                                                        <a class="dropdown-item bg-primary"
-                                                            style="font-weight: bold;color:white;"
-                                                            href="javascript:;">{{ __('Upazila Sub-city') }}</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item"
-                                                            href="{{ url(app()->getLocale() . '/all-ads?thana=' . $thana->id) }}">
-                                                            {{ __('All of ') }}{{ $thana->{app()->getLocale() . '_thana_name'} }}
-                                                        </a>
-                                                    </li>
-                                                    @foreach ($thana->thanasubcity as $subcity)
-                                                        <li>
-                                                            <a class="dropdown-item"
-                                                                href="{{ url(app()->getLocale() . '/all-ads?thana_subcity=' . $subcity->id) }}">
-                                                                {{ $subcity->{app()->getLocale() . '_name'} }}
-                                                                &raquo;
-                                                            </a>
-                                                            <ul class="dropdown-menu dropdown-submenu">
-                                                                <li>
-                                                                    <a class="dropdown-item bg-primary"
-                                                                        style="font-weight: bold;color:white;"
-                                                                        href="javascript:;">{{ __('Upazila Child-city') }}</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="dropdown-item"
-                                                                        href="{{ url(app()->getLocale() . '/all-ads?thana_subcity=' . $subcity->id) }}">
-                                                                        {{ __('All of ') }}{{ $subcity->{app()->getLocale() . '_name'} }}
-                                                                    </a>
-                                                                </li>
-                                                                @foreach ($subcity->thanachildcity as $child)
-                                                                    <li>
-                                                                        <a class="dropdown-item"
-                                                                            href="{{ url(app()->getLocale() . '/all-ads?thana_childcity=' . $child->id) }}">
-                                                                            {{ $child->{app()->getLocale() . '_name'} }}
-                                                                        </a>
-                                                                    </li>
-                                                                @endforeach
-                                                            </ul>
-                                                        </li>
-                                                    @endforeach
-                                                </ul>
-                                            </li>
-                                        @endforeach
-                                        <li>
-                                            <a class="dropdown-item bg-primary" style="font-weight: bold;color:white;"
-                                                href="javascript:;">{{ __('Upazila') }}</a>
-                                        </li>
-                                        @foreach ($district->thanas as $thana)
-                                            <li>
-                                                <a class="dropdown-item"
-                                                    href="{{ url(app()->getLocale() . '/all-ads?thana=' . $thana->id) }}">
-                                                    {{ $thana->{app()->getLocale() . '_thana_name'} }} &raquo;
-                                                </a>
-                                                <ul class="dropdown-menu dropdown-submenu">
-                                                    <li>
-                                                        <a class="dropdown-item bg-primary"
-                                                            style="font-weight: bold;color:white;"
-                                                            href="javascript:;">{{ __('Union') }}</a>
-                                                    </li>
-                                                    @foreach ($thana->unions as $union)
-                                                        <li>
-                                                            <a class="dropdown-item"
-                                                                href="{{ url(app()->getLocale() . '/all-ads?union=' . $union->id) }}">
-                                                                {{ $union->{app()->getLocale() . '_union_name'} }}
-                                                                &raquo;
-                                                            </a>
-                                                            <ul class="dropdown-menu dropdown-submenu">
-                                                                <li>
-                                                                    <a class="dropdown-item bg-primary"
-                                                                        style="font-weight: bold;color:white;"
-                                                                        href="javascript:;">{{ __('Village') }}</a>
-                                                                </li>
-                                                                @foreach ($union->villages as $village)
-                                                                    <li>
-                                                                        <a class="dropdown-item"
-                                                                            href="{{ url(app()->getLocale() . '/all-ads?village=' . $village->id) }}">
-                                                                            {{ $village->{app()->getLocale() . '_village_name'} }}
-                                                                        </a>
-                                                                    </li>
-                                                                @endforeach
-                                                            </ul>
-                                                        </li>
-                                                    @endforeach
-                                                </ul>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
-
-    </div>
-    <div style="margin:1000rem;"></div>
-    <!-- MDB -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.4.0/mdb.min.js"></script>
-</body>
-
-</html>
-
-{{-- <div class="mobile">
-    <!DOCTYPE HTML>
-    <html lang="en-US">
-
-
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <title>Banca - Banking & Business Loan Bootstrap-5 HTML Template</title>
-        <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
-
-        <!-- CSS here -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('mobile/css/bootstrap.min.css') }}" media="all" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('mobile/css/elegant-icons.min.css') }}"
-            media="all" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('mobile/css/all.min.css') }}" media="all" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('mobile/css/animate.css') }}" media="all" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('mobile/css/slick.css') }}" media="all" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('mobile/css/slick-theme.css') }}" media="all" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('mobile/css/nice-select.css') }}" media="all" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('mobile/css/animate.css') }}" media="all" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('mobile/css/jquery.fancybox.min.css') }}"
-            media="all" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('mobile/css/nouislider.min.css') }}"
-            media="all" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('mobile/css/default.css') }}" media="all" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('mobile/css/style.css') }}" media="all" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('mobile/css/responsive.css') }}" media="all" />
+        <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}') }}">
+        <style>
+            .navbar-style-two .raque-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu {
+                left: 250px;
+            }
+            .navbar-style-two .raque-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu {
+                left: 250px;
+            }
+            .navbar-style-two .raque-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu {
+                left: 250px;
+            }
+            .mean-container .mean-nav ul li li li li li ul li a {
+                width: 50%;
+                padding: 1em 30% 13px;
+            }
+            .buy-now-btn{
+                display: none;
+            }
+            @media only screen and (max-width: 991px){
+                .navbar-area.navbar-style-two .raque-responsive-nav .raque-responsive-menu.mean-container .navbar-nav {
+                    height: 100vh;
+                }
+            }
+                
+        </style>
     </head>
 
-    <body data-spy="scroll" data-offset="70">
-        <!-- Header -->
-        <header class="header" style="background-color: black;">
-            <div class="header-menu header-menu-4" id="sticky">
-                <nav class="navbar navbar-expand-lg ">
-                    <div class="container">
-                        <a class="navbar-brand sticky_logo" href="index.html">
-                            <img class="main" src="img/logo/Logo.png" srcset="img/logo/Logo@2x.png 2x"
-                                alt="logo">
-                            <img class="sticky" src="img/logo/Logo-2.png" srcset="img/logo/Logo-2@2x.png 2x"
-                                alt="logo">
-                        </a>
-                        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="menu_toggle">
-                                <span class="hamburger">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </span>
-                                <span class="hamburger-cross">
-                                    <span></span>
-                                    <span></span>
-                                </span>
-                            </span>
-                        </button>
+    <body>
 
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav menu ms-auto">
-                                <li class="nav-item dropdown submenu">
-                                    <a class="nav-link dropdown-toggle" href="loan.html" role="button"
-                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Loan
+        <!-- Start Header Area -->
+        <header class="header-area">
+
+            <div class="top-header-style-two" style="background-color: #07a4b4;">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-4">
+                            <div class="top-header-logo">
+                                <a href="{{ url('/') }}" class="d-inline-block">
+                                    @foreach($wlogo as $value)
+                                    <img src="{{ asset($value->image) }}" style="height: 70px;width:70px;" class="black-logo" alt="logo">
+                                    <img src="{{ asset($value->image) }}" style="height: 70px;width:70px;" class="white-logo" alt="logo">
+                                    @endforeach
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-8">
+                            <ul class="d-flex justify-content-end" style="list-style-type: none">
+                                <li style="padding: 10px;">
+                                <a href="{{ url(app()->getLocale() . '/all-ads') }}" class="cart-wrapper-btn d-inline-block">
+                                    <i style="margin-right:5px" class="fas fa-th-list"></i> {{ __('All Ads') }}
+                                </a>
+                                </li>
+                                <li>
+                                @if (app()->getLocale() == 'bn')
+                                    <a style="
+                                border-radius: 6px;border: 1px solid #3cbcc9;
+                                padding: 8px 29px;
+                                border-radius: 6px;
+                                margin-left: 2rem;"
+                                        href="{{ url()->current() }}?change_language=en" class="cart-wrapper-btn d-inline-block">
+                                        English
                                     </a>
-                                    <i class="arrow_carrot-down_alt2 mobile_dropdown_icon" aria-hidden="false"
-                                        data-bs-toggle="dropdown"></i>
-
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item"><a class="nav-link" href="loan.html">Get loan</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="#" role="button"
-                                                data-bs-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false">Loan
-                                                Application</a>
-                                            <i class="arrow_carrot-down_alt2 mobile_dropdown_icon" aria-hidden="false"
-                                                data-bs-toggle="dropdown"></i>
-
-                                            <ul class="dropdown-menu">
-                                                <li class="nav-item"><a class="nav-link"
-                                                        href="loan-details.html">Step
-                                                        01</a></li>
-                                                <li class="nav-item"><a class="nav-link"
-                                                        href="personal-details.html">Step
-                                                        02</a></li>
-                                                <li class="nav-item"><a class="nav-link"
-                                                        href="document-upload.html">Step
-                                                        03</a></li>
-
-                                            </ul>
-                                        </li>
-
-                                    </ul>
+                                @elseif(app()->getLocale() == 'en')
+                                    <a  style="
+                                border-radius: 6px;border: 1px solid #3cbcc9;
+                                padding: 8px 29px;
+                                border-radius: 6px;
+                                margin-left: 2rem;"
+                                        href="{{ url()->current() }}?change_language=bn" class="cart-wrapper-btn d-inline-block">
+                                        বাংলা
+                                    </a>
+                                @endif
                                 </li>
                             </ul>
                         </div>
                     </div>
-                </nav>
+                </div>
             </div>
+            <!-- Start Navbar Area -->
+            <div class="navbar-area navbar-style-two" style="background-color: #07a4b4">
+                <div class="raque-responsive-nav">
+                    <div class="container">
+                        <div class="raque-responsive-menu">
+                            <div class="logo">
+                                <a href="{{ url('/') }}">
+                                    @foreach($wlogo as $value)
+                                    <img src="{{ asset($value->image) }}" style="height: 50px;width:50px;" class="black-logo" alt="logo">
+                                    <img src="{{ asset($value->image) }}" style="height: 50px;width:50px;" class="white-logo" alt="logo">
+                                    @endforeach
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="raque-nav">
+                    <div class="container">
+                        <nav class="navbar navbar-expand-md navbar-light" style="margin-bottom: 1000rem;">
+                            <div class="collapse navbar-collapse mean-menu">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">{{ __('All of Bangladesh') }} <i class='bx bx-chevron-down'></i></a>
+                                        <ul class="dropdown-menu">
+                                            <li class="nav-item bg-info"><a href="javascript:;" class="nav-link tive">{{ __('Division City') }}</a></li>
+
+                                            
+@foreach ($divisions as $division)
+<li class="nav-item"><a href="{{ url(app()->getLocale() . '/all-ads?division=' . $division->id) }}" class="nav-link">{{ $division->{app()->getLocale() . '_name'} }} <i class='bx bx-chevron-right'></i></a>
+    <ul class="dropdown-menu">
+        <li class="nav-item bg-info">
+            <a href="javascript:;" class="nav-link">{{ __('Division Sub-city') }}</a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ url(app()->getLocale() . '/all-ads?division=' . $division->id) }}" class="nav-link">{{ __('All of ') }}{{ $division->{app()->getLocale() . '_name'} }}</a>
+        </li>
+        @foreach ($division->divisionsubcity as $subcity)
+        <li class="nav-item">
+            <a href="{{ url(app()->getLocale() . '/all-ads?division_subcity=' . $subcity->id) }}" class="nav-link">{{ $subcity->{app()->getLocale() . '_name'} }} <i class='bx bx-chevron-right'></i>
+            </a>
+            <ul class="dropdown-menu">
+                <li class="nav-item bg-info"><a href="javascript:;" class="nav-link">{{ __('Division Child-city') }}</a></li>
+
+                <li class="nav-item"><a href="{{ url(app()->getLocale() . '/all-ads?division_subcity=' . $subcity->id) }}" class="nav-link">{{ __('All of ') }}{{ $subcity->{app()->getLocale() . '_name'} }}</a></li>
+                @foreach ($subcity->divisionchildcity as $child)
+                <li class="nav-item">
+                    <a href="{{ url(app()->getLocale() . '/all-ads?division_childcity=' . $child->id) }}" class="nav-link">{{ $child->{app()->getLocale() . '_name'} }}</a>
+                </li>
+                @endforeach
+            </ul>
+        </li>
+        @endforeach
+    </ul>
+</li>
+@endforeach
+
+<li class="nav-item bg-info">
+    <a href="javascript:;" class="nav-link">{{ __('Division') }}</a>
+</li>
+@foreach ($divisions as $division)
+<li class="nav-item"><a href="{{ url(app()->getLocale() . '/all-ads?division=' . $division->id) }}" class="nav-link">{{ $division->{app()->getLocale() . '_name'} }} <i class='bx bx-chevron-right'></i></a>
+    <ul class="dropdown-menu">
+        <li class="nav-item bg-info"><a href="javascript:;" class="nav-link">{{ __('District City') }}</a></li>
+        @foreach ($division->districts as $district)
+        <li class="nav-item"><a href="{{ url(app()->getLocale() . '/all-ads?district=' . $district->id) }}" class="nav-link">{{ $district->{app()->getLocale() . '_dist_name'} }} <i class='bx bx-chevron-right'></i></a>
+            <ul class="dropdown-menu">
+                <li class="nav-item bg-info"><a href="javascript:;" class="nav-link">{{ __('District Sub-city') }}</a></li>
+
+                <li class="nav-item"><a href="{{ url(app()->getLocale() . '/all-ads?district=' . $district->id) }}" class="nav-link">{{ __('All of ') }}{{ $district->{app()->getLocale() . '_dist_name'} }}</a></li>
+
+                @foreach ($district->districtsubcity as $subcity)
+                <li class="nav-item"><a href="{{ url(app()->getLocale() . '/all-ads?district_subcity=' . $subcity->id) }}" class="nav-link">{{ $subcity->{app()->getLocale() . '_name'} }} <i class='bx bx-chevron-right'></i></a>
+                    <ul class="dropdown-menu">
+                        <li class="nav-item bg-info"><a href="javascript:;" class="nav-link">{{ __('District Child-city') }}</a></li>
+
+                        <li class="nav-item"><a href="{{ url(app()->getLocale() . '/all-ads?district_subcity=' . $subcity->id) }}" class="nav-link">{{ __('All of ') }}{{ $subcity->{app()->getLocale() . '_name'} }}</a></li>
+
+                        @foreach ($subcity->districtchildcity as $child)
+                        <li class="nav-item"><a href="{{ url(app()->getLocale() . '/all-ads?district_childcity=' . $child->id) }}" class="nav-link">{{ $child->{app()->getLocale() . '_name'} }}</a></li>
+                        @endforeach
+                    </ul>
+                </li>
+                @endforeach
+            </ul>
+        </li>
+        @endforeach
+
+        <li class="nav-item bg-info"><a href="javascript:;" class="nav-link">{{ __('District') }}</a></li>
+        @foreach ($division->districts as $district)
+        <li class="nav-item"><a href="{{ url(app()->getLocale() . '/all-ads?district=' . $district->id) }}" class="nav-link">{{ $district->{app()->getLocale() . '_dist_name'} }} <i class='bx bx-chevron-right'></i></a>
+            <ul class="dropdown-menu">
+                <li class="nav-item bg-info"><a href="javascript:;" class="nav-link">{{ __('Upazila City') }}</a></li>
+
+                @foreach ($district->thanas as $thana)
+                <li class="nav-item"><a href="{{ url(app()->getLocale() . '/all-ads?thana=' . $thana->id) }}" class="nav-link">{{ $thana->{app()->getLocale() . '_thana_name'} }} <i class='bx bx-chevron-right'></i></a>
+                    <ul class="dropdown-menu">
+                        <li class="nav-item bg-info"><a href="javascript:;" class="nav-link">{{ __('Upazila Sub-city') }}</a></li>
+
+                        <li class="nav-item"><a href="{{ url(app()->getLocale() . '/all-ads?thana=' . $thana->id) }}" class="nav-link">{{ __('All of ') }}{{ $thana->{app()->getLocale() . '_thana_name'} }}</a></li>
+
+                        @foreach ($thana->thanasubcity as $subcity)
+                        <li class="nav-item"><a href="{{ url(app()->getLocale() . '/all-ads?thana_subcity=' . $subcity->id) }}" class="nav-link">{{ $subcity->{app()->getLocale() . '_name'} }} <i class='bx bx-chevron-right'></i></a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item bg-info"><a href="javascript:;" class="nav-link">{{ __('Upazila Child-city') }}</a></li>
+
+                                <li class="nav-item"><a href="{{ url(app()->getLocale() . '/all-ads?thana_subcity=' . $subcity->id) }}" class="nav-link">{{ __('All of ') }}{{ $subcity->{app()->getLocale() . '_name'} }}</a></li>
+
+                                @foreach ($subcity->thanachildcity as $child)
+                                <li class="nav-item"><a href="{{ url(app()->getLocale() . '/all-ads?thana_childcity=' . $child->id) }}" class="nav-link">{{ $child->{app()->getLocale() . '_name'} }}</a></li>
+                                @endforeach
+                            </ul>
+                        </li>
+                        @endforeach
+                    </ul>
+                </li>
+                @endforeach
+
+                <li class="nav-item bg-info"><a href="javascript:;" class="nav-link">{{ __('Upazila') }}</a></li>
+                @foreach ($district->thanas as $thana)
+                <li class="nav-item"><a href="{{ url(app()->getLocale() . '/all-ads?thana=' . $thana->id) }}" class="nav-link">{{ $thana->{app()->getLocale() . '_thana_name'} }} <i class='bx bx-chevron-right'></i></a>
+                    <ul class="dropdown-menu">
+                        <li class="nav-item bg-info"><a href="javascript:;" class="nav-link">{{ __('Union') }}</a></li>
+
+                        @foreach ($thana->unions as $union)
+                        <li class="nav-item"><a href="{{ url(app()->getLocale() . '/all-ads?union=' . $union->id) }}" class="nav-link">{{ $union->{app()->getLocale() . '_union_name'} }} <i class='bx bx-chevron-right'></i></a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item bg-info"><a href="javascript:;" class="nav-link">{{ __('Village') }}</a></li>
+                                <li class="nav-item"><a href="javascript:;" class="nav-link">{{ __('Village qww') }}</a></li>
+
+                                @foreach ($union->villages as $village)
+                                <li class="nav-item"><a href="{{ url(app()->getLocale() . '/all-ads?village=' . $village->id) }}" class="nav-link">{{ $village->{app()->getLocale() . '_village_name'} }}</a></li>
+                                @endforeach
+                            </ul>
+                        </li>
+                        @endforeach
+                    </ul>
+                </li>
+                @endforeach
+            </ul>
+        </li>
+        @endforeach
+    </ul>
+</li>
+@endforeach
+
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                                <div class="others-option">
+
+                                    
+                                        {{-- <a href="{{ url(app()->getLocale() . '/all-ads') }}" class="cart-wrapper-btn d-inline-block">
+                                            <i style="margin-right:5px" class="fas fa-th-list"></i> {{ __('All Ads') }}
+                                        </a>
+                                        @if (app()->getLocale() == 'bn')
+                                            <a style="border: 1px solid #3cbcc9;
+                                        padding: 13px 14px;
+                                        border-radius: 6px;border: 1px solid #3cbcc9;
+                                        padding: 8px 29px;
+                                        border-radius: 6px;
+                                        margin-left: 2rem;"
+                                                href="{{ url()->current() }}?change_language=en" class="cart-wrapper-btn d-inline-block">
+                                                English
+                                            </a>
+                                        @elseif(app()->getLocale() == 'en')
+                                            <a  style="border: 1px solid #3cbcc9;
+                                        padding: 13px 14px;
+                                        border-radius: 6px;border: 1px solid #3cbcc9;
+                                        padding: 8px 29px;
+                                        border-radius: 6px;
+                                        margin-left: 2rem;"
+                                                href="{{ url()->current() }}?change_language=bn" class="cart-wrapper-btn d-inline-block">
+                                                বাংলা
+                                            </a>
+                                        @endif --}}
+
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!-- End Navbar Area -->
+            
         </header>
-        <!-- Header end-->
+        <!-- End Header Area -->
 
-
-        <!-- Back to top button -->
-        <a id="back-to-top" title="Back to Top"></a>
-
-        <!-- JS here -->
-        <script type="text/javascript" src="{{ asset('mobile/js/jquery-3.6.0.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('mobile/js/preloader.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('mobile/js/bootstrap.bundle.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('mobile/js/jquery.smoothscroll.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('mobile/js/jquery.nice-select.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('mobile/js/jquery.fancybox.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('mobile/js/slick.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('mobile/js/nouislider.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('mobile/js/wNumb.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('mobile/js/parallax.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('mobile/js/jquery.parallax-scroll.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('mobile/js/wow.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('mobile/js/custom.js') }}"></script>
+        <!-- Links of JS files -->
+        <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
+        <script src="{{ asset('assets/js/mixitup.min.js') }}"></script>
+        <script src="{{ asset('assets/js/parallax.min.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery.appear.min.js') }}"></script>
+        <script src="{{ asset('assets/js/odometer.min.js') }}"></script>
+        <script src="{{ asset('assets/js/particles.min.js') }}"></script>
+        <script src="{{ asset('assets/js/meanmenu.min.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery.nice-select.min.js') }}"></script>
+        <script src="{{ asset('assets/js/viewer.min.js') }}"></script>
+        <script src="{{ asset('assets/js/slick.min.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery.ajaxchimp.min.js') }}"></script>
+        <script src="{{ asset('assets/js/form-validator.min.js') }}"></script>
+        <script src="{{ asset('assets/js/contact-form-script.js') }}"></script>
+        <script src="{{ asset('assets/js/main.js') }}"></script>
     </body>
-
-
-    </html>
-</div> --}}
+</html>

@@ -71,6 +71,7 @@ Route::group(['namespace' => 'Customer', 'prefix' => 'customer'], function () {
 
     // email Verification
     Route::post('auth/0/control-panel/account-verify', 'CustomerController@caccountverify');
+    Route::get('/0/account/otp/resend', 'CustomerController@otpResend');
     Route::get('/0/account/verification', 'CustomerController@accountverifyPage');
     Route::post('auth/customer/email/verification/check', 'CustomerController@verification');
     // Membership oparations

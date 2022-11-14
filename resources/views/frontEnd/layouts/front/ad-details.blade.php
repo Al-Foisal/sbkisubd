@@ -64,6 +64,7 @@
                             <div
                                 class="swiper main-gallery swiper-initialized swiper-horizontal swiper-pointer-events swiper-autoheight">
                                 <img src="{{ $img }}" style="width: 100%" class="singleimage">
+                                <video controls loop src="ll" poster="benefits-of-coding.jpg" style="height: 50%;width:100%;display: none" class="singlevideo"></video>
                             </div>
                             <hr>
                             <div
@@ -78,10 +79,22 @@
                                             role="group" aria-label="1 / 2">
                                             <img src="{{ asset($image->image) }}"
                                                 alt="hp-ultra-slim-core-i7-ram-16gb-graphics-8gb-ssd-256gb-small-0"
-                                                onclick="colorImage('{{ asset($image->image) }}')"
+                                                onclick="colorImage('{{ asset($image->image) }}',1)"
                                                 style="height: 100px;width:100px;">
                                         </div>
                                     @endforeach
+                                    @if($ads->video)
+                                    <div class="swiper-slide swiper-slide-visible"
+                                        style="width: 136.833px; margin-right: 5px;    width: 136.833px;
+                                        margin-right: 5px;
+                                        display: inline-block;"
+                                        role="group" aria-label="1 / 2">
+                                        <img src="{{ asset('video-thumbnil.png') }}"
+                                            alt="hp-ultra-slim-core-i7-ram-16gb-graphics-8gb-ssd-256gb-small-0"
+                                            onclick="colorImage('{{ asset($ads->video) }}',0)"
+                                            style="height: 100px;width:100px;">
+                                    </div>
+                                    @endif
                                 </div>
                                 <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                             </div>
@@ -197,7 +210,8 @@
 
                                                 <div class="col-12">
                                                     <h4 class="fw-normal p-0  mr-3" style="color: black">
-                                                        <span class="fw-bold" style="text-decoration: underline">{{ __('Ad host provider location') }}:
+                                                        <span class="fw-bold"
+                                                            style="text-decoration: underline">{{ __('Ad host provider location') }}:
                                                         </span>
                                                     </h4>
                                                 </div>
@@ -216,7 +230,8 @@
                                                             </li>
                                                         @endif
                                                         @if ($ads->division_childcity_id)
-                                                            <li style="list-style-type: circle;">{{ __('Division City Area') }}:
+                                                            <li style="list-style-type: circle;">
+                                                                {{ __('Division City Area') }}:
                                                                 <i>
                                                                     {{ $ads->divisionchildcity->{app()->getLocale() . '_name'} }}
                                                                 </i>
@@ -228,19 +243,22 @@
                                                 <div class="col-12">
                                                     <h3>{{ __('District Area') }}:</h3>
                                                     <ul>
-                                                        <li style="list-style-type: disclosure-closed;">{{ __('District Area') }}: <i>
+                                                        <li style="list-style-type: disclosure-closed;">
+                                                            {{ __('District Area') }}: <i>
                                                                 {{ $ads->district->{app()->getLocale() . '_dist_name'} }}
                                                             </i>
                                                         </li>
                                                         @if ($ads->district_subcity_id)
-                                                            <li style="list-style-type: disclosure-closed;">{{ __('District City') }}:
+                                                            <li style="list-style-type: disclosure-closed;">
+                                                                {{ __('District City') }}:
                                                                 <i>
                                                                     {{ $ads->districtsubcity->{app()->getLocale() . '_name'} }}
                                                                 </i>
                                                             </li>
                                                         @endif
                                                         @if ($ads->district_childcity_id)
-                                                            <li style="list-style-type: disclosure-closed;">{{ __('District City Area') }}:
+                                                            <li style="list-style-type: disclosure-closed;">
+                                                                {{ __('District City Area') }}:
                                                                 <i>
                                                                     {{ $ads->districtchildcity->{app()->getLocale() . '_name'} }}
                                                                 </i>
@@ -264,7 +282,8 @@
                                                             </li>
                                                         @endif
                                                         @if ($ads->thana_childcity_id)
-                                                            <li style="list-style-type: disc;">{{ __('Upazila City Area') }}:
+                                                            <li style="list-style-type: disc;">
+                                                                {{ __('Upazila City Area') }}:
                                                                 <i>
                                                                     {{ $ads->thanachildcity->{app()->getLocale() . '_name'} }}
                                                                 </i>
@@ -301,7 +320,25 @@
                                                 </div>
                                             </div>
 
-
+                                            <div class="row">
+                                                <h3>{{ __('Additional Details') }}:</h3>
+                                                <div class="col-12 detail-line-content">
+                                                    <table class="table table-bordered">
+                                                        <thead>
+                                                            <th>{{ __('Title') }}</th>
+                                                            <th>{{ __('Details') }}</th>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach ($ads->additionaldetails as $additional)
+                                                                <tr>
+                                                                    <td>{{ $additional->title }}</td>
+                                                                    <td>{{ $additional->detail }}</td>
+                                                                </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
 
 
                                         </div>
@@ -418,7 +455,7 @@
                                     @endif
                                     <h5 class="title">
                                         <b style="color: black">
-                                            {{ 'Member from '.$customer->created_at->format('F Y') }}
+                                            {{ 'Member from ' . $customer->created_at->format('F Y') }}
                                         </b>
                                     </h5>
 
@@ -451,7 +488,7 @@
                             <hr>
                             <div class="card-content">
                                 <div class="card-body text-start">
-                                    <a href="{{ route('chatwithseller',$customer->id) }}" style="text-decoration: none;">
+                                    <a href="{{ route('chatwithseller', $customer->id) }}" style="text-decoration: none;">
                                         <div class="d-flex justify-content-start">
                                             <div class="mr-3">
                                                 <i class="fas fa-comment-alt"
@@ -491,8 +528,16 @@
 
     </div>
     <script>
-        function colorImage(value) {
-            $('.singleimage').attr('src', value);
+        function colorImage(value,type) {
+            if(type == 1){
+                $('.singleimage').attr('src', value);
+                $('.singlevideo').hide();
+                $('.singleimage').show();
+            } else {
+                $('.singlevideo').attr('src', value);
+                $('.singleimage').hide();
+                $('.singlevideo').show();
+            }
         }
     </script>
     <script>

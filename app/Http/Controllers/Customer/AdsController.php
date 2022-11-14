@@ -22,22 +22,23 @@ use App\ThanaChildcity;
 use App\ThanaSubcity;
 use Brian2694\Toastr\Facades\Toastr;
 use DB;
-use File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Image;
 use Session;
 
 class AdsController extends Controller {
 
-    public function chatwithsellerlist()
-    {
+    public function chatwithsellerlist() {
         $sellerchatlist = DB::table('chats')
-        ->where('customer_id',Session::get('customerId'))
-        ->selectRaw('count(id) as n,seller_id')
-        ->groupBy('seller_id')
-        ->get();
-        return view('frontEnd.customer.chatlist',compact('sellerchatlist'));
+            ->where('customer_id', Session::get('customerId'))
+            ->selectRaw('count(id) as n,seller_id')
+            ->groupBy('seller_id')
+            ->get();
+
+        return view('frontEnd.customer.chatlist', compact('sellerchatlist'));
     }
+
     public function chatwithseller($id) {
 
         if ($this->validCustomer()) {
@@ -48,14 +49,15 @@ class AdsController extends Controller {
                 $data             = [];
                 $data['seller']   = Customer::find($id);
                 $data['customer'] = Customer::find(Session::get('customerId'));
-                $data['chat']= Chat::where('customer_id',Session::get('customerId'))->where('seller_id',$id)->get();
-                $ct = Chat::where('customer_id',Session::get('customerId'))->where('seller_id',$id)->where('sent_by',$id)->where('status',0)->get();
+                $data['chat']     = Chat::where('customer_id', Session::get('customerId'))->where('seller_id', $id)->get();
+                $ct               = Chat::where('customer_id', Session::get('customerId'))->where('seller_id', $id)->where('sent_by', $id)->where('status', 0)->get();
 
-                foreach($ct as $item){
+                foreach ($ct as $item) {
                     $chatread = Chat::find($item->id);
-                    $chatread->update(['status'=>1]);
+                    $chatread->update(['status' => 1]);
                 }
-                return view('frontend.customer.chat', $data);
+
+                return view('frontEnd.customer.chat', $data);
             }
 
         } else {
@@ -66,15 +68,16 @@ class AdsController extends Controller {
 
     }
 
-    public function chatwithcustomerlist()
-    {
+    public function chatwithcustomerlist() {
         $customerchatlist = DB::table('chats')
-        ->where('seller_id',Session::get('customerId'))
-        ->selectRaw('count(id) as n,customer_id')
-        ->groupBy('customer_id')
-        ->get();
-        return view('frontEnd.customer.chatcustomerlist',compact('customerchatlist'));
+            ->where('seller_id', Session::get('customerId'))
+            ->selectRaw('count(id) as n,customer_id')
+            ->groupBy('customer_id')
+            ->get();
+
+        return view('frontEnd.customer.chatcustomerlist', compact('customerchatlist'));
     }
+
     public function chatwithcustomer($id) {
 
         if ($this->validCustomer()) {
@@ -85,14 +88,15 @@ class AdsController extends Controller {
                 $data             = [];
                 $data['seller']   = Customer::find(Session::get('customerId'));
                 $data['customer'] = Customer::find($id);
-                $data['chat']=Chat::where('customer_id',$id)->where('seller_id',Session::get('customerId'))->get();
-                $ct = Chat::where('customer_id',$id)->where('seller_id',Session::get('customerId'))->where('sent_by',$id)->where('status',0)->get();
+                $data['chat']     = Chat::where('customer_id', $id)->where('seller_id', Session::get('customerId'))->get();
+                $ct               = Chat::where('customer_id', $id)->where('seller_id', Session::get('customerId'))->where('sent_by', $id)->where('status', 0)->get();
 
-                foreach($ct as $item){
+                foreach ($ct as $item) {
                     $chatread = Chat::find($item->id);
-                    $chatread->update(['status'=>1]);
+                    $chatread->update(['status' => 1]);
                 }
-                return view('frontend.customer.chatcustomer', $data);
+
+                return view('frontEnd.customer.chatcustomer', $data);
             }
 
         } else {
@@ -103,14 +107,14 @@ class AdsController extends Controller {
 
     }
 
-    public function chatstore(Request $request)
-    {
+    public function chatstore(Request $request) {
         Chat::create([
-            'message'=>$request->message,
-            'customer_id'=>$request->customer_id,
-            'seller_id'=>$request->seller_id,
-            'sent_by'=>$request->sent_by,
+            'message'     => $request->message,
+            'customer_id' => $request->customer_id,
+            'seller_id'   => $request->seller_id,
+            'sent_by'     => $request->sent_by,
         ]);
+
         return back();
     }
 
@@ -189,6 +193,7 @@ class AdsController extends Controller {
             'version'     => 'required',
             'price'       => 'required',
             'image'       => 'required|max:7168',
+            'video'       => 'nullable|max:10,240|mimes:mp4,mvk,mov',
             'description' => 'required',
 
         ]);
@@ -203,6 +208,24 @@ class AdsController extends Controller {
                 Toastr::success('message', 'Pacakge Need!');
 
                 return back();
+            }
+
+        }
+
+        if ($request->hasFile('video')) {
+
+            $image_file = $request->file('video');
+
+            if ($image_file) {
+
+                $img_gen   = hexdec(uniqid());
+                $image_url = 'uploads/advertisment/';
+                $image_ext = strtolower($image_file->getClientOriginalExtension());
+
+                $img_name    = $img_gen . '.' . $image_ext;
+                $final_name1 = $image_url . $img_gen . '.' . $image_ext;
+
+                $image_file->move($image_url, $img_name);
             }
 
         }
@@ -236,6 +259,7 @@ class AdsController extends Controller {
         $store_data->status                = 0;
         $store_data->request               = 1;
         $store_data->description           = $request->description;
+        $store_data->video                 = $final_name1 ?? null;
         $store_data->customer_id           = Session::get('customerId');
         $store_data->save();
 
@@ -356,6 +380,7 @@ class AdsController extends Controller {
             'price'       => 'required',
             'description' => 'required',
 
+            'video'       => 'nullable|mimes:mp4,mvk,mov',
         ]);
 
         $update_data = Advertisment::where(['id' => $request->hidden_id, 'customer_id' => Session::get('customerId')])->first();
@@ -366,6 +391,33 @@ class AdsController extends Controller {
             $sub->save();
 
             $update_data->adsduration = $sub->validity;
+        }
+
+        if ($request->hasFile('video')) {
+
+            $image_file = $request->file('video');
+
+            if ($image_file) {
+
+                $image_path = public_path($update_data->video);
+
+                if (File::exists($image_path)) {
+                    File::delete($image_path);
+                }
+
+                $img_gen   = hexdec(uniqid());
+                $image_url = 'uploads/advertisment/';
+                $image_ext = strtolower($image_file->getClientOriginalExtension());
+
+                $img_name    = $img_gen . '.' . $image_ext;
+                $final_name1 = $image_url . $img_gen . '.' . $image_ext;
+
+                $image_file->move($image_url, $img_name);
+                $update_data->video = $final_name1;
+                $update_data->save();
+
+            }
+
         }
 
         $update_data->title                 = $request->title;

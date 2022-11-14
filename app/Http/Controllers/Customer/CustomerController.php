@@ -67,7 +67,7 @@ class CustomerController extends Controller {
             'password'  => 'required',
             'confirmed' => 'required_with::password|same:password',
         ]);
-        $verify               = rand(1111, 9999);
+        $verify               = rand(111111, 999999);
         $store_data           = new Customer();
         $store_data->name     = $request->name;
         $store_data->slug     = strtolower(preg_replace('/\s+/u', '-', trim($request->name)));
@@ -75,6 +75,7 @@ class CustomerController extends Controller {
         $store_data->phone    = $request->phone;
         $store_data->agree    = 1;
         $store_data->verify   = 1;
+        $store_data->verifyToken   = $verify;
         $store_data->password = bcrypt($request->password);
         $store_data->save();
 
@@ -84,9 +85,28 @@ class CustomerController extends Controller {
         $customerId = $store_data->id;
         Session::put('customerId', $customerId);
         $sub = SubscriptionPackage::where('customer_id', session('customerId'))->with('package')->get();
+        
+        $url = "https://sms.solutionsclan.com/api/sms/send";
+        $data = [
+            "apiKey"=> "A000491d7dd6fff-c0ea-43a8-9473-e8b963a9e1ba",
+            "contactNumbers"=> $store_data->phone,
+            "senderId"=> "8809612441129",
+            "textBody"=> "Your account verification OTP ".$verify.".\n https://sbkichu.com/"
+        ];
+        
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        $response = curl_exec($ch);
+        curl_close($ch);
+            
         Toastr::success('message', 'Your information add successfully!');
 
-        return view('frontEnd.customer.dashboard', compact('sub'));
+        return redirect('customer/0/account/verification');
     }
 
     // customer register
@@ -105,7 +125,7 @@ class CustomerController extends Controller {
             ->orWhere('phone', $request->phoneOremail)
             ->first();
 
-// return $customerCheck;
+        // return $customerCheck;
         if ($customerCheck) {
             if ($customerCheck->status == 0) {
                 Session::flash('message', 'Opps! your account has been suspends');
@@ -115,9 +135,15 @@ class CustomerController extends Controller {
                 if (password_verify($request->password, $customerCheck->password)) {
                     $customerId = $customerCheck->id;
                     Session::put('customerId', $customerId);
-                    Session::flash('message', 'congratulation you login successfully', 'success!');
+                    if($customerCheck->verifyToken){
+                        Session::flash('message', 'Please verify your phone number.', 'success!');
 
-                    return redirect('/customer/0/control-panel/dashboard');
+                        return redirect('/customer/0/account/verification');
+                    } else {
+                        Session::flash('message', 'congratulation you login successfully', 'success!');
+
+                        return redirect('/customer/0/control-panel/dashboard');
+                    }
 
                 } else {
                     Session::flash('message', 'Opps! your password wrong');
@@ -250,7 +276,7 @@ class CustomerController extends Controller {
 // customer login
 
     // account verify
-    public function caccountverify(Request $request) {
+    public function otpResend() {
 
         if (Session::get('customerId') != NULL) {
             $findcustomer              = Customer::find(Session::get('customerId'));
@@ -258,17 +284,26 @@ class CustomerController extends Controller {
             $findcustomer->verifyToken = $verifyToken;
             $findcustomer->save();
             Session::put('verifyaccess', $findcustomer->id);
+            
+            $url = "https://sms.solutionsclan.com/api/sms/send";
             $data = [
-                'email'       => $findcustomer->email,
-                'verifyToken' => $verifyToken,
+                "apiKey"=> "A000491d7dd6fff-c0ea-43a8-9473-e8b963a9e1ba",
+                "contactNumbers"=> $findcustomer->phone,
+                "senderId"=> "8809612441129",
+                "textBody"=> "Your account verification OTP ".$verifyToken.".\n https://sbkichu.com/"
             ];
-            // return $data;
-            $send = Mail::send('frontEnd.emails.accountverify', $data, function ($textmsg) use ($data) {
-                $textmsg->from('info@sellquicker.com');
-                $textmsg->to($data['email']);
-                $textmsg->subject('Account Verification');
-            });
-            Toastr::success('Please check your mail for email verify token', 'Success!');
+            
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+            $response = curl_exec($ch);
+            curl_close($ch);
+            
+            Toastr::success('Please check your message for number verify token', 'Success!');
 
             return redirect('customer/0/account/verification');
         } else {
@@ -280,7 +315,7 @@ class CustomerController extends Controller {
     public function accountverifyPage() {
         $customerCheck = Session::get('customerId');
 
-        if ($customerCheck != NULL && Session::get('verifyaccess') != NULL) {
+        if ($customerCheck != NULL) {
             return view('frontEnd.customer.accountverify');
         } else {
             return redirect('/customer/login');

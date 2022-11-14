@@ -746,7 +746,7 @@ class FrontEndController extends Controller {
     }
 
     public function details($o, $id) {
-        $ads = Advertisment::where('id', $id)->where('adsduration', '>=', today())->where('status', 1)->where('request', 1)->first();
+        $ads = Advertisment::where('id', $id)->where('adsduration', '>=', today())->where('status', 1)->where('request', 1)->with('additionaldetails')->first();
 
         if (!$ads) {
             return back();
